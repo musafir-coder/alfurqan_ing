@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al Furqon — Школа изучения Корана в Назрани</title>
+<meta name="description" content="Школа таджвида и хифза Корана Al Furqon в Назрани. Очно и онлайн. Для мужчин, женщин и детей от 8 лет. Запишитесь на бесплатный пробный урок.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --cream:#efe9d9;--cream-2:#f8f5ee;--white:#ffffff;
+  --ink:#1d2a45;--ink-soft:#3a4663;
+  --teal:#4ab393;--teal-dk:#0f5a4b;--teal-mid:#2c8f73;
+  --gold:#d8b878;--gold-br:#f0d49a;
+  --wa:#25D366;
+  --r:12px;--sh:0 4px 24px rgba(29,42,69,.10);--shl:0 12px 48px rgba(29,42,69,.16);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* ---- FADE IN ---- */
+.fi{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.fi.v{opacity:1;transform:translateY(0)}
+
+/* ---- HEADER ---- */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:1000;background:transparent;transition:background .3s,box-shadow .3s;padding:0 5%}
+.hdr.s{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(29,42,69,.08)}
+.hi{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
+.hl{display:flex;align-items:center;gap:12px}
+.hl-logo-wrap{width:44px;height:44px;flex-shrink:0}
+.hl-logo{width:44px;height:44px;object-fit:contain;display:block}
+.hdr:not(.s) .hl-logo{filter:url(#rm-bg) brightness(0) invert(1)}
+.hdr.s .hl-logo{filter:url(#rm-bg)}
+.hl-t{font-family:'Cinzel',serif;font-size:16px;font-weight:600;letter-spacing:.08em;line-height:1;color:white}
+.hdr.s .hl-t{color:var(--ink)}
+.hl-s{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:3px}
+.hdr.s .hl-s{color:var(--ink-soft)}
+nav.dn{display:flex;align-items:center;gap:28px}
+nav.dn a{font-size:13px;font-weight:500;letter-spacing:.05em;color:rgba(255,255,255,.9);transition:color .2s}
+.hdr.s nav.dn a{color:var(--ink)}
+nav.dn a:hover{color:var(--gold-br)}
+.hdr.s nav.dn a:hover{color:var(--teal)}
+.bwa{display:flex;align-items:center;gap:8px;background:var(--wa);color:white;padding:10px 20px;border-radius:999px;font-size:13px;font-weight:600;transition:opacity .2s,transform .2s}
+.bwa:hover{opacity:.9;transform:translateY(-1px)}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+.ham span{display:block;width:24px;height:2px;background:white;border-radius:2px;transition:.3s}
+.hdr.s .ham span{background:var(--ink)}
+.mm{display:none;flex-direction:column;background:white;padding:20px 5%;gap:16px;border-bottom:1px solid rgba(29,42,69,.06)}
+.mm.o{display:flex}
+.mm a{font-size:15px;font-weight:500;color:var(--ink);padding:8px 0;border-bottom:1px solid rgba(29,42,69,.06)}
+
+/* ---- HERO ---- */
+.hero{min-height:100vh;background:linear-gradient(135deg,var(--teal-dk) 0%,#1a4a3a 40%,var(--ink) 100%);display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.3' opacity='0.05'%3E%3Cpolygon points='40,2 78,22 78,58 40,78 2,58 2,22'/%3E%3Cpolygon points='40,14 66,28 66,52 40,66 14,52 14,28'/%3E%3C/g%3E%3C/svg%3E")}
+.hero-in{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.h-ar{font-size:36px;color:var(--gold);margin-bottom:16px;font-weight:300;direction:rtl;opacity:.9}
+.h-t{font-family:'Cinzel',serif;font-size:clamp(26px,3.5vw,46px);font-weight:600;color:white;line-height:1.2;margin-bottom:20px}
+.h-s{font-size:15px;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:36px}
+.bp{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--ink);padding:16px 32px;border-radius:999px;font-size:15px;font-weight:700;letter-spacing:.04em;transition:all .25s;width:fit-content}
+.bp:hover{background:var(--gold-br);transform:translateY(-2px);box-shadow:0 8px 24px rgba(216,184,120,.4)}
+.bs{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.75);font-size:13px;font-weight:500;transition:color .2s;margin-top:12px}
+.bs:hover{color:var(--gold-br)}
+.h-stats{display:flex;gap:32px;margin-top:48px;padding-top:28px;border-top:1px solid rgba(255,255,255,.1)}
+.sn{font-family:'Cinzel',serif;font-size:28px;font-weight:600;color:var(--gold);display:block}
+.sl{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.08em;text-transform:uppercase;display:block;margin-top:2px}
+
+/* ---- LOGO ANIMATION ---- */
+.lc{width:420px;height:420px;position:relative;margin:auto}
+.l-halo{position:absolute;left:50%;top:50%;width:420px;height:420px;transform:translate(-50%,-50%) scale(.4);border-radius:50%;background:radial-gradient(circle,rgba(74,179,147,.28) 0%,rgba(74,179,147,.08) 30%,transparent 60%);opacity:0;animation:haloIn 1800ms ease-out 800ms forwards;filter:blur(3px)}
+.l-frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(45deg);width:250px;height:250px;pointer-events:none}
+.l-frame svg{width:100%;height:100%;overflow:visible}
+.l-frame .ol{fill:none;stroke:var(--teal);stroke-width:1.5;stroke-dasharray:1000;stroke-dashoffset:1000;opacity:0;animation:drawF 1400ms cubic-bezier(.55,.06,.22,.95) 350ms forwards}
+.l-frame .gl{fill:none;stroke:var(--gold);stroke-width:1;opacity:0;transform-origin:center;transform:scale(.6);animation:goldI 900ms ease-out 2000ms forwards}
+.l-composer{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:380px;height:380px}
+.l-badge{position:absolute;inset:0;display:grid;place-items:center}
+.l-clip{width:340px;height:340px;display:grid;place-items:center;clip-path:circle(0% at 50% 50%);animation:revL 2000ms cubic-bezier(.22,.61,.36,1) 700ms forwards}
+.l-iw{width:100%;height:100%;transform:scale(.55) rotate(-90deg);opacity:0;animation:spinS 2200ms cubic-bezier(.16,.84,.32,1) 500ms forwards;display:grid;place-items:center}
+.l-img{width:340px;height:340px;background-repeat:no-repeat;background-size:620px 620px;background-position:center -30px;display:block;filter:url(#rm-bg)}
+.l-shimmer{position:absolute;left:50%;top:50%;width:400px;height:400px;transform:translate(-50%,-50%) rotate(45deg);overflow:hidden;pointer-events:none;opacity:0;animation:shShow 1400ms ease-out 2400ms both;-webkit-mask:radial-gradient(circle at center,#000 0 45%,transparent 65%);mask:radial-gradient(circle at center,#000 0 45%,transparent 65%)}
+.l-shimmer::before{content:"";position:absolute;top:0;bottom:0;left:-30%;width:30%;background:linear-gradient(90deg,transparent 0%,rgba(255,235,180,.85) 50%,transparent 100%);filter:blur(2px);animation:shSweep 1200ms ease-in-out 2500ms both}
+.l-spark{position:absolute;left:50%;top:50%;width:6px;height:6px;border-radius:50%;background:var(--teal-mid);transform:translate(-50%,-50%) scale(0);animation:spB 900ms ease-out 100ms both}
+@keyframes revL{0%{clip-path:circle(0% at 50% 50%)}100%{clip-path:circle(72% at 50% 50%)}}
+@keyframes spinS{0%{transform:scale(.55) rotate(-90deg);opacity:0}25%{opacity:1}100%{transform:scale(1.05) rotate(0deg);opacity:1}}
+@keyframes drawF{0%{stroke-dashoffset:1000;opacity:0}10%{opacity:.8}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes goldI{0%{opacity:0;transform:scale(.6)}60%{opacity:.55}100%{opacity:.35;transform:scale(1)}}
+@keyframes haloIn{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}60%{opacity:1}100%{opacity:.7;transform:translate(-50%,-50%) scale(1)}}
+@keyframes shShow{0%,100%{opacity:1}}
+@keyframes shSweep{0%{left:-30%}100%{left:130%}}
+@keyframes spB{0%{transform:translate(-50%,-50%) scale(0);opacity:0}30%{transform:translate(-50%,-50%) scale(1.4);opacity:1;box-shadow:0 0 28px 8px rgba(74,179,147,.55)}100%{transform:translate(-50%,-50%) scale(4);opacity:0}}
+
+/* ---- SECTION BASE ---- */
+section{padding:90px 5%}
+.con{max-width:1200px;margin:0 auto}
+.slbl{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:12px}
+.st{font-family:'Cinzel',serif;font-size:clamp(22px,2.8vw,36px);font-weight:600;color:var(--ink);line-height:1.25;margin-bottom:16px}
+.ssub{font-size:15px;color:var(--ink-soft);line-height:1.7;max-width:600px}
+
+/* ---- HADITH ---- */
+.hadith{background:var(--ink);padding:70px 5%;text-align:center;position:relative;overflow:hidden}
+.hadith::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cg fill='none' stroke='%23d8b878' stroke-width='0.4' opacity='0.07'%3E%3Cpolygon points='30,2 58,17 58,43 30,58 2,43 2,17'/%3E%3C/g%3E%3C/svg%3E")}
+.h-inn{position:relative;max-width:800px;margin:0 auto}
+.h-ar2{font-size:clamp(20px,2.8vw,30px);color:var(--gold);direction:rtl;line-height:1.8;margin-bottom:24px;font-weight:300}
+.h-div{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 24px}
+.h-tr{font-size:clamp(15px,1.8vw,19px);color:rgba(255,255,255,.9);font-style:italic;line-height:1.7;margin-bottom:12px}
+.h-src{font-size:13px;color:rgba(255,255,255,.4);letter-spacing:.06em}
+
+/* ---- ABOUT ---- */
+.about{background:var(--cream-2)}
+.about-g{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-lg img{width:300px;height:300px;object-fit:contain;filter:drop-shadow(0 20px 60px rgba(74,179,147,.25));margin:auto}
+.story{font-size:14px;line-height:1.9;color:var(--ink-soft);border-left:3px solid var(--gold);padding-left:22px;margin:20px 0;font-style:italic}
+.a-txt p{font-size:14px;line-height:1.8;color:var(--ink-soft);margin-bottom:14px}
+.a-meta{display:flex;gap:16px;margin-top:24px;flex-wrap:wrap}
+.a-badge{display:flex;align-items:center;gap:8px;background:white;padding:9px 14px;border-radius:var(--r);font-size:12px;font-weight:500;box-shadow:var(--sh)}
+.a-badge i{color:var(--teal)}
+
+/* ---- ADVANTAGES ---- */
+.adv-g{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
+.ac{background:var(--cream-2);border-radius:var(--r);padding:30px 26px;transition:transform .25s,box-shadow .25s;border:1px solid transparent}
+.ac:hover{transform:translateY(-4px);box-shadow:var(--shl);border-color:rgba(74,179,147,.15)}
+.ai{width:50px;height:50px;background:linear-gradient(135deg,var(--teal-dk),var(--teal));border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.ai i{color:white;font-size:19px}
+.at{font-family:'Cinzel',serif;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:9px}
+.ad{font-size:13px;color:var(--ink-soft);line-height:1.7}
+
+/* ---- PROGRAM ---- */
+.prog{background:var(--cream-2)}
+.prog-hd{display:grid;grid-template-columns:1fr 1fr;gap:52px;margin-bottom:44px;align-items:start}
+.pm{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.pc{display:flex;align-items:center;gap:6px;background:white;border:1px solid rgba(74,179,147,.22);border-radius:999px;padding:7px 14px;font-size:12px;font-weight:500}
+.pc i{color:var(--teal);font-size:11px}
+.pinc{background:white;border-radius:var(--r);padding:26px}
+.pinc h4{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--teal-dk);margin-bottom:14px}
+.pil{display:flex;flex-direction:column;gap:9px}
+.pi{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--ink-soft)}
+.pi i{color:var(--teal);font-size:12px}
+.topics-w{background:white;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.topics-h{background:linear-gradient(135deg,var(--teal-dk),var(--teal-mid));padding:18px 26px;display:flex;align-items:center;justify-content:space-between}
+.topics-h h3{font-family:'Cinzel',serif;font-size:15px;color:white;font-weight:500}
+.tbadge{background:rgba(255,255,255,.2);color:white;font-size:11px;font-weight:600;letter-spacing:.1em;padding:4px 12px;border-radius:999px}
+.tg{display:grid;grid-template-columns:repeat(2,1fr);padding:6px 0}
+.ti{display:flex;align-items:flex-start;gap:9px;padding:11px 24px;font-size:13px;color:var(--ink-soft);line-height:1.4;border-bottom:1px solid rgba(29,42,69,.04)}
+.tn{font-family:'Cinzel',serif;font-size:10px;color:var(--teal);font-weight:600;min-width:20px;padding-top:1px}
+.exam{background:rgba(74,179,147,.07);border-top:2px solid var(--teal)!important;padding:14px 24px!important}
+.exam .tn{color:var(--teal-dk)}
+.exam span:last-child{font-weight:600;color:var(--ink)}
+.after{margin-top:24px;background:white;border-radius:var(--r);padding:22px 26px;display:flex;align-items:center;gap:18px;box-shadow:var(--sh)}
+.after-ic{width:46px;height:46px;background:linear-gradient(135deg,var(--gold),var(--gold-br));border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.after-ic i{color:var(--ink);font-size:19px}
+.after-t h4{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.after-t p{font-size:13px;color:var(--ink-soft);line-height:1.6}
+
+/* ---- SCHEDULE ---- */
+.sch-g{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px}
+.sc{border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
+.sc-hd{padding:18px 26px;display:flex;align-items:center;gap:12px}
+.sc-hd i{font-size:20px;color:white}
+.sc-hd h3{font-family:'Cinzel',serif;font-size:16px;font-weight:600;color:white}
+.sc.br .sc-hd{background:linear-gradient(135deg,var(--teal-dk),var(--teal-mid))}
+.sc.si .sc-hd{background:linear-gradient(135deg,#5a3a7a,#7a4aa0)}
+.sc-b{padding:20px 26px;background:var(--cream-2)}
+.sr{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid rgba(29,42,69,.06)}
+.sr:last-child{border-bottom:none;padding-bottom:0}
+.srl{font-size:13px;color:var(--ink-soft);font-weight:500;display:flex;align-items:center;gap:7px}
+.srl i{color:var(--teal);width:15px}
+.srv{font-size:13px;font-weight:600;color:var(--ink);text-align:right}
+
+/* ---- PRICING ---- */
+.pri{background:var(--cream-2)}
+.pr-g{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:740px;margin:44px auto 0}
+.prc{background:white;border-radius:var(--r);padding:38px 32px;box-shadow:var(--sh);position:relative;transition:transform .25s,box-shadow .25s;border:2px solid transparent}
+.prc:hover{transform:translateY(-4px);box-shadow:var(--shl)}
+.prc.feat{border-color:var(--gold)}
+.fbadge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 16px;border-radius:999px;white-space:nowrap}
+.plbl{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--teal-mid);margin-bottom:10px;display:block}
+.pam{font-family:'Cinzel',serif;font-size:38px;font-weight:600;color:var(--ink);line-height:1;margin-bottom:4px}
+.pam sup{font-size:18px}
+.pp{font-size:12px;color:var(--ink-soft);margin-bottom:24px}
+.pold{font-size:14px;color:rgba(29,42,69,.3);text-decoration:line-through;margin-left:6px}
+.pfs{display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
+.pf{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--ink-soft)}
+.pf i{color:var(--teal);font-size:12px}
+.bprice{display:block;text-align:center;background:linear-gradient(135deg,var(--teal-dk),var(--teal));color:white;padding:13px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:.04em;transition:opacity .2s,transform .2s}
+.bprice:hover{opacity:.9;transform:translateY(-1px)}
+.pnote{max-width:740px;margin:18px auto 0;font-size:12px;color:rgba(29,42,69,.42);line-height:1.6;text-align:center}
+
+/* ---- TEACHERS ---- */
+.tc-g{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px}
+.tcard{background:var(--cream-2);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);transition:transform .25s,box-shadow .25s}
+.tcard:hover{transform:translateY(-4px);box-shadow:var(--shl)}
+.tav{height:190px;background:linear-gradient(135deg,var(--teal-dk) 0%,var(--teal-mid) 100%);display:flex;align-items:center;justify-content:center}
+.tav.sis{background:linear-gradient(135deg,#5a3a7a 0%,#9a6abc 100%)}
+.tini{width:84px;height:84px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:26px;font-weight:600;color:white;border:2px solid rgba(255,255,255,.28)}
+.tbody{padding:26px}
+.tname{font-family:'Cinzel',serif;font-size:16px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.trole{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.tbio{font-size:13px;color:var(--ink-soft);line-height:1.7;margin-bottom:18px}
+.ttags{display:flex;flex-wrap:wrap;gap:7px}
+.ttag{background:white;border:1px solid rgba(74,179,147,.2);border-radius:999px;padding:4px 11px;font-size:11px;font-weight:500;color:var(--ink-soft)}
+
+/* ---- TESTIMONIALS ---- */
+.test{background:var(--cream-2)}
+.rv-g{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.rvc{background:white;border-radius:var(--r);padding:26px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:14px;transition:transform .25s,box-shadow .25s}
+.rvc:hover{transform:translateY(-4px);box-shadow:var(--shl)}
+.rstars{display:flex;gap:3px}
+.rstars i{color:var(--gold);font-size:13px}
+.rtxt{font-size:13px;color:var(--ink-soft);line-height:1.75;flex:1;position:relative;padding-top:6px}
+.rtxt::before{content:'"';font-size:52px;color:var(--teal);opacity:.15;line-height:0;display:block;margin-bottom:10px}
+.rauth{display:flex;align-items:center;gap:11px;padding-top:12px;border-top:1px solid rgba(29,42,69,.06)}
+.rav{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--teal-dk),var(--teal));display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:13px;font-weight:600;color:white;flex-shrink:0}
+.rname{font-size:13px;font-weight:600;color:var(--ink)}
+.rmeta{font-size:11px;color:rgba(29,42,69,.38);margin-top:2px}
+
+/* ---- CTA ---- */
+.cta{background:linear-gradient(135deg,var(--teal-dk) 0%,#1a4a3a 55%,var(--ink) 100%);padding:100px 5%;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.3' opacity='0.05'%3E%3Cpolygon points='40,2 78,22 78,58 40,78 2,58 2,22'/%3E%3C/g%3E%3C/svg%3E")}
+.cta-in{position:relative;max-width:600px;margin:0 auto}
+.cta-ar{font-size:26px;color:var(--gold);direction:rtl;margin-bottom:18px;opacity:.85}
+.cta-t{font-family:'Cinzel',serif;font-size:clamp(22px,3.2vw,38px);font-weight:600;color:white;margin-bottom:14px;line-height:1.25}
+.cta-s{font-size:15px;color:rgba(255,255,255,.72);line-height:1.7;margin-bottom:38px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.cbr{display:inline-flex;align-items:center;gap:9px;background:var(--wa);color:white;padding:16px 30px;border-radius:999px;font-size:14px;font-weight:700;transition:all .25s}
+.cbr:hover{opacity:.9;transform:translateY(-2px)}
+.csi{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.15);color:white;padding:16px 30px;border-radius:999px;font-size:14px;font-weight:600;border:2px solid rgba(255,255,255,.4);transition:all .25s}
+.csi:hover{background:rgba(255,255,255,.25);transform:translateY(-2px)}
+.cta-note{font-size:12px;color:rgba(255,255,255,.38);margin-top:18px}
+
+/* ---- CONTACTS ---- */
+.cont-g{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:44px}
+.cgrp{margin-bottom:28px}
+.cgrp h3{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.ci{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(29,42,69,.05);font-size:14px;color:var(--ink);transition:color .2s}
+.ci:hover{color:var(--teal-dk)}
+.ci:last-child{border-bottom:none}
+.cico{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
+.cg{background:rgba(37,211,102,.12);color:var(--wa)}
+.ct{background:rgba(74,179,147,.12);color:var(--teal-dk)}
+.cp{background:rgba(100,50,200,.12);color:#6432c8}
+.map-box{background:var(--cream-2);border-radius:var(--r);height:300px;overflow:hidden;border:1px solid rgba(29,42,69,.07)}
+.map-box iframe{width:100%;height:100%;border:none}
+.map-addr{margin-top:14px;display:flex;align-items:flex-start;gap:9px;font-size:14px;color:var(--ink-soft);line-height:1.5}
+.map-addr i{color:var(--teal);margin-top:2px;flex-shrink:0}
+.srow{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
+.slink{display:flex;align-items:center;gap:7px;padding:9px 16px;border-radius:999px;font-size:13px;font-weight:600;color:white;transition:opacity .2s,transform .2s}
+.slink:hover{opacity:.9;transform:translateY(-1px)}
+.si{background:linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)}
+.sy{background:#ff0000}
+.wa-groups{display:flex;flex-direction:column;gap:9px;margin-top:8px}
+.wag{display:flex;align-items:center;gap:9px;padding:11px 14px;background:rgba(37,211,102,.08);border-radius:var(--r);border:1px solid rgba(37,211,102,.2);font-size:13px;font-weight:600;color:var(--wa);transition:background .2s}
+.wag:hover{background:rgba(37,211,102,.15)}
+.wag i{font-size:17px}
+
+/* ---- FOOTER ---- */
+footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
+.ft{max-width:1200px;margin:0 auto}
+.ft-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:28px}
+.fb-n{font-family:'Cinzel',serif;font-size:19px;font-weight:600;color:white;margin-bottom:5px;letter-spacing:.06em}
+.fb-s{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px}
+.fb-t{font-size:13px;line-height:1.7;color:rgba(255,255,255,.38);max-width:270px}
+.fc h4{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:14px}
+.flinks{display:flex;flex-direction:column;gap:9px}
+.flinks a{font-size:13px;color:rgba(255,255,255,.38);transition:color .2s}
+.flinks a:hover{color:var(--gold-br)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.ft-copy{font-size:12px;color:rgba(255,255,255,.22)}
+.ft-ar{font-size:15px;color:var(--gold);opacity:.45}
+
+/* ---- FLOATING WA ---- */
+.wa-fl{position:fixed;bottom:26px;right:26px;z-index:999;width:56px;height:56px;background:var(--wa);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.5);transition:transform .25s,box-shadow .25s;animation:wap 3s ease-in-out 4s infinite}
+.wa-fl:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.65)}
+.wa-fl i{color:white;font-size:25px}
+@keyframes wap{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.5)}50%{box-shadow:0 4px 32px rgba(37,211,102,.8)}}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:1024px){
+  .adv-g{grid-template-columns:repeat(2,1fr)}
+  .prog-hd{grid-template-columns:1fr;gap:28px}
+  .rv-g{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  section{padding:64px 5%}
+  nav.dn{display:none}
+  .ham{display:flex}
+  .bwa.dsk{display:none}
+  .hero{padding:88px 5% 60px}
+  .hero-in{grid-template-columns:1fr;gap:36px}
+  .lv{order:-1}
+  .lc{width:280px;height:280px}
+  .l-composer{width:260px;height:260px}
+  .l-clip{width:220px;height:220px}
+  .l-img{width:220px;height:220px;background-size:400px 400px;background-position:center -18px}
+  .l-frame{width:158px;height:158px}
+  .l-halo,.l-shimmer{width:270px;height:270px}
+  .h-stats{gap:20px}
+  .sn{font-size:22px}
+  .about-g,.sch-g,.pr-g,.tc-g,.cont-g{grid-template-columns:1fr}
+  .pr-g{max-width:380px}
+  .about-lg img{width:200px;height:200px}
+  .adv-g{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr;gap:28px}
+  .ft-bot{justify-content:center;text-align:center}
+  .cta-row{flex-direction:column;align-items:center}
+}
+@media(max-width:480px){
+  .h-stats{flex-wrap:wrap;gap:14px}
+  .tg{grid-template-columns:1fr}
+  .a-meta{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- FLOATING WHATSAPP -->
+<a class="wa-fl" href="https://wa.me/79380086606?text=%D0%90%D1%81%D1%81%D0%B0%D0%BB%D1%8F%D0%BC%D1%83%20%D0%B0%D0%BB%D0%B5%D0%B9%D0%BA%D1%83%D0%BC!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%BE%D0%B1%D0%BD%D1%8B%D0%B9%20%D1%83%D1%80%D0%BE%D0%BA" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- HEADER -->
+<header class="hdr" id="hdr">
+  <div class="hi">
+    <a href="#" class="hl">
+      <div class="hl-logo-wrap">
+        <img class="hl-logo" src="WhatsApp%20Image%202026-05-28%20at%2013.16.36.jpeg" alt="Al Furqon">
+      </div>
+      <div><div class="hl-t">Al Furqon</div><div class="hl-s">Школа изучения Корана</div></div>
+    </a>
+    <nav class="dn">
+      <a href="#about">О школе</a>
+      <a href="#program">Программа</a>
+      <a href="#pricing">Цены</a>
+      <a href="#teachers">Преподаватели</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="bwa dsk" href="https://wa.me/79380086606?text=%D0%97%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <div class="ham" id="ham"><span></span><span></span><span></span></div>
+  </div>
+  <nav class="mm" id="mm">
+    <a href="#about">О школе</a>
+    <a href="#program">Программа</a>
+    <a href="#pricing">Цены</a>
+    <a href="#teachers">Преподаватели</a>
+    <a href="#contacts">Контакты</a>
+    <a href="https://wa.me/79380086606" class="bwa" style="width:fit-content" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-in">
+    <div class="hero-content">
+      <div class="h-ar">الفرقان</div>
+      <h1 class="h-t">Начни читать<br>Благородный Коран<br>правильно</h1>
+      <p class="h-s">Школа таджвида Al Furqon в Назрани.<br>Очно и онлайн · Для всех возрастов · С 2021 года</p>
+      <a class="bp" href="https://wa.me/79380086606?text=%D0%90%D1%81%D1%81%D0%B0%D0%BB%D1%8F%D0%BC%D1%83%20%D0%B0%D0%BB%D0%B5%D0%B9%D0%BA%D1%83%D0%BC!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%BE%D0%B1%D0%BD%D1%8B%D0%B9%20%D1%83%D1%80%D0%BE%D0%BA" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> Записаться на бесплатный урок
+      </a>
+      <a class="bs" href="https://www.instagram.com/alfurqan_ing" target="_blank" rel="noopener">
+        <i class="fab fa-instagram"></i> @alfurqan_ing · 11&nbsp;000+ подписчиков
+      </a>
+      <div class="h-stats">
+        <div><span class="sn">6+</span><span class="sl">лет опыта</span></div>
+        <div><span class="sn">11K+</span><span class="sl">подписчиков</span></div>
+        <div><span class="sn">2021</span><span class="sl">год основания</span></div>
+      </div>
+    </div>
+    <div class="lv" style="display:flex;justify-content:center">
+      <div class="lc">
+        <div class="l-halo"></div>
+        <div class="l-frame">
+          <svg viewBox="0 0 100 100">
+            <rect class="ol" x="2" y="2" width="96" height="96" rx="1.5"/>
+            <rect class="gl" x="6" y="6" width="88" height="88" rx="1"/>
+          </svg>
+        </div>
+        <div class="l-composer">
+          <div class="l-badge">
+            <div class="l-clip">
+              <div class="l-iw">
+                <div class="l-img" id="limg" role="img" aria-label="Al Furqon"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="l-shimmer"></div>
+        <div class="l-spark"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HADITH -->
+<div class="hadith">
+  <div class="h-inn fi">
+    <div class="h-ar2">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</div>
+    <div class="h-div"></div>
+    <p class="h-tr">«Лучшим из вас является тот, кто изучает Коран и учит ему других»</p>
+    <p class="h-src">— аль-Бухари (5027), со слов Усмана ибн Аффана, да будет доволен им Аллах</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="con">
+    <div class="about-g">
+      <div class="about-lg fi">
+        <img src="школа корана/assets/logo.png" alt="Логотип Al Furqon">
+      </div>
+      <div class="a-txt fi">
+        <span class="slbl">О школе</span>
+        <h2 class="st">История, которая всё изменила</h2>
+        <blockquote class="story">
+          «На похоронах однофамилец вошёл без приветствия. Я пошутил: "Ни салама, ни здравствуйте?" Он ответил тихо: "Ассалáьму Iалаьйкум". Эти слова вызвали мурашки. Тот момент изменил меня. После — пятничный намаз, встреча с первым учителем — и начался мой путь к Благородному Корану. Теперь я передаю этот свет другим.»
+          <cite style="display:block;margin-top:10px;font-size:12px;color:var(--ink-soft);font-style:normal;font-weight:600;">— Адам Умаров, основатель Al Furqon</cite>
+        </blockquote>
+        <p>Школа «Аль-Фуркан» (الفرقان — «Различение») открылась в апреле 2021 года в Назрани. Название взято из одного из имён Благородного Корана — различения между истиной и ложью.</p>
+        <p>Наша цель — не провести 2-3 месяца занятий и отпустить. Мы строим долгосрочный путь: от первых букв до красивого чтения и заучивания Корана наизусть.</p>
+        <div class="a-meta">
+          <div class="a-badge"><i class="fas fa-map-marker-alt"></i> Назрань, Ингушетия</div>
+          <div class="a-badge"><i class="fas fa-calendar-alt"></i> С апреля 2021</div>
+          <div class="a-badge"><i class="fas fa-laptop"></i> Очно и онлайн</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVANTAGES -->
+<section id="advantages" style="padding:90px 5%;background:white">
+  <div class="con">
+    <div class="fi" style="text-align:center">
+      <span class="slbl">Почему выбирают нас</span>
+      <h2 class="st">Всё для вашего обучения</h2>
+    </div>
+    <div class="adv-g">
+      <div class="ac fi">
+        <div class="ai"><i class="fas fa-star"></i></div>
+        <div class="at">6+ лет опыта</div>
+        <p class="ad">Преподаватель обучался у хафизов Корана и начал преподавать с разрешения своих учителей. За плечами — годы практики.</p>
+      </div>
+      <div class="ac fi">
+        <div class="ai"><i class="fas fa-laptop-house"></i></div>
+        <div class="at">Очно и онлайн</div>
+        <p class="ad">Уроки в уютном помещении в Назрани или онлайн. Заболели или в командировке? Подключайтесь дистанционно — без пропусков.</p>
+      </div>
+      <div class="ac fi">
+        <div class="ai"><i class="fas fa-video"></i></div>
+        <div class="at">Видеозаписи уроков</div>
+        <p class="ad">Все занятия записываются на русском и ингушском языках. Пересматривайте дома, делайте домашние задания в удобное время.</p>
+      </div>
+      <div class="ac fi">
+        <div class="ai"><i class="fas fa-users"></i></div>
+        <div class="at">Для всех возрастов</div>
+        <p class="ad">Мужчины, женщины, дети от 8 лет — у каждого своё расписание. Раздельные группы для братьев и сестёр.</p>
+      </div>
+      <div class="ac fi">
+        <div class="ai"><i class="fas fa-book-open"></i></div>
+        <div class="at">Собственная методика</div>
+        <p class="ad">Прописи, аудиозаписи, видеоматериалы — всё разработано для наших учеников. Поддержка в WhatsApp-группах 24/7.</p>
+      </div>
+      <div class="ac fi">
+        <div class="ai"><i class="fas fa-trophy"></i></div>
+        <div class="at">Ежемесячные конкурсы</div>
+        <p class="ad">Конкурсы каждый месяц поддерживают мотивацию. Учитель всегда следит за прогрессом каждого ученика.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="prog" id="program">
+  <div class="con">
+    <div class="prog-hd">
+      <div class="fi">
+        <span class="slbl">Учебная программа</span>
+        <h2 class="st">Курс 1 — Таджвид с нуля</h2>
+        <p class="ssub">Полная программа для тех, кто начинает с нуля. По окончании — экзамен и переход к практике или Курсу 2.</p>
+        <div class="pm">
+          <span class="pc"><i class="far fa-clock"></i> 5 месяцев</span>
+          <span class="pc"><i class="fas fa-calendar-week"></i> 2 раза в неделю</span>
+          <span class="pc"><i class="fas fa-hourglass-half"></i> ~1.5 часа урок</span>
+          <span class="pc"><i class="fas fa-child"></i> От 8 лет</span>
+        </div>
+      </div>
+      <div class="pinc fi">
+        <h4>Входит в программу</h4>
+        <div class="pil">
+          <div class="pi"><i class="fas fa-check-circle"></i> Видеозаписи уроков (рус + ингушский)</div>
+          <div class="pi"><i class="fas fa-check-circle"></i> Прописи для арабских букв</div>
+          <div class="pi"><i class="fas fa-check-circle"></i> Аудиозаписи уроков</div>
+          <div class="pi"><i class="fas fa-check-circle"></i> WhatsApp-группа класса</div>
+          <div class="pi"><i class="fas fa-check-circle"></i> Связь учителя с родителями</div>
+          <div class="pi"><i class="fas fa-check-circle"></i> Поддержка в WhatsApp</div>
+        </div>
+      </div>
+    </div>
+    <div class="topics-w fi">
+      <div class="topics-h">
+        <h3>Темы Курса 1</h3>
+        <span class="tbadge">22 темы + экзамен</span>
+      </div>
+      <div class="tg">
+        <div class="ti"><span class="tn">01</span><span>Краткое знакомство с Кораном</span></div>
+        <div class="ti"><span class="tn">02</span><span>Арабский алфавит</span></div>
+        <div class="ti"><span class="tn">03</span><span>Правильное написание букв</span></div>
+        <div class="ti"><span class="tn">04</span><span>Соединение букв</span></div>
+        <div class="ti"><span class="tn">05</span><span>Огласовки (харакат)</span></div>
+        <div class="ti"><span class="tn">06</span><span>Твёрдые и протяжные буквы</span></div>
+        <div class="ti"><span class="tn">07</span><span>Места образования букв (макхариджи)</span></div>
+        <div class="ti"><span class="tn">08</span><span>Ташдид и танвин</span></div>
+        <div class="ti"><span class="tn">09</span><span>Правило остановки и та-марбута</span></div>
+        <div class="ti"><span class="tn">10</span><span>Разновидности хамзы</span></div>
+        <div class="ti"><span class="tn">11</span><span>Определённый артикль (аль)</span></div>
+        <div class="ti"><span class="tn">12</span><span>Маленькие буквы в Коране</span></div>
+        <div class="ti"><span class="tn">13</span><span>Правило нуна с сукуном и танвина</span></div>
+        <div class="ti"><span class="tn">14</span><span>Правило мима с сукуном</span></div>
+        <div class="ti"><span class="tn">15</span><span>Буквы, которые не читаются</span></div>
+        <div class="ti"><span class="tn">16</span><span>Удваивание (идгам) и его виды</span></div>
+        <div class="ti"><span class="tn">17</span><span>Виды мадда (удлинение)</span></div>
+        <div class="ti"><span class="tn">18</span><span>Правила буквы «Р» (ра)</span></div>
+        <div class="ti"><span class="tn">19</span><span>Раздельные буквы начала сур</span></div>
+        <div class="ti"><span class="tn">20</span><span>Знаки остановки в Коране</span></div>
+        <div class="ti"><span class="tn">21</span><span>Порядковые знаки и ориентиры</span></div>
+        <div class="ti"><span class="tn">22</span><span>Заучивание сур 30-го джуза</span></div>
+        <div class="ti exam" style="grid-column:1/-1">
+          <span class="tn"><i class="fas fa-graduation-cap"></i></span>
+          <span>Итоговый экзамен по всем правилам таджвида</span>
+        </div>
+      </div>
+    </div>
+    <div class="after fi">
+      <div class="after-ic"><i class="fas fa-road"></i></div>
+      <div class="after-t">
+        <h4>После Курса 1</h4>
+        <p>По желанию — 2 месяца практики чтения и закрепления правил. Затем Курс 2: углублённый таджвид и хифз Корана. Долгосрочный путь, а не разовые занятия.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule" style="padding:90px 5%;background:white">
+  <div class="con">
+    <div class="fi" style="text-align:center">
+      <span class="slbl">Расписание</span>
+      <h2 class="st">Выберите удобное время</h2>
+      <p class="ssub" style="margin:0 auto">2 урока в неделю · 8 уроков в месяц · ~1.5 часа каждый</p>
+    </div>
+    <div class="sch-g">
+      <div class="sc br fi">
+        <div class="sc-hd"><i class="fas fa-user"></i><h3>Для братьев</h3></div>
+        <div class="sc-b">
+          <div class="sr"><span class="srl"><i class="far fa-calendar"></i>Дни (вариант 1)</span><span class="srv">Пн / Чт</span></div>
+          <div class="sr"><span class="srl"><i class="far fa-calendar"></i>Дни (вариант 2)</span><span class="srv">Ср / Сб</span></div>
+          <div class="sr"><span class="srl"><i class="far fa-clock"></i>Дневная смена</span><span class="srv">15:00</span></div>
+          <div class="sr"><span class="srl"><i class="far fa-clock"></i>Вечерняя смена</span><span class="srv">18:30</span></div>
+          <div class="sr"><span class="srl"><i class="fab fa-telegram"></i>Запись</span><span class="srv" style="color:var(--teal-dk)">@AdamUmarov06</span></div>
+        </div>
+      </div>
+      <div class="sc si fi">
+        <div class="sc-hd"><i class="fas fa-user"></i><h3>Для сестёр</h3></div>
+        <div class="sc-b">
+          <div class="sr"><span class="srl"><i class="far fa-calendar"></i>Дни занятий</span><span class="srv">Вт / Пт</span></div>
+          <div class="sr"><span class="srl"><i class="far fa-clock"></i>Смена 1</span><span class="srv">14:00</span></div>
+          <div class="sr"><span class="srl"><i class="far fa-clock"></i>Смена 2</span><span class="srv">16:00</span></div>
+          <div class="sr"><span class="srl"><i class="fab fa-telegram"></i>Запись</span><span class="srv" style="color:#7a4aa0">@alfurqan_admin_Rafida</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pri" id="pricing">
+  <div class="con">
+    <div class="fi" style="text-align:center">
+      <span class="slbl">Стоимость обучения</span>
+      <h2 class="st">Доступные цены</h2>
+      <p class="ssub" style="margin:0 auto">Оплата с 1 по 10 числа. Очное и онлайн — одинаковая цена.</p>
+    </div>
+    <div class="pr-g">
+      <div class="prc fi">
+        <span class="plbl">Ежемесячно</span>
+        <div class="pam">2&nbsp;500<sup> ₽</sup></div>
+        <div class="pp">в месяц · 8 уроков</div>
+        <ul class="pfs">
+          <li class="pf"><i class="fas fa-check"></i>Очно или онлайн</li>
+          <li class="pf"><i class="fas fa-check"></i>2 урока в неделю</li>
+          <li class="pf"><i class="fas fa-check"></i>Видеозаписи уроков</li>
+          <li class="pf"><i class="fas fa-check"></i>Прописи и аудиозаписи</li>
+          <li class="pf"><i class="fas fa-check"></i>WhatsApp-поддержка</li>
+        </ul>
+        <a class="bprice" href="https://wa.me/79380086606?text=%D0%97%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F" target="_blank">Записаться</a>
+      </div>
+      <div class="prc feat fi">
+        <div class="fbadge">Выгода 1&nbsp;000 ₽</div>
+        <span class="plbl">Весь курс</span>
+        <div class="pam">11&nbsp;500<sup> ₽</sup><span class="pold">12&nbsp;500</span></div>
+        <div class="pp">за 5 месяцев · 40 уроков</div>
+        <ul class="pfs">
+          <li class="pf"><i class="fas fa-check"></i>Очно или онлайн</li>
+          <li class="pf"><i class="fas fa-check"></i>Полная программа Курса 1</li>
+          <li class="pf"><i class="fas fa-check"></i>Все видеозаписи уроков</li>
+          <li class="pf"><i class="fas fa-check"></i>Прописи и аудиозаписи</li>
+          <li class="pf"><i class="fas fa-check"></i>Итоговый экзамен</li>
+        </ul>
+        <a class="bprice" href="https://wa.me/79380086606?text=%D0%97%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%B2%D0%B5%D1%81%D1%8C%20%D0%BA%D1%83%D1%80%D1%81" target="_blank">Записаться на курс</a>
+      </div>
+    </div>
+    <p class="pnote">* Оплата производится с 1 по 10 число каждого месяца. При пропуске по причине ученика оплата не возвращается. Если урок пропущен по вине школы — восполняется или возвращается.</p>
+  </div>
+</section>
+
+<!-- TEACHERS -->
+<section id="teachers" style="padding:90px 5%;background:white">
+  <div class="con">
+    <div class="fi" style="text-align:center">
+      <span class="slbl">Преподаватели</span>
+      <h2 class="st">Те, кто передаёт знание</h2>
+    </div>
+    <div class="tc-g">
+      <div class="tcard fi">
+        <div class="tav"><div class="tini">АУ</div></div>
+        <div class="tbody">
+          <h3 class="tname">Умаров Адам Магамедович</h3>
+          <div class="trole">Основатель · Преподаватель (братья)</div>
+          <p class="tbio">Адам обучался таджвиду с разными учителями в Ингушетии, в том числе с хафизами Корана. Начал преподавать с разрешения своих учителей. В апреле 2021 года открыл школу «Аль-Фуркан» и преподаёт таджвид детям и взрослым. Продолжает совершенствовать знание арабского языка.</p>
+          <div class="ttags">
+            <span class="ttag">6+ лет опыта</span>
+            <span class="ttag">Обучался у хафизов</span>
+            <span class="ttag">Основатель школы</span>
+            <span class="ttag">Дети и взрослые</span>
+          </div>
+        </div>
+      </div>
+      <div class="tcard fi">
+        <div class="tav sis"><div class="tini">ЗЧ</div></div>
+        <div class="tbody">
+          <h3 class="tname">Чибиева Заира</h3>
+          <div class="trole">Преподаватель (сёстры и дети)</div>
+          <p class="tbio">Изучает таджвид с 2016 года. В 2022 прошла Курс 1 в «Аль-Фуркане» и сдала экзамен на отлично. Продолжает углублённое обучение. Богатый педагогический опыт: воспитатель детского сада (2015–2023), учитель истории (с 2023). Преподаёт в школе с июня 2024 года.</p>
+          <div class="ttags">
+            <span class="ttag">Таджвид с 2016</span>
+            <span class="ttag">Педагог с 2015</span>
+            <span class="ttag">Опыт с детьми</span>
+            <span class="ttag">В школе с 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="test" id="reviews">
+  <div class="con">
+    <div class="fi" style="text-align:center">
+      <span class="slbl">Отзывы учеников</span>
+      <h2 class="st">Что говорят наши ученики</h2>
+    </div>
+    <div class="rv-g">
+      <div class="rvc fi">
+        <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="rtxt">Адам очень чёткий преподаватель. Объясняет доступным языком. Всегда на связи. Начинал с нуля — сегодня читаю свободно. Курс доступный даже для людей за 45. Не думал, что через онлайн можно достичь такого результата. Не бойтесь начинать читать Коран — у меня получилось, и у вас получится! Ин шаа Аллах!</p>
+        <div class="rauth">
+          <div class="rav">R</div>
+          <div><div class="rname">@rgb683</div><div class="rmeta">Онлайн · 2024</div></div>
+        </div>
+      </div>
+      <div class="rvc fi">
+        <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="rtxt">Я один из первых учеников. В начале не знал даже букв. Сейчас знаю правила таджвида наизусть и выучил суры с конца 22-й. Уроки проходят в очень непринуждённой братской атмосфере. Тем, кто колеблется: нужно только желание и решимость. Получится! Мне 46 лет — я доказательство.</p>
+        <div class="rauth">
+          <div class="rav">М</div>
+          <div><div class="rname">@cherbizhev_muhammad</div><div class="rmeta">Один из первых учеников</div></div>
+        </div>
+      </div>
+      <div class="rvc fi">
+        <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="rtxt">Мой сын не знал даже алфавита, когда пошёл к Адаму. Эффект ощутимый с первого урока! Адам научил всему, дал много полезных советов, объяснял всё на высшем уровне. Очень довольна, что сын обучается в Al Furqon. Продолжаем заниматься. Да воздаст Аллах вам благом!</p>
+        <div class="rauth">
+          <div class="rav">М</div>
+          <div><div class="rname">@mari_muslimova</div><div class="rmeta">Мама ученика · 2024</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="trial">
+  <div class="cta-in fi">
+    <div class="cta-ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+    <h2 class="cta-t">Начни свой путь<br>к Благородному Корану</h2>
+    <p class="cta-s">Запишитесь на бесплатный пробный урок — без обязательств.<br>Выберите удобное время и начните уже сегодня.</p>
+    <div class="cta-row">
+      <a class="cbr" href="https://wa.me/79380086606?text=%D0%90%D1%81%D1%81%D0%B0%D0%BB%D1%8F%D0%BC%D1%83%20%D0%B0%D0%BB%D0%B5%D0%B9%D0%BA%D1%83%D0%BC!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%BE%D0%B1%D0%BD%D1%8B%D0%B9%20%D1%83%D1%80%D0%BE%D0%BA" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Для братьев</a>
+      <a class="csi" href="https://wa.me/79380086066?text=%D0%90%D1%81%D1%81%D0%B0%D0%BB%D1%8F%D0%BC%D1%83%20%D0%B0%D0%BB%D0%B5%D0%B9%D0%BA%D1%83%D0%BC!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%BE%D0%B1%D0%BD%D1%8B%D0%B9%20%D1%83%D1%80%D0%BE%D0%BA" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Для сестёр</a>
+    </div>
+    <p class="cta-note">Бесплатный пробный урок · Без обязательств · Для всех уровней</p>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section id="contacts" style="padding:90px 5%;background:white">
+  <div class="con">
+    <div class="fi">
+      <span class="slbl">Контакты</span>
+      <h2 class="st">Свяжитесь с нами</h2>
+    </div>
+    <div class="cont-g">
+      <div class="fi">
+        <div class="cgrp">
+          <h3>Для братьев</h3>
+          <a class="ci" href="https://wa.me/79380086606" target="_blank" rel="noopener"><div class="cico cg"><i class="fab fa-whatsapp"></i></div>+7 938 008 6606</a>
+          <a class="ci" href="https://t.me/AdamUmarov06" target="_blank" rel="noopener"><div class="cico ct"><i class="fab fa-telegram"></i></div>@AdamUmarov06</a>
+        </div>
+        <div class="cgrp">
+          <h3>Для сестёр</h3>
+          <a class="ci" href="https://wa.me/79380086066" target="_blank" rel="noopener"><div class="cico cg"><i class="fab fa-whatsapp"></i></div>+7 938 008 6066</a>
+          <a class="ci" href="https://t.me/alfurqan_admin_Rafida" target="_blank" rel="noopener"><div class="cico cp"><i class="fab fa-telegram"></i></div>@alfurqan_admin_Rafida</a>
+        </div>
+        <div class="cgrp">
+          <h3>Социальные сети</h3>
+          <div class="srow">
+            <a class="slink si" href="https://www.instagram.com/alfurqan_ing" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
+            <a class="slink sy" href="https://youtube.com/@alfurqan_ing" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> YouTube</a>
+          </div>
+        </div>
+        <div class="cgrp">
+          <h3>Группы WhatsApp</h3>
+          <div class="wa-groups">
+            <a class="wag" href="https://chat.whatsapp.com/KKqgKPqsQIhEk1IliyT8i3" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Группа для братьев</a>
+            <a class="wag" href="https://chat.whatsapp.com/BURKC9WMuV6DVMZAWfJNP3" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Группа для сестёр</a>
+          </div>
+        </div>
+      </div>
+      <div class="fi">
+        <div class="map-box">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2897.5!2d44.768!3d43.226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z0J3QsNC30YDQsNC90YwsINGD0LsuINCe0YHQutCw0L3QvtCy0LAgNzIsINCd0LDQt9GA0LDQvdGM!5e0!3m2!1sru!2sru!4v1234567890" title="Al Furqon на карте" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="map-addr">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <strong>ул. С.С. Осканова, 72, Назрань</strong><br>
+            Республика Ингушетия<br>
+            <span style="font-size:12px;color:rgba(29,42,69,.4)">1 этаж · здание автомагазина AVTOTUN.ING</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div class="ft-top">
+      <div>
+        <div class="fb-n">Al Furqon</div>
+        <div class="fb-s">Школа изучения Корана</div>
+        <p class="fb-t">Школа таджвида и хифза Корана в Назрани. Очно и онлайн. Для мужчин, женщин и детей от 8 лет. Открыта с апреля 2021 года.</p>
+      </div>
+      <div class="fc">
+        <h4>Навигация</h4>
+        <div class="flinks">
+          <a href="#about">О школе</a>
+          <a href="#program">Программа</a>
+          <a href="#schedule">Расписание</a>
+          <a href="#pricing">Цены</a>
+          <a href="#teachers">Преподаватели</a>
+          <a href="#reviews">Отзывы</a>
+          <a href="#contacts">Контакты</a>
+        </div>
+      </div>
+      <div class="fc">
+        <h4>Контакты</h4>
+        <div class="flinks">
+          <a href="https://wa.me/79380086606" target="_blank">WhatsApp (братья)</a>
+          <a href="https://wa.me/79380086066" target="_blank">WhatsApp (сёстры)</a>
+          <a href="https://www.instagram.com/alfurqan_ing" target="_blank">@alfurqan_ing</a>
+          <a href="https://youtube.com/@alfurqan_ing" target="_blank">YouTube</a>
+          <span>Назрань, ул. Осканова 72</span>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span class="ft-copy">© 2021–2026 Al Furqon — Школа изучения Корана · Назрань</span>
+      <span class="ft-ar">الفرقان</span>
+    </div>
+  </div>
+</footer>
+
+<!-- SVG filter: removes white/cream background from logo PNGs by zeroing alpha of near-white pixels -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <defs>
+    <filter id="rm-bg" color-interpolation-filters="sRGB" x="0" y="0" width="1" height="1">
+      <!-- A' = -3R -3G -3B + 8 → cream/white → 0 (transparent), dark teal → 1 (opaque) -->
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8"/>
+    </filter>
+  </defs>
+</svg>
+
+<script>
+// Header scroll
+const hdr=document.getElementById('hdr');
+window.addEventListener('scroll',()=>hdr.classList.toggle('s',scrollY>60),{passive:true});
+
+// Hamburger
+const ham=document.getElementById('ham'),mm=document.getElementById('mm');
+ham.addEventListener('click',()=>mm.classList.toggle('o'));
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('o')));
+
+// Scroll fade-in
+const obs=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}})
+},{threshold:0.1});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+
+// Logo canvas — strip cream background
+async function prepareLogo(){
+  const img=new Image();
+  await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;img.src='школа корана/assets/logo.png'});
+  const w=img.naturalWidth,h=img.naturalHeight;
+  const cv=document.createElement('canvas');cv.width=w;cv.height=h;
+  const ctx=cv.getContext('2d');ctx.drawImage(img,0,0);
+  const id=ctx.getImageData(0,0,w,h),px=id.data;
+  function samp(x,y){const k=(y*w+x)*4;return[px[k],px[k+1],px[k+2]]}
+  const s=[samp(2,2),samp(w-3,2),samp(2,h-3),samp(w-3,h-3)];
+  const sr=s.reduce((a,p)=>a+p[0],0)/s.length;
+  const sg=s.reduce((a,p)=>a+p[1],0)/s.length;
+  const sb=s.reduce((a,p)=>a+p[2],0)/s.length;
+  for(let i=0;i<px.length;i+=4){
+    const r=px[i],g=px[i+1],b=px[i+2];
+    const d=Math.sqrt((r-sr)**2+(g-sg)**2+(b-sb)**2);
+    if(g-(r+b)/2>18)continue;
+    if(d<55)px[i+3]=0;
+    else if(d<95)px[i+3]=Math.round(px[i+3]*(d-55)/40);
+  }
+  ctx.putImageData(id,0,0);
+  const url=cv.toDataURL('image/png');
+  document.querySelectorAll('.l-img').forEach(el=>el.style.backgroundImage=`url(${url})`);
+}
+prepareLogo().catch(()=>{
+  document.querySelectorAll('.l-img').forEach(el=>{
+    el.style.backgroundImage="url('школа корана/assets/logo.png')";
+    el.style.mixBlendMode='darken';
+  });
+});
+</script>
+</body>
+</html>

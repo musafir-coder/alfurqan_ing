@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<title>Al Furqon — анимация логотипа</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream-1:#efe9d9;
+    --cream-2:#e8e0cb;
+    --cream-3:#dcd2ba;
+    --ink:#1d2a45;
+    --ink-soft:#3a4663;
+    --green-1:#0f5a4b;
+    --green-2:#2c8f73;
+    --green-3:#4ab393;
+    --gold:#d8b878;
+    --gold-bright:#f0d49a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:var(--cream-1);
+    font-family:'Montserrat',sans-serif;
+    color:var(--ink);
+    overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  /* Fixed canvas, letterboxed */
+  .viewport{
+    position:fixed;inset:0;
+    display:grid;place-items:center;
+    background:#0e0c08;
+  }
+  .stage{
+    position:relative;
+    width:1280px;height:800px;
+    transform-origin:center center;
+    background:
+      radial-gradient(120% 90% at 50% 35%, #f4eedd 0%, #ece5cf 45%, #d9cead 100%);
+    overflow:hidden;
+    box-shadow:0 40px 120px rgba(0,0,0,.35);
+  }
+  /* Paper grain */
+  .stage::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:
+      radial-gradient(rgba(120,90,40,.05) 1px, transparent 1.4px),
+      radial-gradient(rgba(80,60,20,.04) 1px, transparent 1.6px);
+    background-size: 6px 6px, 11px 11px;
+    background-position: 0 0, 3px 3px;
+    mix-blend-mode:multiply;
+    opacity:.65;
+  }
+  .stage::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(80% 60% at 50% 30%, transparent 50%, rgba(80,55,15,.18) 100%);
+  }
+
+  /* ====== Logo composition ====== */
+  .composer{
+    position:absolute;left:50%;top:42%;
+    transform:translate(-50%,-50%);
+    width:520px;height:520px;
+  }
+  .badge{
+    position:absolute;inset:0;
+    display:grid;place-items:center;
+  }
+
+  /* The actual logo image — wrapped so we can compose clip-path + transform */
+  .badge .logo-clip{
+    width:460px;height:460px;
+    display:grid;place-items:center;
+    clip-path: circle(0% at 50% 42%);
+    animation: revealLogo 2000ms cubic-bezier(.22,.61,.36,1) 700ms forwards;
+  }
+  .badge .logo-inner{
+    width:100%;height:100%;
+    transform:scale(.55) rotate(-90deg);
+    opacity:0;
+    animation: spinSettle 2200ms cubic-bezier(.16,.84,.32,1) 500ms forwards;
+    display:grid;place-items:center;
+  }
+  .logo-img{
+    width:460px;height:460px;
+    /* The source PNG has baked-in title text in the lower half and a cream
+       background — we strip the cream to transparent in a canvas at load,
+       then set the resulting data URL as the background here. */
+    background-image:none;
+    background-repeat:no-repeat;
+    background-size:840px 840px;
+    background-position:center -65px;
+    display:block;
+  }
+  @keyframes revealLogo{
+    0%   { clip-path: circle(0% at 50% 42%); }
+    100% { clip-path: circle(72% at 50% 42%); }
+  }
+  @keyframes spinSettle{
+    0%   { transform: scale(.55) rotate(-90deg); opacity:0; }
+    25%  { opacity:1;}
+    100% { transform: scale(1.05) rotate(0deg); opacity:1;}
+  }
+
+  /* The diamond stroke frame that draws around */
+  .frame{
+    position:absolute;left:50%;top:50%;
+    transform:translate(-50%,-50%) rotate(45deg);
+    width:330px;height:330px;
+    pointer-events:none;
+  }
+  .frame svg{width:100%;height:100%;overflow:visible}
+  .frame rect.outline{
+    fill:none;
+    stroke:var(--green-1);
+    stroke-width:2;
+    stroke-dasharray:1320;
+    stroke-dashoffset:1320;
+    opacity:.0;
+    animation:drawFrame 1400ms cubic-bezier(.55,.06,.22,.95) 350ms forwards;
+  }
+  @keyframes drawFrame{
+    0%   {stroke-dashoffset:1320; opacity:.0;}
+    10%  {opacity:.8;}
+    100% {stroke-dashoffset:0; opacity:.0;}
+  }
+
+  /* Inner accent — golden frame that lingers under the logo */
+  .frame rect.gold{
+    fill:none;
+    stroke:var(--gold);
+    stroke-width:1.5;
+    opacity:0;
+    transform-origin:center;
+    transform:scale(.6);
+    animation:goldIn 900ms ease-out 2000ms forwards;
+  }
+  @keyframes goldIn{
+    0%   {opacity:0; transform:scale(.6);}
+    60%  {opacity:.55;}
+    100% {opacity:.35; transform:scale(1);}
+  }
+
+  /* Center spark */
+  .spark{
+    position:absolute;left:50%;top:42%;
+    width:6px;height:6px;border-radius:50%;
+    background:var(--green-2);
+    transform:translate(-50%,-50%) scale(0);
+    box-shadow:0 0 0 0 rgba(44,143,115,.7);
+    animation:sparkBurst 900ms ease-out 100ms both;
+  }
+  @keyframes sparkBurst{
+    0%   {transform:translate(-50%,-50%) scale(0); opacity:0;}
+    30%  {transform:translate(-50%,-50%) scale(1.4); opacity:1; box-shadow:0 0 28px 8px rgba(74,179,147,.55);}
+    100% {transform:translate(-50%,-50%) scale(4); opacity:0; box-shadow:0 0 0 28px rgba(74,179,147,0);}
+  }
+
+  /* Golden shimmer sweep across logo */
+  .shimmer{
+    position:absolute;left:50%;top:50%;
+    width:560px;height:560px;
+    transform:translate(-50%,-50%) rotate(45deg);
+    overflow:hidden;
+    pointer-events:none;
+    opacity:0;
+    animation:shimmerShow 1400ms ease-out 2400ms both;
+    -webkit-mask: radial-gradient(circle at center, #000 0 45%, transparent 65%);
+            mask: radial-gradient(circle at center, #000 0 45%, transparent 65%);
+  }
+  .shimmer::before{
+    content:"";position:absolute;top:0;bottom:0;left:-30%;width:30%;
+    background:linear-gradient(90deg,
+      transparent 0%,
+      rgba(255,235,180,.0) 20%,
+      rgba(255,235,180,.85) 50%,
+      rgba(255,235,180,0) 80%,
+      transparent 100%);
+    filter:blur(2px);
+    animation:shimmerSweep 1200ms ease-in-out 2500ms both;
+  }
+  @keyframes shimmerShow{
+    0%,100%{opacity:1}
+  }
+  @keyframes shimmerSweep{
+    0%   { left:-30%; }
+    100% { left:130%; }
+  }
+
+  /* Soft halo behind logo — also doubles as a soft drop-shadow now that
+     the PNG is blend-darkened (drop-shadow would outline its rectangle). */
+  .halo{
+    position:absolute;left:50%;top:42%;
+    width:580px;height:580px;
+    transform:translate(-50%,-50%) scale(.4);
+    border-radius:50%;
+    background:
+      radial-gradient(circle, rgba(15,90,75,.16) 0%, rgba(15,90,75,.06) 28%, transparent 60%);
+    opacity:0;
+    animation:haloIn 1800ms ease-out 800ms forwards;
+    pointer-events:none;
+    filter: blur(2px);
+  }
+  @keyframes haloIn{
+    0%   {opacity:0; transform:translate(-50%,-50%) scale(.4);}
+    60%  {opacity:1;}
+    100% {opacity:.7; transform:translate(-50%,-50%) scale(1);}
+  }
+
+  /* ====== Title ====== */
+  .title-wrap{
+    position:absolute;left:0;right:0;bottom:170px;
+    text-align:center;
+    perspective:800px;
+  }
+  .title{
+    font-family:'Cinzel', serif;
+    font-weight:500;
+    font-size:78px;
+    letter-spacing:.16em;
+    color:var(--ink);
+    display:inline-flex;
+    gap:.04em;
+  }
+  .title .ch{
+    display:inline-block;
+    opacity:0;
+    transform:translateY(28px) rotateX(-60deg);
+    transform-origin:50% 100%;
+    animation:letterIn 700ms cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .title .ch.space{width:.45em;}
+  @keyframes letterIn{
+    0%   {opacity:0; transform:translateY(28px) rotateX(-60deg);}
+    60%  {opacity:1;}
+    100% {opacity:1; transform:translateY(0) rotateX(0);}
+  }
+
+  /* divider line under title */
+  .divider{
+    position:absolute;left:50%;bottom:148px;
+    width:0;height:1px;
+    background:linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold) 80%, transparent);
+    transform:translateX(-50%);
+    opacity:0;
+    animation:dividerGrow 900ms ease-out 3100ms forwards;
+  }
+  @keyframes dividerGrow{
+    0%   {width:0;opacity:0;}
+    100% {width:340px;opacity:.85;}
+  }
+
+  /* subtitle */
+  .subtitle{
+    position:absolute;left:0;right:0;bottom:96px;
+    text-align:center;
+    font-family:'Montserrat',sans-serif;
+    font-weight:400;
+    font-size:22px;
+    letter-spacing:.42em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    opacity:0;
+    transform:translateY(12px);
+    animation:fadeUp 900ms ease-out 3400ms forwards;
+    padding-left:.42em; /* visually compensate letter-spacing */
+  }
+  @keyframes fadeUp{
+    0%   {opacity:0; transform:translateY(12px);}
+    100% {opacity:.85; transform:translateY(0);}
+  }
+
+  /* small arabic marker */
+  .marker{
+    position:absolute;left:50%;bottom:50px;
+    transform:translateX(-50%);
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:300;
+    font-size:14px;
+    letter-spacing:.5em;
+    color:rgba(29,42,69,.5);
+    opacity:0;
+    animation:fadeUp 900ms ease-out 3900ms forwards;
+    padding-left:.5em;
+  }
+
+  /* Replay control */
+  .controls{
+    position:fixed;top:18px;right:18px;
+    display:flex;gap:10px;z-index:30;
+  }
+  .btn{
+    appearance:none;border:none;cursor:pointer;
+    background:rgba(255,255,255,.06);
+    color:#efe9d9;
+    border:1px solid rgba(239,233,217,.18);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding:9px 14px;border-radius:999px;
+    font: 500 12px/1 'Montserrat',sans-serif;
+    letter-spacing:.18em;text-transform:uppercase;
+    transition:.2s ease;
+  }
+  .btn:hover{background:rgba(255,255,255,.12);}
+  .btn:active{transform:translateY(1px);}
+
+  /* When replay class is applied, restart animations by toggling key */
+  .stage[data-play="0"] *{animation:none !important}
+  .stage[data-play="0"] .logo-clip{clip-path:circle(0% at 50% 42%)}
+  .stage[data-play="0"] .logo-inner{opacity:0;transform:scale(.55) rotate(-90deg)}
+  .stage[data-play="0"] .title .ch{opacity:0; transform:translateY(28px) rotateX(-60deg)}
+  .stage[data-play="0"] .subtitle{opacity:0}
+  .stage[data-play="0"] .marker{opacity:0}
+  .stage[data-play="0"] .divider{width:0;opacity:0}
+  .stage[data-play="0"] .halo{opacity:0; transform:translate(-50%,-50%) scale(.4)}
+  .stage[data-play="0"] .frame rect.outline{stroke-dashoffset:1320;opacity:0}
+  .stage[data-play="0"] .frame rect.gold{opacity:0;transform:scale(.6)}
+
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+    <rect width="200" height="200" fill="#efe9d9"/>
+    <g transform="translate(100 100) rotate(45)">
+      <rect x="-40" y="-40" width="80" height="80" fill="#0f5a4b"/>
+      <rect x="-26" y="-26" width="52" height="52" fill="#efe9d9"/>
+      <text x="0" y="6" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="600" fill="#0f5a4b" transform="rotate(-45)">AF</text>
+    </g>
+  </svg>
+</template>
+<div class="viewport" id="viewport">
+  <div class="stage" id="stage">
+
+    <div class="composer">
+      <div class="halo"></div>
+
+      <!-- Diamond stroke frame that draws around -->
+      <div class="frame">
+        <svg viewBox="0 0 100 100">
+          <rect class="outline" x="2" y="2" width="96" height="96" rx="1.5"/>
+          <rect class="gold"    x="6" y="6" width="88" height="88" rx="1"/>
+        </svg>
+      </div>
+
+      <div class="badge">
+        <div class="logo-clip">
+          <div class="logo-inner">
+            <div class="logo-img" role="img" aria-label="Al Furqon"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="shimmer"></div>
+      <div class="spark"></div>
+    </div>
+
+    <div class="title-wrap">
+      <div class="title" id="title"></div>
+    </div>
+    <div class="divider"></div>
+    <div class="subtitle">Школа изучения Корана</div>
+    <div class="marker">· بسم الله ·</div>
+
+  </div>
+</div>
+
+<div class="controls">
+  <button class="btn" id="replay">Replay</button>
+</div>
+
+<script>
+  // ---------- Strip cream background from the source PNG ----------
+  // The source has solid cream behind the green calligraphy. We sample the
+  // top-left pixel as the "background" color and zero out alpha for any
+  // pixel close to it, with a soft falloff at the edges so the metallic
+  // green stays crisp.
+  async function prepareLogo(){
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    await new Promise((res, rej)=>{
+      img.onload = res;
+      img.onerror = rej;
+      img.src = 'assets/logo.png';
+    });
+    const w = img.naturalWidth, h = img.naturalHeight;
+    const cv = document.createElement('canvas');
+    cv.width = w; cv.height = h;
+    const ctx = cv.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    const id = ctx.getImageData(0, 0, w, h);
+    const px = id.data;
+    // Sample a few corner pixels and average
+    function sample(x,y){
+      const k = (y*w + x)*4;
+      return [px[k], px[k+1], px[k+2]];
+    }
+    const s = [
+      sample(2,2), sample(w-3,2), sample(2,h-3), sample(w-3,h-3),
+      sample(8,8), sample(w-9,8)
+    ];
+    const sr = s.reduce((a,p)=>a+p[0],0)/s.length;
+    const sg = s.reduce((a,p)=>a+p[1],0)/s.length;
+    const sb = s.reduce((a,p)=>a+p[2],0)/s.length;
+    const NEAR = 55;   // distance below this → fully transparent
+    const FAR  = 95;   // distance above this → fully opaque
+    for(let i=0;i<px.length;i+=4){
+      const r = px[i], g = px[i+1], b = px[i+2];
+      const dr = r - sr, dg = g - sg, db = b - sb;
+      const dist = Math.sqrt(dr*dr + dg*dg + db*db);
+      // greenness — protect strongly-green pixels (calligraphy) from being keyed out
+      const greenness = g - (r + b)/2;
+      if (greenness > 18){
+        // definitely the ink — leave fully opaque
+        continue;
+      }
+      if (dist < NEAR){
+        px[i+3] = 0;
+      } else if (dist < FAR){
+        const t = (dist - NEAR) / (FAR - NEAR);
+        px[i+3] = Math.round(px[i+3] * t);
+      }
+    }
+    ctx.putImageData(id, 0, 0);
+    const url = cv.toDataURL('image/png');
+    document.querySelectorAll('.logo-img').forEach(el=>{
+      el.style.backgroundImage = `url(${url})`;
+    });
+  }
+  prepareLogo().catch(err => {
+    console.warn('logo prep fell back to raw PNG:', err);
+    document.querySelectorAll('.logo-img').forEach(el=>{
+      el.style.backgroundImage = 'url(assets/logo.png)';
+      el.style.mixBlendMode = 'darken';
+    });
+  });
+  // Build title letters with stagger
+  const titleText = "AL FURQON";
+  const titleEl = document.getElementById('title');
+  function buildTitle(){
+    titleEl.innerHTML = "";
+    [...titleText].forEach((c,i)=>{
+      const span = document.createElement('span');
+      span.className = 'ch' + (c===' '?' space':'');
+      span.textContent = c===' '?'\u00a0':c;
+      span.style.animationDelay = (2400 + i*70) + 'ms';
+      titleEl.appendChild(span);
+    });
+  }
+  buildTitle();
+
+  // Scale stage to viewport
+  const vp = document.getElementById('viewport');
+  const stage = document.getElementById('stage');
+  function fit(){
+    const sw = 1280, sh = 800;
+    const r = Math.min(window.innerWidth/sw, window.innerHeight/sh);
+    stage.style.transform = `scale(${r})`;
+  }
+  fit();
+  window.addEventListener('resize', fit);
+
+  // Replay logic — toggle play state to restart CSS animations
+  document.getElementById('replay').addEventListener('click', ()=>{
+    stage.setAttribute('data-play','0');
+    // force reflow then resume
+    void stage.offsetWidth;
+    // rebuild title (so animation delay resets)
+    buildTitle();
+    requestAnimationFrame(()=>{
+      stage.removeAttribute('data-play');
+    });
+  });
+</script>
+</body>
+</html>
