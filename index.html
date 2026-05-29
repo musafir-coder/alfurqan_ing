@@ -1124,53 +1124,38 @@ if('serviceWorker' in navigator){
   navigator.serviceWorker.register('sw.js').catch(()=>{});
 }
 
-// Admin config apply
-(function(){
-  const raw = localStorage.getItem('af_config');
-  if(!raw) return;
-  const c = JSON.parse(raw);
-  const set = (id, val) => { const el=document.getElementById(id); if(el&&val) el.textContent=val; };
-  const attr = (id, a, val) => { const el=document.getElementById(id); if(el&&val) el.setAttribute(a,val); };
-
-  set('af-pm', c.price_monthly);
-  set('af-pc', c.price_course);
-  set('af-pco', c.price_course_old);
-  if(c.price_discount){ const pd=document.getElementById('af-pd'); if(pd) pd.textContent='Выгода '+c.price_discount+' ₽'; }
-
-  set('af-t1n', c.t1_name); set('af-t1r', c.t1_role); set('af-t1b', c.t1_bio);
-  set('af-t2n', c.t2_name); set('af-t2r', c.t2_role); set('af-t2b', c.t2_bio);
-
-  set('af-addr', c.address); set('af-addr-ft', c.address_short||c.address);
-
+// Apply config from object
+function afApply(c){
+  const set=(id,val)=>{const el=document.getElementById(id);if(el&&val!=null)el.textContent=val;};
+  const attr=(id,a,val)=>{const el=document.getElementById(id);if(el&&val)el.setAttribute(a,val);};
+  set('af-pm',c.price_monthly); set('af-pc',c.price_course);
+  set('af-pco',c.price_course_old);
+  if(c.price_discount){const pd=document.getElementById('af-pd');if(pd)pd.textContent='Выгода '+c.price_discount+' ₽';}
+  set('af-t1n',c.t1_name); set('af-t1r',c.t1_role); set('af-t1b',c.t1_bio);
+  set('af-t2n',c.t2_name); set('af-t2r',c.t2_role); set('af-t2b',c.t2_bio);
+  set('af-addr',c.address); set('af-addr-ft',c.address);
   if(c.wa_brothers){
-    const ph = c.wa_brothers;
-    const fmt = '+7 '+ph.slice(1,4)+' '+ph.slice(4,7)+' '+ph.slice(7);
-    set('af-wa-br', fmt);
-    attr('af-wa-br-a','href','https://wa.me/'+ph);
+    const ph=c.wa_brothers,fmt='+7 '+ph.slice(1,4)+' '+ph.slice(4,7)+' '+ph.slice(7);
+    set('af-wa-br',fmt); attr('af-wa-br-a','href','https://wa.me/'+ph);
     document.querySelectorAll('a[href*="wa.me/"]').forEach(el=>{
-      if(el.href.includes('wa.me/7938000')||el.id==='af-wa-br-a'||(!el.href.includes('79380086066')&&el.href.includes('79380086606'))){
-        el.href = el.href.replace(/wa\.me\/79380086606/, 'wa.me/'+ph);
-      }
+      if(!el.href.includes('wa.me/'+c.wa_sisters))
+        el.href=el.href.replace(/wa\.me\/\d+/,'wa.me/'+ph);
     });
   }
   if(c.wa_sisters){
-    const ph = c.wa_sisters;
-    const fmt = '+7 '+ph.slice(1,4)+' '+ph.slice(4,7)+' '+ph.slice(7);
-    set('af-wa-si', fmt);
-    attr('af-wa-si-a','href','https://wa.me/'+ph);
+    const ph=c.wa_sisters,fmt='+7 '+ph.slice(1,4)+' '+ph.slice(4,7)+' '+ph.slice(7);
+    set('af-wa-si',fmt); attr('af-wa-si-a','href','https://wa.me/'+ph);
     document.querySelectorAll('a[href*="79380086066"]').forEach(el=>{
-      el.href = el.href.replace(/79380086066/, ph);
+      el.href=el.href.replace(/79380086066/,ph);
     });
   }
-  if(c.tg_brothers){
-    set('af-tg-br','@'+c.tg_brothers);
-    attr('af-tg-br-a','href','https://t.me/'+c.tg_brothers);
-  }
-  if(c.tg_sisters){
-    set('af-tg-si','@'+c.tg_sisters);
-    attr('af-tg-si-a','href','https://t.me/'+c.tg_sisters);
-  }
-})();
+  if(c.tg_brothers){set('af-tg-br','@'+c.tg_brothers);attr('af-tg-br-a','href','https://t.me/'+c.tg_brothers);}
+  if(c.tg_sisters){set('af-tg-si','@'+c.tg_sisters);attr('af-tg-si-a','href','https://t.me/'+c.tg_sisters);}
+}
+// Load config.json (updated via admin panel), fallback to localStorage
+fetch('config.json?t='+Date.now())
+  .then(r=>r.json()).then(afApply)
+  .catch(()=>{const r=localStorage.getItem('af_config');if(r)afApply(JSON.parse(r));});
 </script>
 </body>
 </html>

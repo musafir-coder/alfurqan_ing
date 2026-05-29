@@ -7,51 +7,58 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;min-height:100vh}
-:root{--teal:#4ab393;--gold:#d8b878;--ink:#1a2e2a;--card:#1d2e2a;--border:rgba(74,179,147,.2)}
+:root{--teal:#4ab393;--gold:#d8b878;--border:rgba(74,179,147,.2)}
 
 /* LOGIN */
 #login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
-.login-box{background:#1d2e2a;border:1px solid var(--border);border-radius:16px;padding:40px;width:100%;max-width:380px;text-align:center}
-.login-logo{font-size:32px;color:var(--teal);margin-bottom:8px}
-.login-title{font-size:22px;font-weight:700;color:#fff;margin-bottom:4px}
-.login-sub{font-size:13px;color:rgba(232,224,208,.5);margin-bottom:28px}
-.login-box input{width:100%;padding:12px 16px;background:#0f1e1a;border:1.5px solid var(--border);border-radius:10px;color:#fff;font-size:15px;outline:none;transition:border-color .2s;margin-bottom:12px}
-.login-box input:focus{border-color:var(--teal)}
-.login-box button{width:100%;padding:13px;background:var(--teal);border:none;border-radius:10px;color:#0f1e1a;font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s}
-.login-box button:hover{opacity:.85}
-.login-err{color:#e07070;font-size:13px;margin-top:10px;display:none}
+.login-box{background:#1d2e2a;border:1px solid var(--border);border-radius:16px;padding:40px;width:100%;max-width:400px}
+.login-logo{font-size:36px;color:var(--teal);text-align:center;margin-bottom:6px}
+.login-title{font-size:22px;font-weight:700;color:#fff;text-align:center;margin-bottom:4px}
+.login-sub{font-size:13px;color:rgba(232,224,208,.45);text-align:center;margin-bottom:28px}
+.lf{margin-bottom:14px}
+.lf label{display:block;font-size:12px;font-weight:600;color:rgba(232,224,208,.5);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.lf input{width:100%;padding:11px 14px;background:#0f1e1a;border:1.5px solid var(--border);border-radius:10px;color:#fff;font-size:14px;outline:none;transition:border-color .2s}
+.lf input:focus{border-color:var(--teal)}
+.lf .hint{font-size:11px;color:rgba(232,224,208,.3);margin-top:5px;line-height:1.5}
+.lf .hint a{color:var(--teal);text-decoration:none}
+.btn-login{width:100%;padding:13px;background:var(--teal);border:none;border-radius:10px;color:#0f1e1a;font-size:15px;font-weight:700;cursor:pointer;margin-top:6px;transition:opacity .2s}
+.btn-login:hover{opacity:.85}
+.login-err{color:#e07070;font-size:13px;margin-top:10px;text-align:center;display:none}
 
-/* ADMIN PANEL */
+/* PANEL */
 #admin-panel{display:none}
-.top-bar{background:#1d2e2a;border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100}
-.top-bar-left{display:flex;align-items:center;gap:12px}
-.top-logo{font-size:18px;font-weight:700;color:var(--teal)}
-.top-sub{font-size:12px;color:rgba(232,224,208,.4)}
-.top-actions{display:flex;gap:10px}
-.btn-preview{padding:7px 16px;background:transparent;border:1.5px solid var(--teal);color:var(--teal);border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
-.btn-logout{padding:7px 14px;background:transparent;border:1.5px solid rgba(232,224,208,.2);color:rgba(232,224,208,.6);border-radius:8px;font-size:13px;cursor:pointer}
-.btn-logout:hover{border-color:rgba(232,224,208,.4);color:#fff}
+.top-bar{background:#1d2e2a;border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:54px;position:sticky;top:0;z-index:100}
+.top-logo{font-size:17px;font-weight:700;color:var(--teal)}
+.top-actions{display:flex;gap:8px;align-items:center}
+.btn-site{padding:7px 14px;background:transparent;border:1.5px solid var(--teal);color:var(--teal);border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none}
+.btn-out{padding:7px 12px;background:transparent;border:1.5px solid rgba(232,224,208,.2);color:rgba(232,224,208,.5);border-radius:8px;font-size:13px;cursor:pointer}
+.btn-out:hover{color:#fff;border-color:rgba(232,224,208,.4)}
 
-.main{max-width:860px;margin:0 auto;padding:28px 20px}
-.save-bar{position:fixed;bottom:0;left:0;right:0;background:#1d2e2a;border-top:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;z-index:100}
-.save-status{font-size:13px;color:rgba(232,224,208,.5)}
-.save-status.saved{color:var(--teal)}
-.btn-save{padding:11px 32px;background:var(--teal);border:none;border-radius:10px;color:#0f1e1a;font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s}
-.btn-save:hover{opacity:.85}
+.main{max-width:840px;margin:0 auto;padding:24px 16px 90px}
 
-.section{background:#1d2e2a;border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:18px}
-.section-title{font-size:15px;font-weight:700;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:8px}
-.section-title::before{content:'';display:block;width:3px;height:16px;background:var(--gold);border-radius:2px}
+.card{background:#1d2e2a;border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:16px}
+.card-title{font-size:14px;font-weight:700;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.card-title::before{content:'';display:inline-block;width:3px;height:15px;background:var(--gold);border-radius:2px;flex-shrink:0}
 .field{margin-bottom:14px}
 .field:last-child{margin-bottom:0}
-.field label{display:block;font-size:12px;font-weight:600;color:rgba(232,224,208,.55);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
-.field input,.field textarea{width:100%;padding:10px 14px;background:#0f1e1a;border:1.5px solid var(--border);border-radius:9px;color:#fff;font-size:14px;outline:none;transition:border-color .2s;font-family:inherit}
-.field textarea{resize:vertical;min-height:80px;line-height:1.6}
+.field label{display:block;font-size:11px;font-weight:600;color:rgba(232,224,208,.5);letter-spacing:.07em;text-transform:uppercase;margin-bottom:5px}
+.field input,.field textarea{width:100%;padding:10px 13px;background:#0f1e1a;border:1.5px solid var(--border);border-radius:8px;color:#fff;font-size:14px;outline:none;transition:border-color .2s;font-family:inherit}
+.field textarea{resize:vertical;min-height:78px;line-height:1.6}
 .field input:focus,.field textarea:focus{border-color:var(--teal)}
+.field .hint{font-size:11px;color:rgba(232,224,208,.3);margin-top:4px}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.hint{font-size:11px;color:rgba(232,224,208,.35);margin-top:4px}
 
-@media(max-width:600px){.row2{grid-template-columns:1fr}.top-sub{display:none}}
+/* SAVE BAR */
+.save-bar{position:fixed;bottom:0;left:0;right:0;background:#1d2e2a;border-top:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;z-index:100}
+.save-msg{font-size:13px;color:rgba(232,224,208,.45)}
+.save-msg.ok{color:var(--teal)}
+.save-msg.err{color:#e07070}
+.save-msg.loading{color:var(--gold)}
+.btn-save{padding:10px 28px;background:var(--teal);border:none;border-radius:9px;color:#0f1e1a;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .2s}
+.btn-save:hover{opacity:.85}
+.btn-save:disabled{opacity:.5;cursor:not-allowed}
+
+@media(max-width:580px){.row2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -62,35 +69,44 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
     <div class="login-logo">◈</div>
     <div class="login-title">Al Furqon</div>
     <div class="login-sub">Панель управления сайтом</div>
-    <input type="password" id="pwd-input" placeholder="Пароль" onkeydown="if(event.key==='Enter')doLogin()">
-    <button onclick="doLogin()">Войти</button>
+
+    <div class="lf">
+      <label>Пароль</label>
+      <input type="password" id="inp-pass" placeholder="Введите пароль" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div class="lf">
+      <label>GitHub токен</label>
+      <input type="password" id="inp-token" placeholder="ghp_xxxxxxxxxxxxx" onkeydown="if(event.key==='Enter')doLogin()">
+      <div class="hint">
+        Нужен один раз. Создать:
+        <a href="https://github.com/settings/tokens/new?scopes=repo&description=AlFurqon+Admin" target="_blank">github.com → Settings → Tokens → New</a>.
+        Выбрать галочку <b>repo</b> → Generate. Скопировать и вставить сюда.
+      </div>
+    </div>
+
+    <button class="btn-login" onclick="doLogin()">Войти</button>
     <div class="login-err" id="login-err">Неверный пароль</div>
   </div>
 </div>
 
-<!-- ADMIN PANEL -->
+<!-- PANEL -->
 <div id="admin-panel">
   <div class="top-bar">
-    <div class="top-bar-left">
-      <div class="top-logo">Al Furqon</div>
-      <div class="top-sub">Панель управления</div>
-    </div>
+    <div class="top-logo">Al Furqon — Панель управления</div>
     <div class="top-actions">
-      <a class="btn-preview" href="index.html" target="_blank">↗ Открыть сайт</a>
-      <button class="btn-logout" onclick="doLogout()">Выйти</button>
+      <a class="btn-site" href="index.html" target="_blank">↗ Открыть сайт</a>
+      <button class="btn-out" onclick="doLogout()">Выйти</button>
     </div>
   </div>
 
   <div class="main">
 
-    <!-- ЦЕНЫ -->
-    <div class="section">
-      <div class="section-title">Цены</div>
+    <div class="card">
+      <div class="card-title">Цены</div>
       <div class="row2">
         <div class="field">
           <label>Ежемесячная оплата (₽)</label>
           <input type="text" id="f-pm" placeholder="2 500">
-          <div class="hint">Только цифры и пробел, например: 2 500</div>
         </div>
         <div class="field">
           <label>Цена за весь курс (₽)</label>
@@ -103,108 +119,74 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
           <input type="text" id="f-pco" placeholder="12 500">
         </div>
         <div class="field">
-          <label>Размер скидки (₽)</label>
+          <label>Скидка (₽) — показывается как «Выгода X ₽»</label>
           <input type="text" id="f-pd" placeholder="1 000">
-          <div class="hint">Отображается как «Выгода X ₽»</div>
         </div>
       </div>
     </div>
 
-    <!-- КОНТАКТЫ -->
-    <div class="section">
-      <div class="section-title">Контакты</div>
+    <div class="card">
+      <div class="card-title">Контакты</div>
       <div class="row2">
         <div class="field">
-          <label>WhatsApp (братья)</label>
+          <label>WhatsApp для братьев</label>
           <input type="text" id="f-wa-br" placeholder="79380086606">
-          <div class="hint">Без плюса, только цифры: 79380086606</div>
+          <div class="hint">Только цифры без плюса: 79380086606</div>
         </div>
         <div class="field">
-          <label>WhatsApp (сёстры)</label>
+          <label>WhatsApp для сестёр</label>
           <input type="text" id="f-wa-si" placeholder="79380086066">
         </div>
       </div>
       <div class="row2">
         <div class="field">
-          <label>Telegram (братья)</label>
+          <label>Telegram для братьев</label>
           <input type="text" id="f-tg-br" placeholder="AdamUmarov06">
           <div class="hint">Без @, только username</div>
         </div>
         <div class="field">
-          <label>Telegram (сёстры/администратор)</label>
+          <label>Telegram для сестёр / администратор</label>
           <input type="text" id="f-tg-si" placeholder="alfurqan_admin_Rafida">
         </div>
       </div>
     </div>
 
-    <!-- АДРЕС -->
-    <div class="section">
-      <div class="section-title">Адрес</div>
+    <div class="card">
+      <div class="card-title">Адрес</div>
       <div class="field">
-        <label>Адрес (полный)</label>
+        <label>Адрес</label>
         <input type="text" id="f-addr" placeholder="ул. С.С. Осканова, 72, Назрань">
-        <div class="hint">Отображается на карточке адреса и в футере</div>
       </div>
     </div>
 
-    <!-- ПРЕПОДАВАТЕЛЬ 1 -->
-    <div class="section">
-      <div class="section-title">Преподаватель 1 (братья)</div>
-      <div class="field">
-        <label>Имя</label>
-        <input type="text" id="f-t1n" placeholder="Умаров Адам Магамедович">
-      </div>
-      <div class="field">
-        <label>Роль</label>
-        <input type="text" id="f-t1r" placeholder="Основатель · Преподаватель (братья)">
-      </div>
-      <div class="field">
-        <label>Биография</label>
-        <textarea id="f-t1b" rows="4" placeholder="Краткое описание..."></textarea>
-      </div>
+    <div class="card">
+      <div class="card-title">Преподаватель 1 — братья</div>
+      <div class="field"><label>Имя</label><input type="text" id="f-t1n" placeholder="Умаров Адам Магамедович"></div>
+      <div class="field"><label>Должность</label><input type="text" id="f-t1r" placeholder="Основатель · Преподаватель (братья)"></div>
+      <div class="field"><label>Биография</label><textarea id="f-t1b" rows="3"></textarea></div>
     </div>
 
-    <!-- ПРЕПОДАВАТЕЛЬ 2 -->
-    <div class="section">
-      <div class="section-title">Преподаватель 2 (сёстры и дети)</div>
-      <div class="field">
-        <label>Имя</label>
-        <input type="text" id="f-t2n" placeholder="Чибиева Заира">
-      </div>
-      <div class="field">
-        <label>Роль</label>
-        <input type="text" id="f-t2r" placeholder="Преподаватель (сёстры и дети)">
-      </div>
-      <div class="field">
-        <label>Биография</label>
-        <textarea id="f-t2b" rows="4" placeholder="Краткое описание..."></textarea>
-      </div>
+    <div class="card">
+      <div class="card-title">Преподаватель 2 — сёстры и дети</div>
+      <div class="field"><label>Имя</label><input type="text" id="f-t2n" placeholder="Чибиева Заира"></div>
+      <div class="field"><label>Должность</label><input type="text" id="f-t2r" placeholder="Преподаватель (сёстры и дети)"></div>
+      <div class="field"><label>Биография</label><textarea id="f-t2b" rows="3"></textarea></div>
     </div>
 
-    <div style="height:70px"></div>
   </div>
 
   <div class="save-bar">
-    <div class="save-status" id="save-status">Изменения не сохранены</div>
-    <button class="btn-save" onclick="saveConfig()">Сохранить</button>
+    <div class="save-msg" id="save-msg">Загрузка данных...</div>
+    <button class="btn-save" id="btn-save" onclick="saveConfig()">Сохранить</button>
   </div>
 </div>
 
 <script>
 const PASS = 'alfurqon2025';
+const REPO = 'musafir-coder/al-furqon';
+const FILE = 'config.json';
 
-const DEFAULTS = {
-  price_monthly:'2 500', price_course:'11 500', price_course_old:'12 500', price_discount:'1 000',
-  wa_brothers:'79380086606', wa_sisters:'79380086066',
-  tg_brothers:'AdamUmarov06', tg_sisters:'alfurqan_admin_Rafida',
-  address:'ул. С.С. Осканова, 72, Назрань',
-  t1_name:'Умаров Адам Магамедович', t1_role:'Основатель · Преподаватель (братья)',
-  t1_bio:'Адам обучался таджвиду с разными учителями в Ингушетии, в том числе с хафизами Корана. Начал преподавать с разрешения своих учителей. В апреле 2021 года открыл школу «Аль-Фуркан» и преподаёт таджвид детям и взрослым. Продолжает совершенствовать знание арабского языка.',
-  t2_name:'Чибиева Заира', t2_role:'Преподаватель (сёстры и дети)',
-  t2_bio:'Изучает таджвид с 2016 года. В 2022 прошла Курс 1 в «Аль-Фуркане» и сдала экзамен на отлично. Продолжает углублённое обучение. Богатый педагогический опыт: воспитатель детского сада (2015–2023), учитель истории (с 2023). Преподаёт в школе с июня 2024 года.'
-};
-
-const MAP = {
+const FIELDS = {
   'f-pm':'price_monthly','f-pc':'price_course','f-pco':'price_course_old','f-pd':'price_discount',
   'f-wa-br':'wa_brothers','f-wa-si':'wa_sisters','f-tg-br':'tg_brothers','f-tg-si':'tg_sisters',
   'f-addr':'address',
@@ -212,59 +194,114 @@ const MAP = {
   'f-t2n':'t2_name','f-t2r':'t2_role','f-t2b':'t2_bio'
 };
 
+let ghToken = '';
+
+function setMsg(text, type=''){
+  const el = document.getElementById('save-msg');
+  el.textContent = text;
+  el.className = 'save-msg' + (type ? ' '+type : '');
+}
+
 function doLogin(){
-  const val = document.getElementById('pwd-input').value;
-  if(val === PASS){
-    document.getElementById('login-screen').style.display='none';
-    document.getElementById('admin-panel').style.display='block';
-    loadFields();
-  } else {
-    document.getElementById('login-err').style.display='block';
-    setTimeout(()=>document.getElementById('login-err').style.display='none', 2000);
+  const pass = document.getElementById('inp-pass').value;
+  const token = document.getElementById('inp-token').value.trim();
+  if(pass !== PASS){
+    document.getElementById('login-err').style.display = 'block';
+    setTimeout(()=>document.getElementById('login-err').style.display='none', 2500);
+    return;
   }
+  if(!token){ alert('Введите GitHub токен'); return; }
+  ghToken = token;
+  localStorage.setItem('af_gh_token', token);
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('admin-panel').style.display = 'block';
+  loadConfig();
 }
 
 function doLogout(){
-  document.getElementById('admin-panel').style.display='none';
-  document.getElementById('login-screen').style.display='flex';
-  document.getElementById('pwd-input').value='';
+  document.getElementById('admin-panel').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('inp-pass').value = '';
+  ghToken = '';
 }
 
-function loadFields(){
-  const stored = localStorage.getItem('af_config');
-  const cfg = stored ? {...DEFAULTS,...JSON.parse(stored)} : {...DEFAULTS};
-  Object.entries(MAP).forEach(([fid, key])=>{
-    const el = document.getElementById(fid);
-    if(el) el.value = cfg[key]||'';
-  });
-  document.getElementById('save-status').textContent='Данные загружены';
-  document.getElementById('save-status').className='save-status saved';
-  setTimeout(()=>{
-    document.getElementById('save-status').textContent='Изменения не сохранены';
-    document.getElementById('save-status').className='save-status';
-  }, 2000);
+async function loadConfig(){
+  setMsg('Загрузка...', 'loading');
+  try {
+    const r = await fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE, {
+      headers:{ Authorization:'token '+ghToken, Accept:'application/vnd.github.v3+json' }
+    });
+    const data = await r.json();
+    const cfg = JSON.parse(atob(data.content.replace(/\n/g,'')));
+    Object.entries(FIELDS).forEach(([fid, key])=>{
+      const el = document.getElementById(fid);
+      if(el) el.value = cfg[key] || '';
+    });
+    setMsg('Данные загружены', 'ok');
+    setTimeout(()=>setMsg('Все изменения сохранены', 'ok'), 2000);
+  } catch(e){
+    setMsg('Ошибка загрузки — проверьте токен', 'err');
+  }
 }
 
-function saveConfig(){
+async function saveConfig(){
+  const btn = document.getElementById('btn-save');
+  btn.disabled = true;
+  setMsg('Сохранение...', 'loading');
+
   const cfg = {};
-  Object.entries(MAP).forEach(([fid, key])=>{
+  Object.entries(FIELDS).forEach(([fid, key])=>{
     const el = document.getElementById(fid);
     if(el && el.value.trim()) cfg[key] = el.value.trim();
   });
-  localStorage.setItem('af_config', JSON.stringify(cfg));
-  const st = document.getElementById('save-status');
-  st.textContent='✓ Сохранено! Обновите сайт чтобы увидеть изменения.';
-  st.className='save-status saved';
-  setTimeout(()=>{ st.textContent='Изменения не сохранены'; st.className='save-status'; }, 4000);
+
+  try {
+    // Получить текущий SHA файла
+    const getR = await fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE, {
+      headers:{ Authorization:'token '+ghToken, Accept:'application/vnd.github.v3+json' }
+    });
+    const getData = await getR.json();
+    const sha = getData.sha;
+
+    // Закодировать новый контент
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(cfg, null, 2))));
+
+    // Обновить файл
+    const putR = await fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE, {
+      method:'PUT',
+      headers:{
+        Authorization:'token '+ghToken,
+        Accept:'application/vnd.github.v3+json',
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify({
+        message: 'Обновить настройки сайта через админку',
+        content: content,
+        sha: sha
+      })
+    });
+
+    if(putR.ok){
+      setMsg('✓ Сохранено! Сайт обновится через ~1 минуту.', 'ok');
+    } else {
+      const err = await putR.json();
+      setMsg('Ошибка: ' + (err.message || putR.status), 'err');
+    }
+  } catch(e){
+    setMsg('Ошибка сети — попробуйте ещё раз', 'err');
+  }
+
+  btn.disabled = false;
 }
 
+// Восстановить токен из localStorage
+const savedToken = localStorage.getItem('af_gh_token');
+if(savedToken) document.getElementById('inp-token').value = savedToken;
+
 // Отмечать несохранённые изменения
-Object.keys(MAP).forEach(fid=>{
+Object.keys(FIELDS).forEach(fid=>{
   const el = document.getElementById(fid);
-  if(el) el.addEventListener('input',()=>{
-    document.getElementById('save-status').textContent='Есть несохранённые изменения';
-    document.getElementById('save-status').className='save-status';
-  });
+  if(el) el.addEventListener('input',()=>setMsg('Есть несохранённые изменения'));
 });
 </script>
 </body>
