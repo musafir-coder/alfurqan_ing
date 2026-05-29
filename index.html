@@ -20,9 +20,12 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Montserrat',sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{text-decoration:none;color:inherit}
+body{font-family:'Montserrat',sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;-webkit-text-size-adjust:100%}
+a{text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}
 img{max-width:100%;display:block}
+button{-webkit-tap-highlight-color:transparent}
+/* Минимальный размер тапабельных элементов 44px */
+.bp,.bs,.bwa,.btn-read,.cbr,.csi,.wag,.slink,.ci{min-height:44px}
 
 /* ---- FADE IN ---- */
 .fi{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
@@ -289,39 +292,176 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
 @keyframes wap{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.5)}50%{box-shadow:0 4px 32px rgba(37,211,102,.8)}}
 
 /* ---- RESPONSIVE ---- */
+
+/* Tablet */
 @media(max-width:1024px){
   .adv-g{grid-template-columns:repeat(2,1fr)}
   .prog-hd{grid-template-columns:1fr;gap:28px}
   .rv-g{grid-template-columns:1fr}
 }
+
+/* Mobile */
 @media(max-width:768px){
-  section{padding:64px 5%}
+  /* Base */
+  section{padding:56px 4.5%}
+  .con{padding:0}
+
+  /* Header */
   nav.dn{display:none}
-  .ham{display:flex}
+  .ham{display:flex;padding:10px}
   .bwa.dsk{display:none}
-  .hero{padding:88px 5% 60px}
-  .hero-in{grid-template-columns:1fr;gap:36px}
+  .mm a{padding:14px 0;font-size:16px}
+
+  /* Hero */
+  .hero{padding:80px 4.5% 56px;min-height:auto}
+  .hero-in{grid-template-columns:1fr;gap:28px;text-align:center}
   .lv{order:-1}
-  .lc{width:280px;height:280px}
-  .l-composer{width:260px;height:260px}
-  .l-clip{width:220px;height:220px}
-  .l-img{width:220px;height:220px;background-size:400px 400px;background-position:center -18px}
-  .l-frame{width:158px;height:158px}
-  .l-halo,.l-shimmer{width:270px;height:270px}
-  .h-stats{gap:20px}
-  .sn{font-size:22px}
-  .about-g,.sch-g,.pr-g,.tc-g,.cont-g{grid-template-columns:1fr}
-  .about-logo-img{width:180px;height:180px}
-  .pr-g{max-width:380px}
+  .lc{width:220px;height:220px;margin:0 auto}
+  .l-composer{width:200px;height:200px}
+  .l-clip{width:170px;height:170px}
+  .l-img{width:170px;height:170px;background-size:310px 310px;background-position:center -12px}
+  .l-frame{width:120px;height:120px}
+  .l-halo,.l-shimmer{width:210px;height:210px}
+  .h-ar{font-size:22px;margin-bottom:10px}
+  .h-t{margin-bottom:14px}
+  .h-s{font-size:14px;margin-bottom:24px}
+  .bp{width:100%;justify-content:center;padding:15px 20px;font-size:14px}
+  .bs{justify-content:center}
+  .h-stats{gap:12px;justify-content:center;padding-top:20px;margin-top:28px;flex-wrap:wrap}
+  .sn{font-size:20px}
+  .sl{font-size:10px}
+
+  /* About */
+  .about-g{grid-template-columns:1fr;gap:28px}
+  .about-logo-img{width:140px;height:140px}
+  .about-logo-side{padding-top:0}
+
+  /* Advantages */
   .adv-g{grid-template-columns:1fr}
-  .ft-top{grid-template-columns:1fr;gap:28px}
-  .ft-bot{justify-content:center;text-align:center}
-  .cta-row{flex-direction:column;align-items:center}
-}
-@media(max-width:480px){
-  .h-stats{flex-wrap:wrap;gap:14px}
+  .ac{padding:24px 20px}
+
+  /* Program */
+  .prog-hd{grid-template-columns:1fr;gap:20px}
+  .pm{gap:7px}
+  .pc{font-size:12px;padding:7px 13px}
+  .topics-h{padding:14px 18px;flex-wrap:wrap;gap:6px}
+  .topics-h h3{font-size:14px}
   .tg{grid-template-columns:1fr}
-  .a-meta{flex-direction:column}
+  .ti{padding:10px 16px;font-size:12px}
+  .exam{padding:12px 16px !important}
+  .after{flex-direction:column;gap:14px;padding:18px 20px}
+
+  /* Schedule */
+  .sch-g{grid-template-columns:1fr}
+  .srv{font-size:12px;word-break:break-word;text-align:right;max-width:160px}
+  .srl{font-size:12px}
+
+  /* Pricing */
+  .pr-g{grid-template-columns:1fr;max-width:100%}
+  .prc{padding:32px 24px}
+  .pam{font-size:32px}
+
+  /* Teachers */
+  .tc-g{grid-template-columns:1fr}
+
+  /* Reviews */
+  .rv-g{grid-template-columns:1fr}
+
+  /* CTA */
+  .cta{padding:64px 4.5%}
+  .cta-row{flex-direction:column;align-items:stretch}
+  .cbr,.csi{justify-content:center;padding:15px 20px;font-size:14px}
+
+  /* Contacts */
+  .cont-g{grid-template-columns:1fr;gap:32px}
+  .srow{gap:8px}
+  .slink{padding:9px 14px;font-size:12px}
+
+  /* Footer */
+  .ft-top{grid-template-columns:1fr;gap:24px}
+  .ft-bot{justify-content:center;text-align:center}
+  footer{padding:44px 4.5% 32px}
+
+  /* Floating WA — не перекрывает навигацию браузера */
+  .wa-fl{bottom:20px;right:16px;width:52px;height:52px}
+  .wa-fl i{font-size:22px}
+}
+
+/* Small phones */
+@media(max-width:480px){
+  section{padding:48px 4%}
+  .hadith{padding:52px 4%}
+  .cta{padding:56px 4%}
+
+  /* Hero */
+  .lc{width:180px;height:180px}
+  .l-composer{width:165px;height:165px}
+  .l-clip{width:140px;height:140px}
+  .l-img{width:140px;height:140px;background-size:256px 256px;background-position:center -10px}
+  .l-frame{width:100px;height:100px}
+  .l-halo,.l-shimmer{width:175px;height:175px}
+  .h-ar{font-size:18px}
+  .h-stats>div{flex:1;min-width:70px;text-align:center}
+
+  /* About story text */
+  .story-p{font-size:14px}
+  .story-cite{font-size:13px;padding:14px 16px}
+  .a-meta{flex-direction:column;gap:8px}
+  .btn-read{font-size:12px;padding:8px 16px}
+
+  /* Advantages */
+  .ai{width:44px;height:44px;border-radius:11px}
+  .ai i{font-size:17px}
+
+  /* Program chips */
+  .pm{gap:6px}
+  .pc{font-size:11px;padding:6px 11px}
+
+  /* Schedule */
+  .sc-hd{padding:14px 18px}
+  .sc-hd h3{font-size:15px}
+  .sc-b{padding:14px 16px}
+  .sr{padding:9px 0}
+  .srl{gap:5px;font-size:11px}
+  .srv{font-size:11px;max-width:130px}
+
+  /* Pricing */
+  .prc{padding:28px 18px}
+  .fbadge{font-size:10px;padding:4px 12px}
+  .pam{font-size:28px}
+
+  /* Teachers */
+  .tav{height:160px}
+  .tsil{width:76px;height:84px}
+  .tbody{padding:20px 18px}
+  .tname{font-size:15px}
+
+  /* Reviews */
+  .rvc{padding:20px 18px}
+
+  /* Contacts */
+  .ci{font-size:13px}
+  .cico{width:34px;height:34px;font-size:14px}
+  .map-box{height:240px}
+
+  /* Footer */
+  .fb-n{font-size:16px}
+  .flinks a,.flinks span{font-size:12px}
+
+  /* WA groups */
+  .wag{padding:10px 12px;font-size:12px}
+  .wag i{font-size:15px}
+}
+
+/* Very small phones */
+@media(max-width:380px){
+  section{padding:40px 4%}
+  .hdr{padding:0 4%}
+  .hl-t{font-size:14px}
+  .h-t{font-size:22px}
+  .bp{font-size:13px;padding:14px 16px}
+  .cbr,.csi{font-size:13px;padding:13px 16px}
+  .sn{font-size:18px}
 }
 </style>
 </head>
