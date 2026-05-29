@@ -737,19 +737,19 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
       <div class="sc br fi">
         <div class="sc-hd"><i class="fas fa-user"></i><h3>Для братьев</h3></div>
         <div class="sc-b">
-          <div class="sr"><span class="srl"><i class="far fa-calendar"></i>Дни (вариант 1)</span><span class="srv">Пн / Чт</span></div>
-          <div class="sr"><span class="srl"><i class="far fa-calendar"></i>Дни (вариант 2)</span><span class="srv">Ср / Сб</span></div>
-          <div class="sr"><span class="srl"><i class="far fa-clock"></i>Дневная смена</span><span class="srv">15:00</span></div>
-          <div class="sr"><span class="srl"><i class="far fa-clock"></i>Вечерняя смена</span><span class="srv">18:30</span></div>
+          <div class="sr"><span class="srl"><i class="far fa-calendar"></i>Дни (вариант 1)</span><span class="srv" id="af-br-d1">Пн / Чт</span></div>
+          <div class="sr"><span class="srl"><i class="far fa-calendar"></i>Дни (вариант 2)</span><span class="srv" id="af-br-d2">Ср / Сб</span></div>
+          <div class="sr"><span class="srl"><i class="far fa-clock"></i>Дневная смена</span><span class="srv" id="af-br-t1">15:00</span></div>
+          <div class="sr"><span class="srl"><i class="far fa-clock"></i>Вечерняя смена</span><span class="srv" id="af-br-t2">18:30</span></div>
           <div class="sr"><span class="srl"><i class="fab fa-telegram"></i>Запись</span><span class="srv" style="color:var(--teal-dk)">@AdamUmarov06</span></div>
         </div>
       </div>
       <div class="sc si fi">
         <div class="sc-hd"><i class="fas fa-user"></i><h3>Для сестёр</h3></div>
         <div class="sc-b">
-          <div class="sr"><span class="srl"><i class="far fa-calendar"></i>Дни занятий</span><span class="srv">Вт / Пт</span></div>
-          <div class="sr"><span class="srl"><i class="far fa-clock"></i>Смена 1</span><span class="srv">14:00</span></div>
-          <div class="sr"><span class="srl"><i class="far fa-clock"></i>Смена 2</span><span class="srv">16:00</span></div>
+          <div class="sr"><span class="srl"><i class="far fa-calendar"></i>Дни занятий</span><span class="srv" id="af-si-d1">Вт / Пт</span></div>
+          <div class="sr"><span class="srl"><i class="far fa-clock"></i>Смена 1</span><span class="srv" id="af-si-t1">14:00</span></div>
+          <div class="sr"><span class="srl"><i class="far fa-clock"></i>Смена 2</span><span class="srv" id="af-si-t2">16:00</span></div>
           <div class="sr"><span class="srl"><i class="fab fa-telegram"></i>Запись</span><span class="srv" style="color:#7a4aa0">@alfurqan_admin_Rafida</span></div>
         </div>
       </div>
@@ -806,7 +806,7 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
       <h2 class="st">Те, кто передаёт знание</h2>
     </div>
     <div class="tc-g">
-      <div class="tcard fi">
+      <div class="tcard fi" id="af-tcard1">
         <div class="tav">
           <!-- мужской силуэт от головы до пояса — единый путь, естественный переход -->
           <svg class="tsil" viewBox="0 0 90 100" xmlns="http://www.w3.org/2000/svg">
@@ -834,7 +834,7 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
           </div>
         </div>
       </div>
-      <div class="tcard fi">
+      <div class="tcard fi" id="af-tcard2">
         <div class="tav sis">
           <!-- женский силуэт в хиджабе от головы до пояса -->
           <svg class="tsil" viewBox="0 0 90 100" xmlns="http://www.w3.org/2000/svg">
@@ -1151,6 +1151,14 @@ function afApply(c){
   }
   if(c.tg_brothers){set('af-tg-br','@'+c.tg_brothers);attr('af-tg-br-a','href','https://t.me/'+c.tg_brothers);}
   if(c.tg_sisters){set('af-tg-si','@'+c.tg_sisters);attr('af-tg-si-a','href','https://t.me/'+c.tg_sisters);}
+  set('af-br-d1',c.sch_br_d1); set('af-br-d2',c.sch_br_d2);
+  set('af-br-t1',c.sch_br_t1); set('af-br-t2',c.sch_br_t2);
+  set('af-si-d1',c.sch_si_d1);
+  set('af-si-t1',c.sch_si_t1); set('af-si-t2',c.sch_si_t2);
+  const tc1=document.getElementById('af-tcard1');
+  const tc2=document.getElementById('af-tcard2');
+  if(tc1) tc1.style.display = c.t1_visible===false ? 'none' : '';
+  if(tc2) tc2.style.display = c.t2_visible===false ? 'none' : '';
 }
 // Load config.json (updated via admin panel), fallback to localStorage
 fetch('config.json?t='+Date.now())

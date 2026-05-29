@@ -58,6 +58,14 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
 .btn-save:hover{opacity:.85}
 .btn-save:disabled{opacity:.5;cursor:not-allowed}
 
+.toggle-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.toggle-row>label:first-child{font-size:13px;color:#e8e0d0;text-transform:none;letter-spacing:0;font-weight:500}
+.toggle{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0}
+.tslider{position:absolute;inset:0;background:rgba(232,224,208,.15);border-radius:24px;cursor:pointer;transition:.25s}
+.tslider::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.25s}
+.toggle input:checked+.tslider{background:var(--teal)}
+.toggle input:checked+.tslider::before{transform:translateX(20px)}
 @media(max-width:580px){.row2{grid-template-columns:1fr}}
 </style>
 </head>
@@ -160,7 +168,32 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
     </div>
 
     <div class="card">
+      <div class="card-title">График занятий — братья</div>
+      <div class="row2">
+        <div class="field"><label>Дни (вариант 1)</label><input type="text" id="f-br-d1" placeholder="Пн / Чт"></div>
+        <div class="field"><label>Дни (вариант 2)</label><input type="text" id="f-br-d2" placeholder="Ср / Сб"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Дневная смена</label><input type="text" id="f-br-t1" placeholder="15:00"></div>
+        <div class="field"><label>Вечерняя смена</label><input type="text" id="f-br-t2" placeholder="18:30"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">График занятий — сёстры и дети</div>
+      <div class="field"><label>Дни занятий</label><input type="text" id="f-si-d1" placeholder="Вт / Пт"></div>
+      <div class="row2">
+        <div class="field"><label>Смена 1</label><input type="text" id="f-si-t1" placeholder="14:00"></div>
+        <div class="field"><label>Смена 2</label><input type="text" id="f-si-t2" placeholder="16:00"></div>
+      </div>
+    </div>
+
+    <div class="card">
       <div class="card-title">Преподаватель 1 — братья</div>
+      <div class="field toggle-row">
+        <label>Показывать на сайте</label>
+        <label class="toggle"><input type="checkbox" id="f-t1v" checked><span class="tslider"></span></label>
+      </div>
       <div class="field"><label>Имя</label><input type="text" id="f-t1n" placeholder="Умаров Адам Магамедович"></div>
       <div class="field"><label>Должность</label><input type="text" id="f-t1r" placeholder="Основатель · Преподаватель (братья)"></div>
       <div class="field"><label>Биография</label><textarea id="f-t1b" rows="3"></textarea></div>
@@ -168,6 +201,10 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
 
     <div class="card">
       <div class="card-title">Преподаватель 2 — сёстры и дети</div>
+      <div class="field toggle-row">
+        <label>Показывать на сайте</label>
+        <label class="toggle"><input type="checkbox" id="f-t2v" checked><span class="tslider"></span></label>
+      </div>
       <div class="field"><label>Имя</label><input type="text" id="f-t2n" placeholder="Чибиева Заира"></div>
       <div class="field"><label>Должность</label><input type="text" id="f-t2r" placeholder="Преподаватель (сёстры и дети)"></div>
       <div class="field"><label>Биография</label><textarea id="f-t2b" rows="3"></textarea></div>
@@ -190,9 +227,12 @@ const FIELDS = {
   'f-pm':'price_monthly','f-pc':'price_course','f-pco':'price_course_old','f-pd':'price_discount',
   'f-wa-br':'wa_brothers','f-wa-si':'wa_sisters','f-tg-br':'tg_brothers','f-tg-si':'tg_sisters',
   'f-addr':'address',
+  'f-br-d1':'sch_br_d1','f-br-d2':'sch_br_d2','f-br-t1':'sch_br_t1','f-br-t2':'sch_br_t2',
+  'f-si-d1':'sch_si_d1','f-si-t1':'sch_si_t1','f-si-t2':'sch_si_t2',
   'f-t1n':'t1_name','f-t1r':'t1_role','f-t1b':'t1_bio',
   'f-t2n':'t2_name','f-t2r':'t2_role','f-t2b':'t2_bio'
 };
+const TOGGLES = {'f-t1v':'t1_visible','f-t2v':'t2_visible'};
 
 let ghToken = '';
 
@@ -237,6 +277,10 @@ async function loadConfig(){
       const el = document.getElementById(fid);
       if(el) el.value = cfg[key] || '';
     });
+    Object.entries(TOGGLES).forEach(([fid, key])=>{
+      const el = document.getElementById(fid);
+      if(el) el.checked = cfg[key] !== false;
+    });
     setMsg('Данные загружены', 'ok');
     setTimeout(()=>setMsg('Все изменения сохранены', 'ok'), 2000);
   } catch(e){
@@ -253,6 +297,10 @@ async function saveConfig(){
   Object.entries(FIELDS).forEach(([fid, key])=>{
     const el = document.getElementById(fid);
     if(el && el.value.trim()) cfg[key] = el.value.trim();
+  });
+  Object.entries(TOGGLES).forEach(([fid, key])=>{
+    const el = document.getElementById(fid);
+    if(el) cfg[key] = el.checked;
   });
 
   try {
@@ -299,9 +347,11 @@ const savedToken = localStorage.getItem('af_gh_token');
 if(savedToken) document.getElementById('inp-token').value = savedToken;
 
 // Отмечать несохранённые изменения
-Object.keys(FIELDS).forEach(fid=>{
+[...Object.keys(FIELDS), ...Object.keys(TOGGLES)].forEach(fid=>{
   const el = document.getElementById(fid);
-  if(el) el.addEventListener('input',()=>setMsg('Есть несохранённые изменения'));
+  if(el) el.addEventListener('change',()=>setMsg('Есть несохранённые изменения'));
+  if(el && el.tagName!=='INPUT'||el?.type==='text'||el?.tagName==='TEXTAREA')
+    el?.addEventListener('input',()=>setMsg('Есть несохранённые изменения'));
 });
 </script>
 </body>
