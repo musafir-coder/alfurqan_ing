@@ -38,8 +38,8 @@ button{-webkit-tap-highlight-color:transparent}
 .hl{display:flex;align-items:center;gap:12px}
 .hl-logo-wrap{width:44px;height:44px;flex-shrink:0}
 .hl-logo{width:44px;height:44px;object-fit:contain;display:block}
-.hdr:not(.s) .hl-logo{filter:url(#rm-bg) brightness(0) invert(1)}
-.hdr.s .hl-logo{filter:url(#rm-bg)}
+.hdr:not(.s) .hl-logo{filter:brightness(0) invert(1)}
+
 .hl-t{font-family:'Cinzel',serif;font-size:16px;font-weight:600;letter-spacing:.08em;line-height:1;color:white}
 .hdr.s .hl-t{color:var(--ink)}
 .hl-s{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:3px}
@@ -84,7 +84,7 @@ nav.dn a:hover{color:var(--gold-br)}
 .l-badge{position:absolute;inset:0;display:grid;place-items:center}
 .l-clip{width:340px;height:340px;display:grid;place-items:center;clip-path:circle(0% at 50% 50%);animation:revL 2000ms cubic-bezier(.22,.61,.36,1) 700ms forwards}
 .l-iw{width:100%;height:100%;transform:scale(.55) rotate(-90deg);opacity:0;animation:spinS 2200ms cubic-bezier(.16,.84,.32,1) 500ms forwards;display:grid;place-items:center}
-.l-img{width:340px;height:340px;background-repeat:no-repeat;background-size:620px 620px;background-position:center -46px;display:block}
+.l-img{width:340px;height:340px;background-repeat:no-repeat;background-size:contain;background-position:center center;background-image:url('assets/logo-symbol.png');display:block}
 .l-shimmer{position:absolute;left:50%;top:50%;width:340px;height:340px;transform:translate(-50%,-50%) rotate(45deg);overflow:hidden;pointer-events:none;opacity:0;animation:shShow 1400ms ease-out 2400ms both;-webkit-mask:radial-gradient(circle at center,#000 0 45%,transparent 65%);mask:radial-gradient(circle at center,#000 0 45%,transparent 65%)}
 .l-shimmer::before{content:"";position:absolute;top:0;bottom:0;left:-30%;width:30%;background:linear-gradient(90deg,transparent 0%,rgba(255,235,180,.85) 50%,transparent 100%);filter:blur(2px);animation:shSweep 1200ms ease-in-out 2500ms both}
 .l-spark{position:absolute;left:50%;top:50%;width:6px;height:6px;border-radius:50%;background:var(--teal-mid);transform:translate(-50%,-50%) scale(0);animation:spB 900ms ease-out 100ms both}
@@ -117,7 +117,8 @@ section{padding:90px 5%}
 .about{background:white}
 .about-g{display:grid;grid-template-columns:1fr 1.4fr;gap:72px;align-items:start}
 .about-logo-side{display:flex;justify-content:center;padding-top:12px}
-.about-logo-img{width:260px;height:260px;object-fit:contain;border-radius:var(--r);box-shadow:var(--sh)}
+.about-logo-img{width:200px;height:auto;object-fit:contain;display:block;margin:0 auto}
+.about-logo-name{width:240px;height:auto;object-fit:contain;display:block;margin:14px auto 0}
 .about-divider{width:52px;height:2px;background:var(--gold);margin:18px 0 24px}
 .story-p{font-size:15px;line-height:1.88;color:var(--ink-soft);margin-bottom:16px}
 .story-full{overflow:hidden;max-height:0;opacity:0;transition:max-height .55s ease,opacity .4s ease}
@@ -319,7 +320,7 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
   .lc{width:220px;height:220px;margin:0 auto}
   .l-composer{width:200px;height:200px}
   .l-clip{width:170px;height:170px}
-  .l-img{width:170px;height:170px;background-size:310px 310px;background-position:center -23px}
+  .l-img{width:170px;height:170px}
   .l-frame{width:120px;height:120px}
   .l-halo,.l-shimmer{width:170px;height:170px}
   .h-ar{font-size:22px;margin-bottom:10px}
@@ -333,7 +334,8 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
 
   /* About */
   .about-g{grid-template-columns:1fr;gap:28px}
-  .about-logo-img{width:160px;height:160px}
+  .about-logo-img{width:130px}
+  .about-logo-name{width:170px}
   .about-logo-side{padding-top:0}
 
   /* Advantages */
@@ -397,7 +399,7 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
   .lc{width:180px;height:180px}
   .l-composer{width:165px;height:165px}
   .l-clip{width:140px;height:140px}
-  .l-img{width:140px;height:140px;background-size:256px 256px;background-position:center -19px}
+  .l-img{width:140px;height:140px}
   .l-frame{width:100px;height:100px}
   .l-halo,.l-shimmer{width:140px;height:140px}
   .h-ar{font-size:18px}
@@ -477,7 +479,7 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
   <div class="hi">
     <a href="#" class="hl">
       <div class="hl-logo-wrap">
-        <img class="hl-logo" src="assets/logo.png?v=3" alt="Al Furqon">
+        <img class="hl-logo" src="assets/logo-symbol.png" alt="Al Furqon">
       </div>
       <div><div class="hl-t">Al Furqon</div><div class="hl-s">Школа изучения Корана</div></div>
     </a>
@@ -561,7 +563,10 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
     <div class="about-g">
       <!-- Лого слева -->
       <div class="about-logo-side fi">
-        <img class="about-logo-img" src="assets/logo.png?v=3" alt="Al Furqon">
+        <div>
+          <img class="about-logo-img" src="assets/logo-symbol.png" alt="Al Furqon">
+          <img class="about-logo-name" src="assets/logo-name.png" alt="Al Furqon — Школа изучения Корана">
+        </div>
       </div>
       <!-- История справа -->
       <div class="fi">
@@ -994,16 +999,6 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
   </div>
 </footer>
 
-<!-- SVG filter: removes white/cream background from logo PNGs by zeroing alpha of near-white pixels -->
-<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
-  <defs>
-    <filter id="rm-bg" color-interpolation-filters="sRGB" x="0" y="0" width="1" height="1">
-      <!-- A' = -3R -3G -3B + 8 → cream/white → 0 (transparent), dark teal → 1 (opaque) -->
-      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -3 -3 -3 0 8"/>
-    </filter>
-  </defs>
-</svg>
-
 <script>
 // Story read-more toggle
 function toggleStory(){
@@ -1030,37 +1025,6 @@ const obs=new IntersectionObserver(es=>{
   es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}})
 },{threshold:0.1});
 document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
-
-// Logo canvas — strip cream background
-async function prepareLogo(){
-  const img=new Image();
-  await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;img.src='assets/logo.png?v=3'});
-  const w=img.naturalWidth,h=img.naturalHeight;
-  const cv=document.createElement('canvas');cv.width=w;cv.height=h;
-  const ctx=cv.getContext('2d');ctx.drawImage(img,0,0);
-  const id=ctx.getImageData(0,0,w,h),px=id.data;
-  function samp(x,y){const k=(y*w+x)*4;return[px[k],px[k+1],px[k+2]]}
-  const s=[samp(2,2),samp(w-3,2),samp(2,h-3),samp(w-3,h-3)];
-  const sr=s.reduce((a,p)=>a+p[0],0)/s.length;
-  const sg=s.reduce((a,p)=>a+p[1],0)/s.length;
-  const sb=s.reduce((a,p)=>a+p[2],0)/s.length;
-  for(let i=0;i<px.length;i+=4){
-    const r=px[i],g=px[i+1],b=px[i+2];
-    const d=Math.sqrt((r-sr)**2+(g-sg)**2+(b-sb)**2);
-    if(g-(r+b)/2>18)continue;
-    if(d<55)px[i+3]=0;
-    else if(d<95)px[i+3]=Math.round(px[i+3]*(d-55)/40);
-  }
-  ctx.putImageData(id,0,0);
-  const url=cv.toDataURL('image/png');
-  document.querySelectorAll('.l-img').forEach(el=>el.style.backgroundImage=`url(${url})`);
-}
-prepareLogo().catch(()=>{
-  document.querySelectorAll('.l-img').forEach(el=>{
-    el.style.backgroundImage="url('assets/logo.png?v=3')";
-    el.style.mixBlendMode='darken';
-  });
-});
 </script>
 </body>
 </html>
