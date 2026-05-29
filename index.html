@@ -74,8 +74,8 @@ nav.dn a:hover{color:var(--gold-br)}
 .sl{font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.08em;text-transform:uppercase;display:block;margin-top:2px}
 
 /* ---- LOGO ANIMATION ---- */
-.lc{width:420px;height:420px;position:relative;margin:auto}
-.l-halo{position:absolute;left:50%;top:50%;width:420px;height:420px;transform:translate(-50%,-50%) scale(.4);border-radius:50%;background:radial-gradient(circle,rgba(74,179,147,.28) 0%,rgba(74,179,147,.08) 30%,transparent 60%);opacity:0;animation:haloIn 1800ms ease-out 800ms forwards;filter:blur(3px)}
+.lc{width:420px;height:420px;position:relative;margin:auto;overflow:hidden}
+.l-halo{position:absolute;left:50%;top:50%;width:340px;height:340px;transform:translate(-50%,-50%) scale(.4);border-radius:50%;background:radial-gradient(circle,rgba(74,179,147,.28) 0%,rgba(74,179,147,.08) 30%,transparent 60%);opacity:0;animation:haloIn 1800ms ease-out 800ms forwards;filter:blur(3px)}
 .l-frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(45deg);width:250px;height:250px;pointer-events:none}
 .l-frame svg{width:100%;height:100%;overflow:visible}
 .l-frame .ol{fill:none;stroke:var(--teal);stroke-width:1.5;stroke-dasharray:1000;stroke-dashoffset:1000;opacity:0;animation:drawF 1400ms cubic-bezier(.55,.06,.22,.95) 350ms forwards}
@@ -84,8 +84,8 @@ nav.dn a:hover{color:var(--gold-br)}
 .l-badge{position:absolute;inset:0;display:grid;place-items:center}
 .l-clip{width:340px;height:340px;display:grid;place-items:center;clip-path:circle(0% at 50% 50%);animation:revL 2000ms cubic-bezier(.22,.61,.36,1) 700ms forwards}
 .l-iw{width:100%;height:100%;transform:scale(.55) rotate(-90deg);opacity:0;animation:spinS 2200ms cubic-bezier(.16,.84,.32,1) 500ms forwards;display:grid;place-items:center}
-.l-img{width:340px;height:340px;background-repeat:no-repeat;background-size:620px 620px;background-position:center -30px;display:block}
-.l-shimmer{position:absolute;left:50%;top:50%;width:400px;height:400px;transform:translate(-50%,-50%) rotate(45deg);overflow:hidden;pointer-events:none;opacity:0;animation:shShow 1400ms ease-out 2400ms both;-webkit-mask:radial-gradient(circle at center,#000 0 45%,transparent 65%);mask:radial-gradient(circle at center,#000 0 45%,transparent 65%)}
+.l-img{width:340px;height:340px;background-repeat:no-repeat;background-size:620px 620px;background-position:center top;display:block}
+.l-shimmer{position:absolute;left:50%;top:50%;width:340px;height:340px;transform:translate(-50%,-50%) rotate(45deg);overflow:hidden;pointer-events:none;opacity:0;animation:shShow 1400ms ease-out 2400ms both;-webkit-mask:radial-gradient(circle at center,#000 0 45%,transparent 65%);mask:radial-gradient(circle at center,#000 0 45%,transparent 65%)}
 .l-shimmer::before{content:"";position:absolute;top:0;bottom:0;left:-30%;width:30%;background:linear-gradient(90deg,transparent 0%,rgba(255,235,180,.85) 50%,transparent 100%);filter:blur(2px);animation:shSweep 1200ms ease-in-out 2500ms both}
 .l-spark{position:absolute;left:50%;top:50%;width:6px;height:6px;border-radius:50%;background:var(--teal-mid);transform:translate(-50%,-50%) scale(0);animation:spB 900ms ease-out 100ms both}
 @keyframes revL{0%{clip-path:circle(0% at 50% 50%)}100%{clip-path:circle(72% at 50% 50%)}}
@@ -319,9 +319,9 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
   .lc{width:220px;height:220px;margin:0 auto}
   .l-composer{width:200px;height:200px}
   .l-clip{width:170px;height:170px}
-  .l-img{width:170px;height:170px;background-size:310px 310px;background-position:center -12px}
+  .l-img{width:170px;height:170px;background-size:310px 310px;background-position:center top}
   .l-frame{width:120px;height:120px}
-  .l-halo,.l-shimmer{width:210px;height:210px}
+  .l-halo,.l-shimmer{width:170px;height:170px}
   .h-ar{font-size:22px;margin-bottom:10px}
   .h-t{margin-bottom:14px}
   .h-s{font-size:14px;margin-bottom:24px}
@@ -397,9 +397,9 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
   .lc{width:180px;height:180px}
   .l-composer{width:165px;height:165px}
   .l-clip{width:140px;height:140px}
-  .l-img{width:140px;height:140px;background-size:256px 256px;background-position:center -10px}
+  .l-img{width:140px;height:140px;background-size:256px 256px;background-position:center top}
   .l-frame{width:100px;height:100px}
-  .l-halo,.l-shimmer{width:175px;height:175px}
+  .l-halo,.l-shimmer{width:140px;height:140px}
   .h-ar{font-size:18px}
   .h-stats>div{flex:1;min-width:70px;text-align:center}
 
