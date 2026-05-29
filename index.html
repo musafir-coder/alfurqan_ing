@@ -477,7 +477,7 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
   <div class="hi">
     <a href="#" class="hl">
       <div class="hl-logo-wrap">
-        <img class="hl-logo" src="assets/logo.png" alt="Al Furqon">
+        <img class="hl-logo" src="assets/logo.png?v=2" alt="Al Furqon">
       </div>
       <div><div class="hl-t">Al Furqon</div><div class="hl-s">Школа изучения Корана</div></div>
     </a>
@@ -561,7 +561,7 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
     <div class="about-g">
       <!-- Лого слева -->
       <div class="about-logo-side fi">
-        <img class="about-logo-img" src="assets/logo.png" alt="Al Furqon">
+        <img class="about-logo-img" src="assets/logo.png?v=2" alt="Al Furqon">
       </div>
       <!-- История справа -->
       <div class="fi">
@@ -1034,7 +1034,7 @@ document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 // Logo canvas — strip cream background
 async function prepareLogo(){
   const img=new Image();
-  await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;img.src='assets/logo.png'});
+  await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;img.src='assets/logo.png?v=2'});
   const w=img.naturalWidth,h=img.naturalHeight;
   const cv=document.createElement('canvas');cv.width=w;cv.height=h;
   const ctx=cv.getContext('2d');ctx.drawImage(img,0,0);
@@ -1057,7 +1057,7 @@ async function prepareLogo(){
 }
 prepareLogo().catch(()=>{
   document.querySelectorAll('.l-img').forEach(el=>{
-    el.style.backgroundImage="url('assets/logo.png')";
+    el.style.backgroundImage="url('assets/logo.png?v=2')";
     el.style.mixBlendMode='darken';
   });
 });
