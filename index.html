@@ -37,7 +37,7 @@ button{-webkit-tap-highlight-color:transparent}
 .hi{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
 .hl{display:flex;align-items:center;gap:12px}
 .hl-logo-wrap{width:44px;height:44px;flex-shrink:0}
-.hl-logo{width:44px;height:44px;object-fit:contain;display:block}
+.hl-logo{width:44px;height:44px;object-fit:contain;display:block;clip-path:inset(0 0 41% 0)}
 .hdr:not(.s) .hl-logo{filter:url(#rm-bg) brightness(0) invert(1)}
 .hdr.s .hl-logo{filter:url(#rm-bg)}
 .hl-t{font-family:'Cinzel',serif;font-size:16px;font-weight:600;letter-spacing:.08em;line-height:1;color:white}
@@ -117,7 +117,7 @@ section{padding:90px 5%}
 .about{background:white}
 .about-g{display:grid;grid-template-columns:1fr 1.4fr;gap:72px;align-items:start}
 .about-logo-side{display:flex;justify-content:center;padding-top:12px}
-.about-logo-img{width:300px;height:300px;object-fit:contain;filter:url(#rm-bg)}
+.about-logo-img{width:300px;height:300px;object-fit:contain;filter:url(#rm-bg);clip-path:inset(0 0 35% 0)}
 .about-divider{width:52px;height:2px;background:var(--gold);margin:18px 0 24px}
 .story-p{font-size:15px;line-height:1.88;color:var(--ink-soft);margin-bottom:16px}
 .story-full{overflow:hidden;max-height:0;opacity:0;transition:max-height .55s ease,opacity .4s ease}
@@ -477,7 +477,7 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
   <div class="hi">
     <a href="#" class="hl">
       <div class="hl-logo-wrap">
-        <img class="hl-logo" src="assets/logo.png?v=2" alt="Al Furqon">
+        <img class="hl-logo" src="assets/logo.png?v=3" alt="Al Furqon">
       </div>
       <div><div class="hl-t">Al Furqon</div><div class="hl-s">Школа изучения Корана</div></div>
     </a>
@@ -561,7 +561,7 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
     <div class="about-g">
       <!-- Лого слева -->
       <div class="about-logo-side fi">
-        <img class="about-logo-img" src="assets/logo.png?v=2" alt="Al Furqon">
+        <img class="about-logo-img" src="assets/logo.png?v=3" alt="Al Furqon">
       </div>
       <!-- История справа -->
       <div class="fi">
@@ -1034,7 +1034,7 @@ document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 // Logo canvas — strip cream background
 async function prepareLogo(){
   const img=new Image();
-  await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;img.src='assets/logo.png?v=2'});
+  await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;img.src='assets/logo.png?v=3'});
   const w=img.naturalWidth,h=img.naturalHeight;
   const cv=document.createElement('canvas');cv.width=w;cv.height=h;
   const ctx=cv.getContext('2d');ctx.drawImage(img,0,0);
@@ -1057,7 +1057,7 @@ async function prepareLogo(){
 }
 prepareLogo().catch(()=>{
   document.querySelectorAll('.l-img').forEach(el=>{
-    el.style.backgroundImage="url('assets/logo.png?v=2')";
+    el.style.backgroundImage="url('assets/logo.png?v=3')";
     el.style.mixBlendMode='darken';
   });
 });
