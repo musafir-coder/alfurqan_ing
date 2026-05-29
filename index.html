@@ -84,7 +84,7 @@ nav.dn a:hover{color:var(--gold-br)}
 .l-badge{position:absolute;inset:0;display:grid;place-items:center}
 .l-clip{width:340px;height:340px;display:grid;place-items:center;clip-path:circle(0% at 50% 50%);animation:revL 2000ms cubic-bezier(.22,.61,.36,1) 700ms forwards}
 .l-iw{width:100%;height:100%;transform:scale(.55) rotate(-90deg);opacity:0;animation:spinS 2200ms cubic-bezier(.16,.84,.32,1) 500ms forwards;display:grid;place-items:center}
-.l-img{width:340px;height:340px;background-repeat:no-repeat;background-size:620px 620px;background-position:center -30px;display:block;filter:url(#rm-bg)}
+.l-img{width:340px;height:340px;background-repeat:no-repeat;background-size:620px 620px;background-position:center -30px;display:block}
 .l-shimmer{position:absolute;left:50%;top:50%;width:400px;height:400px;transform:translate(-50%,-50%) rotate(45deg);overflow:hidden;pointer-events:none;opacity:0;animation:shShow 1400ms ease-out 2400ms both;-webkit-mask:radial-gradient(circle at center,#000 0 45%,transparent 65%);mask:radial-gradient(circle at center,#000 0 45%,transparent 65%)}
 .l-shimmer::before{content:"";position:absolute;top:0;bottom:0;left:-30%;width:30%;background:linear-gradient(90deg,transparent 0%,rgba(255,235,180,.85) 50%,transparent 100%);filter:blur(2px);animation:shSweep 1200ms ease-in-out 2500ms both}
 .l-spark{position:absolute;left:50%;top:50%;width:6px;height:6px;border-radius:50%;background:var(--teal-mid);transform:translate(-50%,-50%) scale(0);animation:spB 900ms ease-out 100ms both}
@@ -561,7 +561,7 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
     <div class="about-g">
       <!-- Лого слева -->
       <div class="about-logo-side fi">
-        <img class="about-logo-img" src="школа корана/assets/logo.png" alt="Al Furqon">
+        <img class="about-logo-img" src="assets/logo.png" alt="Al Furqon">
       </div>
       <!-- История справа -->
       <div class="fi">
@@ -1034,7 +1034,7 @@ document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 // Logo canvas — strip cream background
 async function prepareLogo(){
   const img=new Image();
-  await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;img.src='школа корана/assets/logo.png'});
+  await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;img.src='assets/logo.png'});
   const w=img.naturalWidth,h=img.naturalHeight;
   const cv=document.createElement('canvas');cv.width=w;cv.height=h;
   const ctx=cv.getContext('2d');ctx.drawImage(img,0,0);
@@ -1057,7 +1057,7 @@ async function prepareLogo(){
 }
 prepareLogo().catch(()=>{
   document.querySelectorAll('.l-img').forEach(el=>{
-    el.style.backgroundImage="url('школа корана/assets/logo.png')";
+    el.style.backgroundImage="url('assets/logo.png')";
     el.style.mixBlendMode='darken';
   });
 });
