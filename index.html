@@ -111,11 +111,16 @@ section{padding:90px 5%}
 .h-src{font-size:13px;color:rgba(255,255,255,.4);letter-spacing:.06em}
 
 /* ---- ABOUT ---- */
-.about{background:var(--cream-2)}
-.about-g{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-.about-lg img{width:300px;height:300px;object-fit:contain;filter:drop-shadow(0 20px 60px rgba(74,179,147,.25));margin:auto}
-.story{font-size:14px;line-height:1.9;color:var(--ink-soft);border-left:3px solid var(--gold);padding-left:22px;margin:20px 0;font-style:italic}
-.a-txt p{font-size:14px;line-height:1.8;color:var(--ink-soft);margin-bottom:14px}
+.about{background:white}
+.about-wrap{max-width:800px;margin:0 auto}
+.about-divider{width:52px;height:2px;background:var(--gold);margin:20px 0 28px}
+.story-body p{font-size:15px;line-height:1.9;color:var(--ink-soft);margin-bottom:18px}
+.story-body p:first-child::before{content:'\201C';font-size:72px;color:var(--teal);opacity:.2;line-height:0;float:left;margin:14px 8px 0 0}
+.story-cite{display:block;margin-top:24px;padding:18px 24px;border-left:3px solid var(--gold);background:var(--cream-2);border-radius:0 var(--r) var(--r) 0;font-size:15px;line-height:1.8;color:var(--ink-soft);font-style:italic}
+.story-cite cite{display:block;margin-top:10px;font-size:12px;font-style:normal;font-weight:600;color:var(--teal-dk)}
+.a-meta{display:flex;gap:16px;margin-top:28px;flex-wrap:wrap}
+.a-badge{display:flex;align-items:center;gap:8px;background:var(--cream-2);padding:9px 14px;border-radius:var(--r);font-size:12px;font-weight:500;box-shadow:var(--sh)}
+.a-badge i{color:var(--teal)}
 .a-meta{display:flex;gap:16px;margin-top:24px;flex-wrap:wrap}
 .a-badge{display:flex;align-items:center;gap:8px;background:white;padding:9px 14px;border-radius:var(--r);font-size:12px;font-weight:500;box-shadow:var(--sh)}
 .a-badge i{color:var(--teal)}
@@ -196,7 +201,7 @@ section{padding:90px 5%}
 .tcard:hover{transform:translateY(-4px);box-shadow:var(--shl)}
 .tav{height:190px;background:linear-gradient(135deg,var(--teal-dk) 0%,var(--teal-mid) 100%);display:flex;align-items:center;justify-content:center}
 .tav.sis{background:linear-gradient(135deg,#5a3a7a 0%,#9a6abc 100%)}
-.tini{width:84px;height:84px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:26px;font-weight:600;color:white;border:2px solid rgba(255,255,255,.28)}
+.tsil{width:90px;height:100px}
 .tbody{padding:26px}
 .tname{font-family:'Cinzel',serif;font-size:16px;font-weight:600;color:var(--ink);margin-bottom:4px}
 .trole{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
@@ -301,9 +306,8 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
   .l-halo,.l-shimmer{width:270px;height:270px}
   .h-stats{gap:20px}
   .sn{font-size:22px}
-  .about-g,.sch-g,.pr-g,.tc-g,.cont-g{grid-template-columns:1fr}
+  .sch-g,.pr-g,.tc-g,.cont-g{grid-template-columns:1fr}
   .pr-g{max-width:380px}
-  .about-lg img{width:200px;height:200px}
   .adv-g{grid-template-columns:1fr}
   .ft-top{grid-template-columns:1fr;gap:28px}
   .ft-bot{justify-content:center;text-align:center}
@@ -409,24 +413,25 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="con">
-    <div class="about-g">
-      <div class="about-lg fi">
-        <img src="школа корана/assets/logo.png" alt="Логотип Al Furqon">
-      </div>
-      <div class="a-txt fi">
-        <span class="slbl">О школе</span>
-        <h2 class="st">История, которая всё изменила</h2>
-        <blockquote class="story">
-          «На похоронах однофамилец вошёл без приветствия. Я пошутил: "Ни салама, ни здравствуйте?" Он ответил тихо: "Ассалáьму Iалаьйкум". Эти слова вызвали мурашки. Тот момент изменил меня. После — пятничный намаз, встреча с первым учителем — и начался мой путь к Благородному Корану. Теперь я передаю этот свет другим.»
-          <cite style="display:block;margin-top:10px;font-size:12px;color:var(--ink-soft);font-style:normal;font-weight:600;">— Адам Умаров, основатель Al Furqon</cite>
-        </blockquote>
-        <p>Школа «Аль-Фуркан» (الفرقان — «Различение») открылась в апреле 2021 года в Назрани. Название взято из одного из имён Благородного Корана — различения между истиной и ложью.</p>
-        <p>Наша цель — не провести 2-3 месяца занятий и отпустить. Мы строим долгосрочный путь: от первых букв до красивого чтения и заучивания Корана наизусть.</p>
-        <div class="a-meta">
-          <div class="a-badge"><i class="fas fa-map-marker-alt"></i> Назрань, Ингушетия</div>
-          <div class="a-badge"><i class="fas fa-calendar-alt"></i> С апреля 2021</div>
-          <div class="a-badge"><i class="fas fa-laptop"></i> Очно и онлайн</div>
+    <div class="about-wrap fi">
+      <span class="slbl">О школе · История основателя</span>
+      <h2 class="st">Почему я выбрал Коран и обучение ему</h2>
+      <div class="about-divider"></div>
+      <div class="story-body">
+        <p>В одной из частей моей жизни, когда я был далёк от религии, я оказался на похоронах у наших родственников. В кругу однофамильцев, обсуждая повседневные дела, внезапно вошёл наш младший однофамилец. В Ингушетии обычно со старшими принято здороваться «добрый вечер». Улыбнувшись, я спросил его: «Где твой этикет? Ни "салам", ни "здравствуйте"?»</p>
+        <p>Он ответил: «Ассалáьму Iалаьйкум». Будучи погружённым в учёбу, он оказался ближе к вере, чем мы. Эти слова, произнесённые им, вызвали во мне мурашки. Этот момент стал для меня судьбоносным — я ощутил сильное желание научиться красиво говорить «салам» и читать Коран по таджвиду.</p>
+        <p>Как это часто бывает, я откладывал обучение, каждый раз обещая себе: «Завтра начну, вот в этот раз точно начну».</p>
+        <p>Всё изменилось, когда я посетил мечеть на пятничный намаз. После молитвы, общаясь со знакомыми, я заметил вдалеке своего первого учителя по таджвиду. Решившись, я подошёл к нему и попросил научить меня читать Коран. Он согласился — и так начался мой путь к изучению Благородного Корана.</p>
+        <div class="story-cite">
+          «Как же удивительно: один правильный "салам" от брата стал искрой, пробудившей во мне жажду изучения Корана. Это была милость от Аллаха, хвала Ему. Теперь я стремлюсь постигнуть глубины Благородного Корана и прославить имя Всевышнего. Я искренне благодарен тому брату, моему первому учителю и всем последующим учителям, которые сохранили верный путь. Пусть они получают награду от Аллаха за каждое моё чтение. Амин.»
+          <cite>— Адам Умаров, основатель школы Al Furqon</cite>
         </div>
+      </div>
+      <div class="a-meta">
+        <div class="a-badge"><i class="fas fa-map-marker-alt"></i> Назрань, Ингушетия</div>
+        <div class="a-badge"><i class="fas fa-calendar-alt"></i> С апреля 2021</div>
+        <div class="a-badge"><i class="fas fa-laptop"></i> Очно и онлайн</div>
+        <div class="a-badge"><i class="fas fa-star-and-crescent"></i> Таджвид и хифз</div>
       </div>
     </div>
   </div>
@@ -627,7 +632,14 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
     </div>
     <div class="tc-g">
       <div class="tcard fi">
-        <div class="tav"><div class="tini">АУ</div></div>
+        <div class="tav">
+          <!-- мужской силуэт от головы до пояса -->
+          <svg class="tsil" viewBox="0 0 90 100" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="45" cy="26" rx="16" ry="18" fill="rgba(255,255,255,.38)"/>
+            <path d="M38,43 L38,51 Q45,55 52,51 L52,43 Z" fill="rgba(255,255,255,.38)"/>
+            <path d="M5,100 L9,76 C12,59 26,53 45,53 C64,53 78,59 81,76 L85,100 Z" fill="rgba(255,255,255,.38)"/>
+          </svg>
+        </div>
         <div class="tbody">
           <h3 class="tname">Умаров Адам Магамедович</h3>
           <div class="trole">Основатель · Преподаватель (братья)</div>
@@ -641,7 +653,20 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
         </div>
       </div>
       <div class="tcard fi">
-        <div class="tav sis"><div class="tini">ЗЧ</div></div>
+        <div class="tav sis">
+          <!-- женский силуэт в хиджабе от головы до пояса -->
+          <svg class="tsil" viewBox="0 0 90 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- хиджаб с вырезом лица (evenodd) -->
+            <path fill-rule="evenodd" fill="rgba(255,255,255,.38)" d="
+              M45,5 C24,5 19,19 19,32 C19,45 27,55 37,59
+              C25,63 11,73 9,93 L9,100 L81,100 L81,93
+              C79,73 65,63 53,59 C63,55 71,45 71,32
+              C71,19 66,5 45,5 Z
+              M45,21 C37,21 33,26 33,32 C33,38 37,43 45,43
+              C53,43 57,38 57,32 C57,26 53,21 45,21 Z
+            "/>
+          </svg>
+        </div>
         <div class="tbody">
           <h3 class="tname">Чибиева Заира</h3>
           <div class="trole">Преподаватель (сёстры и дети)</div>
