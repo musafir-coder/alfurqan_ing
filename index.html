@@ -240,9 +240,9 @@ section{padding:90px 5%}
 .rstars i{color:var(--gold);font-size:13px}
 .rtxt{font-size:13px;color:var(--ink-soft);line-height:1.75;flex:1;position:relative;padding-top:6px}
 .rtxt::before{content:'"';font-size:52px;color:var(--teal);opacity:.15;line-height:0;display:block;margin-bottom:10px}
-.rauth{display:flex;align-items:center;gap:11px;padding-top:12px;border-top:1px solid rgba(29,42,69,.06)}
+.rauth{display:flex;align-items:center;gap:11px;padding-top:12px;border-top:1px solid rgba(29,42,69,.06)}.rauth>div:last-child{min-width:0;overflow:hidden}
 .rav{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--teal-dk),var(--teal));display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:white;flex-shrink:0}
-.rname{font-size:13px;font-weight:600;color:var(--ink)}
+.rname{font-size:13px;font-weight:600;color:var(--ink);overflow-wrap:break-word;word-break:break-word;min-width:0}
 .rmeta{font-size:11px;color:rgba(29,42,69,.38);margin-top:2px}
 .rv-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:white;border:none;box-shadow:var(--sh);cursor:pointer;font-size:20px;color:var(--teal-dk);z-index:2;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .2s,color .2s}
 .rv-nav:hover{background:var(--teal);color:white}
@@ -465,6 +465,14 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
   /* Reviews */
   .rvc{padding:20px 18px}
 
+  /* About */
+  .about-brand-t{font-size:16px;letter-spacing:.08em}
+  .about-brand-s{font-size:9px;letter-spacing:.15em}
+
+  /* Hadith */
+  .h-src{font-size:12px}
+  .h-inn{padding:0 4px}
+
   /* Contacts */
   .ci{font-size:13px}
   .cico{width:34px;height:34px;font-size:14px}
@@ -483,7 +491,10 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
 @media(max-width:380px){
   section{padding:40px 4%}
   .hdr{padding:0 4%}
-  .hl-t{font-size:14px}
+  .hl-t{font-size:13px}
+  .about-brand-t{font-size:15px}
+  .h-src{font-size:11px}
+  .rname{font-size:12px}
   .h-t{font-size:22px}
   .bp{font-size:13px;padding:14px 16px}
   .cbr,.csi{font-size:13px;padding:13px 16px}
@@ -1197,7 +1208,7 @@ fetch('config.json?t='+Date.now())
   var dotsWrap=document.querySelector('.rv-dots');
   var prevBtn=outer.querySelector('.rv-prev');
   var nextBtn=outer.querySelector('.rv-next');
-  var current=0,n=cards.length;
+  var current=0,n=cards.length,WIN=5;
 
   function vis(){
     var w=window.innerWidth;
@@ -1209,25 +1220,46 @@ fetch('config.json?t='+Date.now())
 
   function buildDots(){
     dotsWrap.innerHTML='';
-    var p=pages();
-    for(var i=0;i<p;i++){
+    var p=pages(),count=Math.min(p,WIN);
+    for(var i=0;i<count;i++){
       var d=document.createElement('button');
-      d.className='rv-dot'+(i===0?' act':'');
-      d.setAttribute('aria-label','Страница '+(i+1));
-      (function(i){d.addEventListener('click',function(){goTo(i);});})(i);
+      d.className='rv-dot';
+      d.setAttribute('aria-label','Страница');
       dotsWrap.appendChild(d);
+    }
+    syncDots();
+  }
+
+  function syncDots(){
+    var p=pages();
+    var dots=Array.from(dotsWrap.querySelectorAll('.rv-dot'));
+    var count=dots.length;
+    if(p<=WIN){
+      dots.forEach(function(d,i){
+        d.classList.toggle('act',i===current);
+        d.style.opacity=''; d.style.transform='';
+        d.onclick=(function(i){return function(){goTo(i);};})(i);
+      });
+    } else {
+      var half=Math.floor(WIN/2);
+      var offset=Math.max(0,Math.min(current-half,p-WIN));
+      dots.forEach(function(d,i){
+        var page=offset+i;
+        d.classList.toggle('act',page===current);
+        var edge=(i===0&&offset>0)||(i===WIN-1&&offset+WIN<p);
+        d.style.opacity=edge?'0.35':'1';
+        d.style.transform=edge?'scale(0.7)':'';
+        d.onclick=(function(pg){return function(){goTo(pg);};})(page);
+      });
     }
   }
 
   function goTo(idx){
     var v=vis(),p=pages();
     current=Math.max(0,Math.min(idx,p-1));
-    var gap=22;
     var cardW=cards[0].getBoundingClientRect().width;
-    track.style.transform='translateX(-'+(current*v*(cardW+gap))+'px)';
-    Array.from(dotsWrap.querySelectorAll('.rv-dot')).forEach(function(d,i){
-      d.classList.toggle('act',i===current);
-    });
+    track.style.transform='translateX(-'+(current*v*(cardW+22))+'px)';
+    syncDots();
     prevBtn.disabled=current===0;
     nextBtn.disabled=current>=p-1;
   }
