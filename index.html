@@ -48,7 +48,8 @@ button{-webkit-tap-highlight-color:transparent}
 .hl-logo{width:44px;height:44px;object-fit:contain;display:block}
 .hdr:not(.s) .hl-logo{filter:brightness(0) invert(1)}
 
-.hl-t{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:600;letter-spacing:.08em;line-height:1;color:white}
+.hl-t{font-family:'YuKyokasho Yoko','YuKyokasho','Montserrat',sans-serif;font-size:16px;font-weight:700;letter-spacing:.08em;line-height:1;color:white}
+.af-brand{font-family:'YuKyokasho Yoko','YuKyokasho','Montserrat',sans-serif;font-weight:700}
 .hdr.s .hl-t{color:var(--ink)}
 .hl-s{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:3px}
 .hdr.s .hl-s{color:var(--ink-soft)}
@@ -123,10 +124,12 @@ section{padding:90px 5%}
 
 /* ---- ABOUT ---- */
 .about{background:white}
-.about-g{display:grid;grid-template-columns:1fr 1.4fr;gap:72px;align-items:start}
-.about-logo-side{display:flex;justify-content:center;padding-top:12px}
-.about-logo-img{width:200px;height:auto;object-fit:contain;display:block;margin:0 auto}
+.about-g{display:grid;grid-template-columns:1fr 1.4fr;gap:72px;align-items:center}
+.about-logo-side{display:flex;justify-content:center;padding-top:0}
+.about-logo-img{width:200px;height:auto;object-fit:contain;display:block;margin:0 auto -20px}
 .about-logo-name{width:240px;height:auto;object-fit:contain;display:block;margin:-28px auto 0}
+.about-brand-t{font-family:'YuKyokasho Yoko','YuKyokasho','Montserrat',sans-serif;font-size:22px;font-weight:700;letter-spacing:.1em;color:var(--ink);text-align:center;margin-top:10px}
+.about-brand-s{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);text-align:center;margin-top:5px}
 .about-divider{width:52px;height:2px;background:var(--gold);margin:18px 0 24px}
 .story-p{font-size:15px;line-height:1.88;color:var(--ink-soft);margin-bottom:16px}
 .story-full{overflow:hidden;max-height:0;opacity:0;transition:max-height .55s ease,opacity .4s ease}
@@ -225,10 +228,12 @@ section{padding:90px 5%}
 .ttags{display:flex;flex-wrap:wrap;gap:7px}
 .ttag{background:white;border:1px solid rgba(74,179,147,.2);border-radius:999px;padding:4px 11px;font-size:11px;font-weight:500;color:var(--ink-soft)}
 
-/* ---- TESTIMONIALS ---- */
+/* ---- TESTIMONIALS CAROUSEL ---- */
 .test{background:var(--cream-2)}
-.rv-g{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
-.rvc{background:white;border-radius:var(--r);padding:26px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:14px;transition:transform .25s,box-shadow .25s}
+.rv-outer{position:relative;margin-top:44px;padding:0 44px}
+.rv-wrap{overflow:hidden}
+.rv-track{display:flex;gap:22px;transition:transform .45s cubic-bezier(.4,0,.2,1);will-change:transform}
+.rvc{background:white;border-radius:var(--r);padding:26px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:14px;transition:transform .25s,box-shadow .25s;flex:0 0 calc((100% - 44px)/3);min-width:0}
 .rvc:hover{transform:translateY(-4px);box-shadow:var(--shl)}
 .rstars{display:flex;gap:3px}
 .rstars i{color:var(--gold);font-size:13px}
@@ -238,6 +243,14 @@ section{padding:90px 5%}
 .rav{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--teal-dk),var(--teal));display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:white;flex-shrink:0}
 .rname{font-size:13px;font-weight:600;color:var(--ink)}
 .rmeta{font-size:11px;color:rgba(29,42,69,.38);margin-top:2px}
+.rv-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:white;border:none;box-shadow:var(--sh);cursor:pointer;font-size:20px;color:var(--teal-dk);z-index:2;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .2s,color .2s}
+.rv-nav:hover{background:var(--teal);color:white}
+.rv-nav:disabled{opacity:.3;cursor:default;pointer-events:none}
+.rv-prev{left:0}
+.rv-next{right:0}
+.rv-dots{display:flex;justify-content:center;gap:8px;margin-top:22px}
+.rv-dot{width:8px;height:8px;border-radius:4px;background:rgba(29,42,69,.18);border:none;cursor:pointer;padding:0;transition:width .25s,background .25s}
+.rv-dot.act{background:var(--teal);width:24px}
 
 /* ---- CTA ---- */
 .cta{background:linear-gradient(135deg,var(--teal-dk) 0%,#1a4a3a 55%,var(--ink) 100%);padding:100px 5%;text-align:center;position:relative;overflow:hidden}
@@ -283,7 +296,7 @@ section{padding:90px 5%}
 footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
 .ft{max-width:1200px;margin:0 auto}
 .ft-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:28px}
-.fb-n{font-family:'Montserrat',sans-serif;font-size:19px;font-weight:600;color:white;margin-bottom:5px;letter-spacing:.06em}
+.fb-n{font-family:'YuKyokasho Yoko','YuKyokasho','Montserrat',sans-serif;font-size:19px;font-weight:700;color:white;margin-bottom:5px;letter-spacing:.06em}
 .fb-s{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px}
 .fb-t{font-size:13px;line-height:1.7;color:rgba(255,255,255,.38);max-width:270px}
 .fc h4{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:14px}
@@ -306,7 +319,8 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
 @media(max-width:1024px){
   .adv-g{grid-template-columns:repeat(2,1fr)}
   .prog-hd{grid-template-columns:1fr;gap:28px}
-  .rv-g{grid-template-columns:1fr}
+  .rv-outer{padding:0 36px}
+  .rvc{flex:0 0 calc((100% - 22px)/2)}
 }
 
 /* Mobile */
@@ -341,10 +355,10 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
   .sl{font-size:10px}
 
   /* About */
-  .about-g{grid-template-columns:1fr;gap:48px}
-  .about-logo-img{width:130px}
-  .about-logo-name{width:170px;margin:-10px auto 0}
-  .about-logo-side{padding-top:0;padding-bottom:8px}
+  .about-g{grid-template-columns:1fr;gap:24px}
+  .about-logo-img{width:130px;margin-bottom:-13px}
+  .about-brand-t{font-size:18px}
+  .about-logo-side{padding-top:0;padding-bottom:0}
 
   /* Advantages */
   .adv-g{grid-template-columns:1fr}
@@ -375,7 +389,8 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
   .tc-g{grid-template-columns:1fr}
 
   /* Reviews */
-  .rv-g{grid-template-columns:1fr}
+  .rv-outer{padding:0 30px}
+  .rvc{flex:0 0 100%}
 
   /* CTA */
   .cta{padding:64px 4.5%}
@@ -517,7 +532,7 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
     <div class="hero-content">
       <div class="h-ar">الفرقان</div>
       <h1 class="h-t">Начни читать<br>Благородный Коран<br>правильно</h1>
-      <p class="h-s">Школа таджвида AL FURQAN в Назрани.<br>Очно и онлайн · Для всех возрастов · С 2021 года</p>
+      <p class="h-s">Школа таджвида <span class="af-brand">AL FURQAN</span> в Назрани.<br>Очно и онлайн · Для всех возрастов · С 2021 года</p>
       <a class="bp" href="https://wa.me/79380086606?text=%D0%90%D1%81%D1%81%D0%B0%D0%BB%D1%8F%D0%BC%D1%83%20%D0%B0%D0%BB%D0%B5%D0%B9%D0%BA%D1%83%D0%BC!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%B1%D0%B5%D1%81%D0%BF%D0%BB%D0%B0%D1%82%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%BE%D0%B1%D0%BD%D1%8B%D0%B9%20%D1%83%D1%80%D0%BE%D0%BA" target="_blank" rel="noopener">
         <i class="fab fa-whatsapp"></i> Записаться на бесплатный урок
       </a>
@@ -525,7 +540,7 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
         <i class="fab fa-instagram"></i> @alfurqan_ing · 11&nbsp;000+ подписчиков
       </a>
       <div class="h-stats">
-        <div><span class="sn">6+</span><span class="sl">лет опыта</span></div>
+        <div><span class="sn">5+</span><span class="sl">лет опыта</span></div>
         <div><span class="sn">11K+</span><span class="sl">подписчиков</span></div>
         <div><span class="sn">2021</span><span class="sl">год основания</span></div>
       </div>
@@ -573,7 +588,8 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
       <div class="about-logo-side fi">
         <div>
           <img class="about-logo-img" src="assets/logo-symbol.png" alt="AL FURQAN">
-          <img class="about-logo-name" src="assets/logo-name.png" alt="AL FURQAN — Школа изучения Корана">
+          <div class="about-brand-t">AL FURQAN</div>
+          <div class="about-brand-s">Школа изучения Корана</div>
         </div>
       </div>
       <!-- История справа -->
@@ -592,7 +608,7 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
           <p class="story-p">Всё изменилось, когда я посетил мечеть на пятничный намаз. После молитвы, общаясь со знакомыми, я заметил вдалеке своего первого учителя по таджвиду. Решившись, я подошёл к нему и попросил научить меня читать Коран. Он согласился — и так начался мой путь к изучению Благородного Корана.</p>
           <div class="story-cite">
             «Как же удивительно: один правильный "салам" от брата стал искрой, пробудившей во мне жажду изучения Корана. Это была милость от Аллаха, хвала Ему. Теперь я стремлюсь постигнуть глубины Благородного Корана и прославить имя Всевышнего. Я искренне благодарен тому брату, моему первому учителю и всем последующим учителям, которые сохранили верный путь. Пусть они получают награду от Аллаха за каждое моё чтение. Амин.»
-            <cite>— Адам Умаров, основатель AL FURQAN</cite>
+            <cite>— Адам Умаров, основатель <span class="af-brand">AL FURQAN</span></cite>
           </div>
         </div>
 
@@ -622,7 +638,7 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
     <div class="adv-g">
       <div class="ac fi">
         <div class="ai"><i class="fas fa-star"></i></div>
-        <div class="at">6+ лет опыта</div>
+        <div class="at">5+ лет опыта</div>
         <p class="ad">Преподаватель обучался у хафизов Корана и начал преподавать с разрешения своих учителей. За плечами — годы практики.</p>
       </div>
       <div class="ac fi">
@@ -827,7 +843,7 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
           <div class="trole" id="af-t1r">Основатель · Преподаватель (братья)</div>
           <p class="tbio" id="af-t1b">Адам обучался таджвиду с разными учителями в Ингушетии, в том числе с хафизами Корана. Начал преподавать с разрешения своих учителей. В апреле 2021 года открыл школу «Аль-Фуркан» и преподаёт таджвид детям и взрослым. Продолжает совершенствовать знание арабского языка.</p>
           <div class="ttags">
-            <span class="ttag">6+ лет опыта</span>
+            <span class="ttag">5+ лет опыта</span>
             <span class="ttag">Обучался у хафизов</span>
             <span class="ttag">Основатель школы</span>
             <span class="ttag">Дети и взрослые</span>
@@ -872,117 +888,124 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
       <span class="slbl">Отзывы учеников</span>
       <h2 class="st">Что говорят наши ученики</h2>
     </div>
-    <div class="rv-g">
+    <div class="rv-outer">
+      <button class="rv-nav rv-prev" aria-label="Назад">&#8249;</button>
+      <div class="rv-wrap">
+        <div class="rv-track">
 
-      <div class="rvc fi">
-        <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="rtxt">Адам очень чёткий преподаватель. Объясняет доступным языком, всегда на связи. Начинал с нуля — сегодня читаю свободно. Курс доступный даже для людей за 45. Не думал, что через онлайн можно достичь такого результата. Не бойтесь начинать — у меня получилось, и у вас получится! Ин шаа Аллах!</p>
-        <div class="rauth">
-          <div class="rav">У</div>
-          <div><div class="rname">Ученик (онлайн)</div><div class="rmeta">2024</div></div>
+          <div class="rvc fi">
+            <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="rtxt">Адам очень чёткий преподаватель. Объясняет доступным языком, всегда на связи. Начинал с нуля — сегодня читаю свободно. Курс доступный даже для людей за 45. Не думал, что через онлайн можно достичь такого результата. Не бойтесь начинать — у меня получилось, и у вас получится! Ин шаа Аллах!</p>
+            <div class="rauth">
+              <div class="rav">R</div>
+              <div><div class="rname">@rgb683</div><div class="rmeta">Instagram · 2024</div></div>
+            </div>
+          </div>
+
+          <div class="rvc fi">
+            <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="rtxt">Я один из первых учеников. В начале не знал даже двух букв. Сейчас знаю правила таджвида наизусть и выучил суры с конца 22-й. Уроки в непринуждённой братской атмосфере. Тем, кто колеблется: нужно только желание и решимость. Мне 46 лет — я доказательство, что получится!</p>
+            <div class="rauth">
+              <div class="rav">C</div>
+              <div><div class="rname">@cherbizhev_muhammad</div><div class="rmeta">46 лет · 2021</div></div>
+            </div>
+          </div>
+
+          <div class="rvc fi">
+            <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="rtxt">Мой сын не знал даже алфавита, когда пошёл к Адаму. Эффект ощутимый с первого урока! Научил всему, дал много полезных советов, объяснял на высшем уровне. Очень довольна обучением в AL FURQAN. Продолжаем заниматься. Да воздаст Аллах вам благом!</p>
+            <div class="rauth">
+              <div class="rav">М</div>
+              <div><div class="rname">Мама ученика</div><div class="rmeta">2024</div></div>
+            </div>
+          </div>
+
+          <div class="rvc fi">
+            <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="rtxt">Прошёл с Адамом от первого до последнего урока. Очень приятный и спокойный на общение, всё доступно изложит и не отпустит, пока не убедится, что материал усвоен. Уроки интересные и насыщенные. Уделить 2 часа в неделю на Коран — это так немного! Пусть Всевышний поможет всем начать.</p>
+            <div class="rauth">
+              <div class="rav">M</div>
+              <div><div class="rname">@m.a.y.r.a.l</div><div class="rmeta">Instagram · 2021</div></div>
+            </div>
+          </div>
+
+          <div class="rvc fi">
+            <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="rtxt">Ма ша Аллах — самая лучшая школа по обучению Корану и хороший преподаватель. Рекомендую всем!!</p>
+            <div class="rauth">
+              <div class="rav">А</div>
+              <div><div class="rname">Азраил Ханиев</div><div class="rmeta">2022</div></div>
+            </div>
+          </div>
+
+          <div class="rvc fi">
+            <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="rtxt">Очень добрый, отзывчивый, внимательный ко всем деталям и пунктуальный преподаватель. Поступив или отдав своего ребёнка — не пожалеете, ин ша Аллах. Очень чётко объясняет. В кабинете, в котором проводят уроки, сделаны все необходимые условия.</p>
+            <div class="rauth">
+              <div class="rav">K</div>
+              <div><div class="rname">@kortoev_adam_myratovich</div><div class="rmeta">Instagram · 2022</div></div>
+            </div>
+          </div>
+
+          <div class="rvc fi">
+            <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="rtxt">Обучаюсь у Адама почти 4 месяца. Объясняет очень доходчиво и понятно. Альхамдулиллях, знаю почти все правила, и с дозволения Всевышнего в скором времени начну читать Коран как следует. Благодарен Адаму.</p>
+            <div class="rauth">
+              <div class="rav">A</div>
+              <div><div class="rname">@ayup.kortoev</div><div class="rmeta">Instagram · 2022</div></div>
+            </div>
+          </div>
+
+          <div class="rvc fi">
+            <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="rtxt">В этот священный месяц Рамадан хочу выразить огромную благодарность школе AL FURQAN! За такой короткий срок вы дали нам такие нужные и важные знания. По воле Всевышнего мой сын читает Коран — это было очень важно для нашей семьи. Пусть Аллах воздаст вам благом в этом мире и в мире вечном!</p>
+            <div class="rauth">
+              <div class="rav">М</div>
+              <div><div class="rname">Мама ученика</div><div class="rmeta">Рамадан · 2023</div></div>
+            </div>
+          </div>
+
+          <div class="rvc fi">
+            <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="rtxt">Мои девочки очень довольны с первых дней учёбы. Полюбили учительницу Заиру и восхищаются ею. С радостью ходят на учёбу. Остались довольны всем: методикой, подходом к ученицам и преподавательнице. Да воздаст Аллах благом директору Адаму и всем работникам школы!</p>
+            <div class="rauth">
+              <div class="rav">М</div>
+              <div><div class="rname">Мама учениц</div><div class="rmeta">2025</div></div>
+            </div>
+          </div>
+
+          <div class="rvc fi">
+            <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="rtxt">Начал учить Коран с нуля и очень рад, что попал именно к учителю Умарову Адаму! Умный, понимающий и терпеливый — всегда спокойно объясняет, даже если приходится повторять несколько раз. Атмосфера на занятиях лёгкая и позитивная. Отличный преподаватель и школа, искренне рекомендую!</p>
+            <div class="rauth">
+              <div class="rav">Т</div>
+              <div><div class="rname">Тахир</div><div class="rmeta">Telegram · 2025</div></div>
+            </div>
+          </div>
+
+          <div class="rvc fi">
+            <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="rtxt">Спасибо за доступные и понятные уроки по таджвиду! Благодаря вашему терпению и поддержке мой ребёнок успешно сдал экзамен и принял участие в конкурсе Корана. Пусть Аллах щедро вознаградит вас за труды и заботу!</p>
+            <div class="rauth">
+              <div class="rav">М</div>
+              <div><div class="rname">Мама ученика</div><div class="rmeta">2025</div></div>
+            </div>
+          </div>
+
+          <div class="rvc fi">
+            <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <p class="rtxt">Огромное спасибо за всё, что Вы сделали. Мне действительно повезло, что учился именно у Вас. Сдал экзамен и прошёл первый курс — альхамдулиллях! Вы замечательный учитель. Очень полюбил арабский язык. Да будет доволен тобой Аллах.</p>
+            <div class="rauth">
+              <div class="rav">Т</div>
+              <div><div class="rname">Тахир Юсифли</div><div class="rmeta">2025</div></div>
+            </div>
+          </div>
+
         </div>
       </div>
-
-      <div class="rvc fi">
-        <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="rtxt">Я один из первых учеников. В начале не знал даже двух букв. Сейчас знаю правила таджвида наизусть и выучил суры с конца 22-й. Уроки в непринуждённой братской атмосфере. Тем, кто колеблется: нужно только желание и решимость. Мне 46 лет — я доказательство, что получится!</p>
-        <div class="rauth">
-          <div class="rav">У</div>
-          <div><div class="rname">Один из первых учеников</div><div class="rmeta">46 лет · 2021</div></div>
-        </div>
-      </div>
-
-      <div class="rvc fi">
-        <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="rtxt">Мой сын не знал даже алфавита, когда пошёл к Адаму. Эффект ощутимый с первого урока! Научил всему, дал много полезных советов, объяснял на высшем уровне. Очень довольна обучением в AL FURQAN. Продолжаем заниматься. Да воздаст Аллах вам благом!</p>
-        <div class="rauth">
-          <div class="rav">М</div>
-          <div><div class="rname">Мама ученика</div><div class="rmeta">2024</div></div>
-        </div>
-      </div>
-
-      <div class="rvc fi">
-        <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="rtxt">Прошёл с Адамом от первого до последнего урока. Очень приятный и спокойный на общение, всё доступно изложит и не отпустит, пока не убедится, что материал усвоен. Уроки интересные и насыщенные. Уделить 2 часа в неделю на Коран — это так немного! Пусть Всевышний поможет всем начать.</p>
-        <div class="rauth">
-          <div class="rav">У</div>
-          <div><div class="rname">Ученик первого потока</div><div class="rmeta">2021</div></div>
-        </div>
-      </div>
-
-      <div class="rvc fi">
-        <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="rtxt">Ма ша Аллах — самая лучшая школа по обучению Корану и хороший преподаватель. Рекомендую всем!!</p>
-        <div class="rauth">
-          <div class="rav">У</div>
-          <div><div class="rname">Ученик школы</div><div class="rmeta">2022</div></div>
-        </div>
-      </div>
-
-      <div class="rvc fi">
-        <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="rtxt">Очень добрый, отзывчивый, внимательный ко всем деталям и пунктуальный преподаватель. Поступив или отдав своего ребёнка — не пожалеете, ин ша Аллах. Очень чётко объясняет. В кабинете, в котором проводят уроки, сделаны все необходимые условия.</p>
-        <div class="rauth">
-          <div class="rav">У</div>
-          <div><div class="rname">Ученик школы</div><div class="rmeta">2022</div></div>
-        </div>
-      </div>
-
-      <div class="rvc fi">
-        <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="rtxt">Обучаюсь у Адама почти 4 месяца. Объясняет очень доходчиво и понятно. Альхамдулиллях, знаю почти все правила, и с дозволения Всевышнего в скором времени начну читать Коран как следует. Благодарен Адаму.</p>
-        <div class="rauth">
-          <div class="rav">У</div>
-          <div><div class="rname">Ученик (4 месяца обучения)</div><div class="rmeta">2022</div></div>
-        </div>
-      </div>
-
-      <div class="rvc fi">
-        <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="rtxt">В этот священный месяц Рамадан хочу выразить огромную благодарность школе AL FURQAN! За такой короткий срок вы дали нам такие нужные и важные знания. По воле Всевышнего мой сын читает Коран — это было очень важно для нашей семьи. Пусть Аллах воздаст вам благом в этом мире и в мире вечном!</p>
-        <div class="rauth">
-          <div class="rav">М</div>
-          <div><div class="rname">Мама ученика</div><div class="rmeta">Рамадан · 2023</div></div>
-        </div>
-      </div>
-
-      <div class="rvc fi">
-        <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="rtxt">Мои девочки очень довольны с первых дней учёбы. Полюбили учительницу Заиру и восхищаются ею. С радостью ходят на учёбу. Остались довольны всем: методикой, подходом к ученицам и преподавательнице. Да воздаст Аллах благом директору Адаму и всем работникам школы!</p>
-        <div class="rauth">
-          <div class="rav">М</div>
-          <div><div class="rname">Мама учениц</div><div class="rmeta">2025</div></div>
-        </div>
-      </div>
-
-      <div class="rvc fi">
-        <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="rtxt">Начал учить Коран с нуля и очень рад, что попал именно к учителю Умарову Адаму! Умный, понимающий и терпеливый — всегда спокойно объясняет, даже если приходится повторять несколько раз. Атмосфера на занятиях лёгкая и позитивная. Отличный преподаватель и школа, искренне рекомендую!</p>
-        <div class="rauth">
-          <div class="rav">У</div>
-          <div><div class="rname">Ученик (начинал с нуля)</div><div class="rmeta">Telegram · 2025</div></div>
-        </div>
-      </div>
-
-      <div class="rvc fi">
-        <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="rtxt">Спасибо за доступные и понятные уроки по таджвиду! Благодаря вашему терпению и поддержке мой ребёнок успешно сдал экзамен и принял участие в конкурсе Корана. Пусть Аллах щедро вознаградит вас за труды и заботу!</p>
-        <div class="rauth">
-          <div class="rav">М</div>
-          <div><div class="rname">Мама ученика (конкурс Корана)</div><div class="rmeta">2025</div></div>
-        </div>
-      </div>
-
-      <div class="rvc fi">
-        <div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-        <p class="rtxt">Огромное спасибо за всё, что Вы сделали. Мне действительно повезло, что учился именно у Вас. Сдал экзамен и прошёл первый курс — альхамдулиллях! Вы замечательный учитель. Очень полюбил арабский язык. Да будет доволен тобой Аллах.</p>
-        <div class="rauth">
-          <div class="rav">В</div>
-          <div><div class="rname">Выпускник первого курса</div><div class="rmeta">2025</div></div>
-        </div>
-      </div>
-
+      <button class="rv-nav rv-next" aria-label="Вперёд">&#8250;</button>
     </div>
+    <div class="rv-dots"></div>
   </div>
 </section>
 
@@ -1084,7 +1107,7 @@ footer{background:var(--ink);padding:56px 5% 36px;color:rgba(255,255,255,.45)}
       </div>
     </div>
     <div class="ft-bot">
-      <span class="ft-copy">© 2021–2026 AL FURQAN — Школа изучения Корана · Назрань</span>
+      <span class="ft-copy">© 2021–2026 <span class="af-brand">AL FURQAN</span> — Школа изучения Корана · Назрань</span>
       <span class="ft-ar">الفرقان</span>
     </div>
   </div>
@@ -1162,6 +1185,70 @@ function afApply(c){
 fetch('config.json?t='+Date.now())
   .then(r=>r.json()).then(afApply)
   .catch(()=>{const r=localStorage.getItem('af_config');if(r)afApply(JSON.parse(r));});
+</script>
+<script>
+(function(){
+  var outer=document.querySelector('.rv-outer');
+  if(!outer)return;
+  var track=outer.querySelector('.rv-track');
+  var cards=Array.from(track.querySelectorAll('.rvc'));
+  var dotsWrap=document.querySelector('.rv-dots');
+  var prevBtn=outer.querySelector('.rv-prev');
+  var nextBtn=outer.querySelector('.rv-next');
+  var current=0,n=cards.length;
+
+  function vis(){
+    var w=window.innerWidth;
+    if(w<=768)return 1;
+    if(w<=1024)return 2;
+    return 3;
+  }
+  function pages(){return Math.ceil(n/vis());}
+
+  function buildDots(){
+    dotsWrap.innerHTML='';
+    var p=pages();
+    for(var i=0;i<p;i++){
+      var d=document.createElement('button');
+      d.className='rv-dot'+(i===0?' act':'');
+      d.setAttribute('aria-label','Страница '+(i+1));
+      (function(i){d.addEventListener('click',function(){goTo(i);});})(i);
+      dotsWrap.appendChild(d);
+    }
+  }
+
+  function goTo(idx){
+    var v=vis(),p=pages();
+    current=Math.max(0,Math.min(idx,p-1));
+    var gap=22;
+    var cardW=cards[0].getBoundingClientRect().width;
+    track.style.transform='translateX(-'+(current*v*(cardW+gap))+'px)';
+    Array.from(dotsWrap.querySelectorAll('.rv-dot')).forEach(function(d,i){
+      d.classList.toggle('act',i===current);
+    });
+    prevBtn.disabled=current===0;
+    nextBtn.disabled=current>=p-1;
+  }
+
+  buildDots();
+  goTo(0);
+
+  prevBtn.addEventListener('click',function(){goTo(current-1);});
+  nextBtn.addEventListener('click',function(){goTo(current+1);});
+
+  var sx=0;
+  track.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+  track.addEventListener('touchend',function(e){
+    var dx=sx-e.changedTouches[0].clientX;
+    if(Math.abs(dx)>40){dx>0?goTo(current+1):goTo(current-1);}
+  });
+
+  var rt;
+  window.addEventListener('resize',function(){
+    clearTimeout(rt);
+    rt=setTimeout(function(){current=0;buildDots();goTo(0);},150);
+  });
+})();
 </script>
 </body>
 </html>
