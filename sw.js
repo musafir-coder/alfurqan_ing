@@ -1,4 +1,4 @@
-const CACHE = 'alfurqon-v1';
+const CACHE = 'alfurqon-v2';
 const ASSETS = [
   '/al-furqon/',
   '/al-furqon/index.html',
