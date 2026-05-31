@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
 <title>AL FURQAN — Школа изучения Корана в Назрани</title>
 <meta name="description" content="Школа таджвида и хифза Корана AL FURQAN в Назрани. Очно и онлайн. Для мужчин, женщин и детей от 8 лет. Запишитесь на бесплатный пробный урок.">
 <link rel="manifest" href="manifest.json">
@@ -1155,7 +1157,17 @@ document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 
 // Service Worker
 if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('sw.js').catch(()=>{});
+  navigator.serviceWorker.register('sw.js').then(function(reg){
+    reg.addEventListener('updatefound',function(){
+      var newSW=reg.installing;
+      newSW.addEventListener('statechange',function(){
+        if(newSW.state==='activated') window.location.reload();
+      });
+    });
+  }).catch(()=>{});
+  navigator.serviceWorker.addEventListener('controllerchange',function(){
+    window.location.reload();
+  });
 }
 
 // Apply config from object

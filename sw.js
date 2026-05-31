@@ -1,4 +1,4 @@
-const CACHE = 'alfurqon-v3';
+const CACHE = 'alfurqon-v4';
 const ASSETS = [
   '/al-furqon/assets/logo-symbol.png',
   '/al-furqon/assets/icon-192.png',
