@@ -1,9 +1,6 @@
-const CACHE = 'alfurqon-v2';
+const CACHE = 'alfurqon-v3';
 const ASSETS = [
-  '/al-furqon/',
-  '/al-furqon/index.html',
   '/al-furqon/assets/logo-symbol.png',
-  '/al-furqon/assets/logo-name.png',
   '/al-furqon/assets/icon-192.png',
   '/al-furqon/assets/icon-512.png'
 ];
@@ -21,7 +18,13 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  e.respondWith(
-    caches.match(e.request).then(cached => cached || fetch(e.request))
-  );
+  const req = e.request;
+  const url = new URL(req.url);
+  // HTML и config.json — всегда с сети (свежие)
+  if (req.destination === 'document' || url.pathname.endsWith('.html') || url.pathname.endsWith('/') || url.pathname.endsWith('config.json')) {
+    e.respondWith(fetch(req).catch(() => caches.match(req)));
+    return;
+  }
+  // Остальное — кэш, иначе сеть
+  e.respondWith(caches.match(req).then(cached => cached || fetch(req)));
 });
