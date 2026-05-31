@@ -51,7 +51,7 @@ button{-webkit-tap-highlight-color:transparent}
 .hl-t{font-family:'YuKyokasho Yoko','YuKyokasho','Raleway','Montserrat',sans-serif;font-size:16px;font-weight:700;letter-spacing:.08em;line-height:1;color:white}
 .af-brand{font-family:'YuKyokasho Yoko','YuKyokasho','Raleway','Montserrat',sans-serif;font-weight:700}
 .hdr.s .hl-t{color:var(--ink)}
-.hl-s{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:3px;display:block;transform:scaleX(0.62);transform-origin:left center}
+.hl-s{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:3px;display:block;transform-origin:left center}
 .hdr.s .hl-s{color:var(--ink-soft)}
 nav.dn{display:flex;align-items:center;gap:28px}
 nav.dn a{font-size:13px;font-weight:500;letter-spacing:.05em;color:rgba(255,255,255,.9);transition:color .2s}
@@ -1194,6 +1194,23 @@ function afApply(c){
   if(tc1) tc1.style.display = c.t1_visible===false ? 'none' : '';
   if(tc2) tc2.style.display = c.t2_visible===false ? 'none' : '';
 }
+// Fit header subtitle width to match AL FURQAN
+(function(){
+  function fit(){
+    var t=document.querySelector('.hl-t');
+    var s=document.querySelector('.hl-s');
+    if(!t||!s)return;
+    s.style.transform='';
+    var r=t.offsetWidth/s.offsetWidth;
+    if(r<1)s.style.transform='scaleX('+r.toFixed(4)+')';
+  }
+  fit();
+  setTimeout(fit,200);
+  setTimeout(fit,600);
+  setTimeout(fit,1500);
+  if(document.fonts)document.fonts.ready.then(function(){fit();setTimeout(fit,200);});
+  window.addEventListener('resize',fit);
+})();
 // Load config.json (updated via admin panel), fallback to localStorage
 fetch('config.json?t='+Date.now())
   .then(r=>r.json()).then(afApply)
