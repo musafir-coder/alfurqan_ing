@@ -131,8 +131,8 @@ section{padding:90px 5%}
 .about-logo-side{display:flex;justify-content:center;padding-top:0}
 .about-logo-img{width:200px;height:auto;object-fit:contain;display:block;margin:0 auto -20px}
 .about-logo-name{width:240px;height:auto;object-fit:contain;display:block;margin:-28px auto 0}
-.about-brand-t{font-family:'YuKyokasho Yoko','YuKyokasho','Raleway','Montserrat',sans-serif;font-size:22px;font-weight:700;letter-spacing:.1em;color:var(--ink);text-align:center;margin-top:10px}
-.about-brand-s{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);text-align:center;margin-top:5px}
+.about-brand-t{font-family:'YuKyokasho Yoko','YuKyokasho','Raleway','Montserrat',sans-serif;font-size:22px;font-weight:700;letter-spacing:.1em;color:var(--ink);text-align:center;margin-top:10px;width:max-content;margin-left:auto;margin-right:auto}
+.about-brand-s{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);text-align:center;margin-top:5px;width:max-content;margin-left:auto;margin-right:auto;transform-origin:center center}
 .about-divider{width:52px;height:2px;background:var(--gold);margin:18px 0 24px}
 .story-p{font-size:15px;line-height:1.88;color:var(--ink-soft);margin-bottom:16px}
 .story-full{overflow:hidden;max-height:0;opacity:0;transition:max-height .55s ease,opacity .4s ease}
@@ -1206,22 +1206,26 @@ function afApply(c){
   if(tc1) tc1.style.display = c.t1_visible===false ? 'none' : '';
   if(tc2) tc2.style.display = c.t2_visible===false ? 'none' : '';
 }
-// Fit header subtitle width to match AL FURQAN
+// Fit subtitle width to match AL FURQAN title
 (function(){
-  function fit(){
-    var t=document.querySelector('.hl-t');
-    var s=document.querySelector('.hl-s');
+  function fitPair(titleSel,subSel,origin){
+    var t=document.querySelector(titleSel);
+    var s=document.querySelector(subSel);
     if(!t||!s)return;
     s.style.transform='';
     var r=t.offsetWidth/s.offsetWidth;
-    if(r<1)s.style.transform='scaleX('+r.toFixed(4)+')';
+    if(r<1){s.style.transformOrigin=origin;s.style.transform='scaleX('+r.toFixed(4)+')';}
   }
-  fit();
-  setTimeout(fit,200);
-  setTimeout(fit,600);
-  setTimeout(fit,1500);
-  if(document.fonts)document.fonts.ready.then(function(){fit();setTimeout(fit,200);});
-  window.addEventListener('resize',fit);
+  function fitAll(){
+    fitPair('.hl-t','.hl-s','left center');
+    fitPair('.about-brand-t','.about-brand-s','center center');
+  }
+  fitAll();
+  setTimeout(fitAll,200);
+  setTimeout(fitAll,600);
+  setTimeout(fitAll,1500);
+  if(document.fonts)document.fonts.ready.then(function(){fitAll();setTimeout(fitAll,200);});
+  window.addEventListener('resize',fitAll);
 })();
 // Load config.json (updated via admin panel), fallback to localStorage
 fetch('config.json?t='+Date.now())
