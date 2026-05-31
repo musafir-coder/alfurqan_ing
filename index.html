@@ -51,7 +51,7 @@ button{-webkit-tap-highlight-color:transparent}
 .hl-t{font-family:'YuKyokasho Yoko','YuKyokasho','Raleway','Montserrat',sans-serif;font-size:16px;font-weight:700;letter-spacing:.08em;line-height:1;color:white}
 .af-brand{font-family:'YuKyokasho Yoko','YuKyokasho','Raleway','Montserrat',sans-serif;font-weight:700}
 .hdr.s .hl-t{color:var(--ink)}
-.hl-s{font-size:8.5px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:3px}
+.hl-s{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:3px;transform-origin:left center;display:block}
 .hdr.s .hl-s{color:var(--ink-soft)}
 nav.dn{display:flex;align-items:center;gap:28px}
 nav.dn a{font-size:13px;font-weight:500;letter-spacing:.05em;color:rgba(255,255,255,.9);transition:color .2s}
@@ -1198,6 +1198,20 @@ function afApply(c){
 fetch('config.json?t='+Date.now())
   .then(r=>r.json()).then(afApply)
   .catch(()=>{const r=localStorage.getItem('af_config');if(r)afApply(JSON.parse(r));});
+</script>
+<script>
+(function(){
+  function fitHlSub(){
+    var t=document.querySelector('.hl-t');
+    var s=document.querySelector('.hl-s');
+    if(!t||!s)return;
+    var ratio=t.offsetWidth/s.offsetWidth;
+    s.style.transform=ratio<1?'scaleX('+ratio.toFixed(4)+')':'';
+  }
+  document.addEventListener('DOMContentLoaded',fitHlSub);
+  window.addEventListener('resize',fitHlSub);
+  document.fonts&&document.fonts.ready.then(fitHlSub);
+})();
 </script>
 <script>
 (function(){
