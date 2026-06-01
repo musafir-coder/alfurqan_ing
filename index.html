@@ -46,12 +46,12 @@ button{-webkit-tap-highlight-color:transparent}
 .hdr.s{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(29,42,69,.08)}
 .hi{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
 .hl{display:flex;align-items:center;gap:10px}
+.hl-sym{height:50px;width:auto;object-fit:contain;flex-shrink:0}
 .hl-txt-img{height:50px;width:auto;object-fit:contain}
-.hl-logo-w{height:50px;width:auto;object-fit:contain;flex-shrink:0}
-.hl-logo-c{height:60px;width:auto;object-fit:contain;flex-shrink:0;display:none}
-.hl-txt-w{display:block}
-.hdr.s .hl-logo-w,.hdr.s .hl-txt-w{display:none}
-.hdr.s .hl-logo-c{display:block}
+.hl-sym-w,.hl-txt-w{display:block}
+.hl-sym-c,.hl-txt-c{display:none}
+.hdr.s .hl-sym-w,.hdr.s .hl-txt-w{display:none}
+.hdr.s .hl-sym-c,.hdr.s .hl-txt-c{display:block}
 .hl-t{font-family:'YuKyokasho Yoko','YuKyokasho','Raleway','Montserrat',sans-serif;font-size:16px;font-weight:700;letter-spacing:.08em;line-height:1;color:white;width:max-content}
 .af-brand{font-family:'YuKyokasho Yoko','YuKyokasho','Raleway','Montserrat',sans-serif;font-weight:700}
 .hdr.s .hl-t{color:var(--ink)}
@@ -517,9 +517,14 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
 <header class="hdr" id="hdr">
   <div class="hi">
     <a href="#" class="hl">
-      <img class="hl-logo-w" src="assets/logo-white-sym.png" alt="">
-      <img class="hl-txt-img hl-txt-w" src="assets/logo-white-txt.png" alt="AL FURQAN">
-      <img class="hl-logo-c" src="assets/возьми меня.png" alt="AL FURQAN">
+      <div>
+        <img class="hl-sym hl-sym-w" src="assets/logo-white-sym.png" alt="">
+        <img class="hl-sym hl-sym-c" src="assets/logo-color-sym.png" alt="">
+      </div>
+      <div>
+        <img class="hl-txt-img hl-txt-w" src="assets/logo-white-txt.png" alt="AL FURQAN">
+        <img class="hl-txt-img hl-txt-c" src="assets/logo-color-txt.png" alt="AL FURQAN">
+      </div>
     </a>
     <nav class="dn">
       <a href="#about">О школе</a>
