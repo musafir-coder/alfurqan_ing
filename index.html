@@ -222,7 +222,7 @@ section{padding:90px 5%}
 .fbadge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 16px;border-radius:999px;white-space:nowrap}
 .plbl{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--teal-mid);margin-bottom:10px;display:block}
 .pam{font-family:'Montserrat',sans-serif;font-size:38px;font-weight:600;color:var(--ink);line-height:1;margin-bottom:4px;display:flex;align-items:center;gap:2px;flex-wrap:wrap}
-.prub{font-size:26px;font-weight:600}
+.prub{font-size:18px;font-weight:600;align-self:flex-end;padding-bottom:3px}
 .pp{font-size:12px;color:var(--ink-soft);margin-bottom:24px}
 .pold{font-size:14px;color:rgba(29,42,69,.3);text-decoration:line-through;margin-left:6px}
 .pfs{display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
@@ -505,6 +505,12 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
   .wag i{font-size:15px}
 }
 
+.mob-br{display:none}
+@media(max-width:768px){
+  .mob-br{display:block}
+  .adv-hd-wrap{text-align:left!important}
+}
+
 /* Very small phones */
 @media(max-width:380px){
   section{padding:40px 4%}
@@ -565,7 +571,7 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
   <div class="hero-in">
     <div class="hero-content">
       <div class="h-ar" style="margin-bottom:32px">بسم الله الرحمن الرحيم</div>
-      <h1 class="h-t" style="text-transform:uppercase;font-size:clamp(20px,2.8vw,36px)">Научись читать<br>Благородный Коран<br>вместе с нами</h1>
+      <h1 class="h-t">Научись читать<br>Благородный Коран<br>вместе с нами</h1>
       <p class="h-s">Школа тажвида <span class="af-brand">AL FURQAN</span> в Назрани.<br>Очно и онлайн · С 8 лет · С 2021 года</p>
       <a class="bp" href="https://wa.me/79380086606?text=%D0%90%D1%81%D1%81%D0%B0%D0%BB%C3%A1%D1%8C%D0%BC%D1%83%20%D3%8F%D0%B0%D0%BB%D0%B0%D1%8C%D0%B9%D0%BA%D1%83%D0%BC%21%20%D0%AF%20%D0%BF%D0%B8%D1%88%D1%83%20%D0%B2%D0%B0%D0%BC%20%D1%87%D0%B5%D1%80%D0%B5%D0%B7%20%D0%B2%D0%B0%D1%88%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B8%20%D1%85%D0%BE%D1%82%D0%B5%D0%BB%20%D0%B1%D1%8B%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D1%83%D1%80%D0%BE%D0%BA%D0%B8%20%D1%82%D0%B0%D0%B6%D0%B2%D0%B8%D0%B4%D0%B0%2C%20%D0%BE%D0%BF%D0%BB%D0%B0%D1%82%D0%B8%D0%B2%20%D0%B2%D0%B5%D1%81%D1%8C%20%D0%BA%D1%83%D1%80%D1%81%20%D1%81%D1%80%D0%B0%D0%B7%D1%83.%20%D0%A7%D1%82%D0%BE%20%D0%BC%D0%BD%D0%B5%20%D0%BD%D1%83%D0%B6%D0%BD%D0%BE%20%D1%81%D0%B4%D0%B5%D0%BB%D0%B0%D1%82%D1%8C%3F" target="_blank" rel="noopener">
         <i class="fab fa-whatsapp"></i> Записаться на курс
@@ -660,8 +666,8 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
 <!-- ADVANTAGES -->
 <section id="advantages" style="padding:90px 5%;background:white">
   <div class="con">
-    <div class="fi" style="text-align:center">
-      <h2 class="st">Всё что нужно для вашего обучения:</h2>
+    <div class="fi adv-hd-wrap" style="text-align:center">
+      <h2 class="st">Всё, что способствует хорошему обучению Корану,<br class="mob-br"> у&nbsp;нас имеется:</h2>
     </div>
     <div class="adv-g">
       <div class="ac fi">
@@ -704,7 +710,7 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
     <div class="prog-hd">
       <div class="fi">
         <span class="slbl">Учебная программа</span>
-        <h2 class="st">Базовый — Тажвид с нуля</h2>
+        <h2 class="st" style="font-weight:800;text-transform:none;font-size:15px;letter-spacing:normal">Базовый — Тажвид с нуля</h2>
         <p class="ssub">Для тех, кто начинает с нуля. После завершения курса сдаётся итоговый экзамен — и открывается путь к практике и продвинутому обучению.</p>
         <div class="pm">
           <span class="pc"><i class="far fa-clock"></i> 5 месяцев</span>
@@ -714,7 +720,7 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
         </div>
       </div>
       <div class="pinc fi">
-        <h4>В программу входит:</h4>
+        <h4 style="text-transform:none;color:#000;font-size:15px;letter-spacing:normal">В программу входит:</h4>
         <div class="pil">
           <div class="pi"><i class="fas fa-check-circle"></i> Видеозаписи уроков (ингушский + рус)</div>
           <div class="pi"><i class="fas fa-check-circle"></i> Прописи для арабских букв</div>
@@ -809,7 +815,7 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
   <div class="con">
     <div class="fi" style="text-align:center">
       <span class="slbl">Стоимость обучения</span>
-      <h2 class="st">Доступные цены</h2>
+      <h2 class="st" style="text-transform:none;letter-spacing:normal">Доступные цены</h2>
       <p class="ssub" style="margin:0 auto">Оплата с 1 по 10 числа. Очное и онлайн — одинаковая цена.</p>
     </div>
     <div class="pr-g">
@@ -871,7 +877,7 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
         </div>
         <div class="tbody">
           <h3 class="tname" id="af-t1n">Умаров Адам Магамедович</h3>
-          <div class="trole" id="af-t1r">Основатель · Преподаватель (для братьев)</div>
+          <div class="trole" id="af-t1r" style="text-transform:none;letter-spacing:normal;font-size:13px">Основатель · Преподаватель (для братьев)</div>
           <p class="tbio" id="af-t1b">Адам обучался тажвиду с разными учителями в Ингушетии, в том числе с хафизами Корана. Начал преподавать с разрешения своих учителей. В апреле 2021 года открыл школу «Аль-Фуркъан» и преподаёт тажвид детям и взрослым. Продолжает совершенствовать знание арабского языка.</p>
           <div class="ttags">
             <span class="ttag">5+ лет опыта</span>
@@ -898,7 +904,7 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
         </div>
         <div class="tbody">
           <h3 class="tname" id="af-t2n">Чибиева Заира</h3>
-          <div class="trole" id="af-t2r">Преподаватель (сёстры и дети)</div>
+          <div class="trole" id="af-t2r" style="text-transform:none;letter-spacing:normal;font-size:13px">Преподаватель (сёстры)</div>
           <p class="tbio" id="af-t2b">Изучает тажвид с 2016 года. В 2022 прошла Базовый курс в «Аль-Фуркъане» и сдала экзамен на отлично. Продолжает углублённое обучение. Богатый педагогический опыт: воспитатель детского сада (2015–2023), учитель истории (с 2023). Преподаёт в школе с июня 2024 года.</p>
           <div class="ttags">
             <span class="ttag">Тажвид с 2016</span>
@@ -1044,10 +1050,10 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
 <section class="cta" id="trial">
   <div class="cta-in fi">
     <h2 class="cta-t">Начни свой путь<br>к Благородному Корану<br>прямо сейчас</h2>
-    <p class="cta-s">Лучшее время начать было вчера, а второе лучшее — прямо сейчас. Не упускай своё время.</p>
+    <p class="cta-s">Изучение Корана — это лучшее, чему можно посвятить свое время. Уповай на Аллаха, сделай искреннее намерение и начни свой путь к знаниям уже сегодня!</p>
     <div class="cta-row">
       <a class="cbr" href="https://wa.me/79380086606?text=%D0%90%D1%81%D1%81%D0%B0%D0%BB%D1%8F%D0%BC%D1%83%20%D0%B0%D0%BB%D0%B5%D0%B9%D0%BA%D1%83%D0%BC!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%BE%D0%B1%D0%BD%D1%8B%D0%B9%20%D1%83%D1%80%D0%BE%D0%BA" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Для братьев</a>
-      <a class="csi" href="https://wa.me/79380086066?text=%D0%90%D1%81%D1%81%D0%B0%D0%BB%D1%8F%D0%BC%D1%83%20%D0%B0%D0%BB%D0%B5%D0%B9%D0%BA%D1%83%D0%BC!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%BE%D0%B1%D0%BD%D1%8B%D0%B9%20%D1%83%D1%80%D0%BE%D0%BA" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Для сестёр</a>
+      <a class="csi" style="background:#7a4aa0;border-color:#7a4aa0" href="https://wa.me/79380086066?text=%D0%90%D1%81%D1%81%D0%B0%D0%BB%D1%8F%D0%BC%D1%83%20%D0%B0%D0%BB%D0%B5%D0%B9%D0%BA%D1%83%D0%BC!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%BE%D0%B1%D0%BD%D1%8B%D0%B9%20%D1%83%D1%80%D0%BE%D0%BA" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Для сестёр</a>
     </div>
   </div>
 </section>
@@ -1057,20 +1063,19 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
   <div class="con">
     <div class="fi">
       <span class="slbl">Контакты</span>
-      <h2 class="st">Свяжитесь с нами</h2>
     </div>
-    <div class="cont-g">
+    <div class="cont-g" style="margin-top:20px">
       <div class="fi">
-        <div class="cgrp">
-          <h3>Для братьев</h3>
+        <div class="cgrp" style="margin-bottom:16px">
+          <h3 style="text-transform:none;letter-spacing:normal;font-size:14px;margin-bottom:4px">Для братьев</h3>
           <a class="ci" id="af-wa-br-a" href="https://wa.me/79380086606" target="_blank" rel="noopener"><div class="cico cg"><i class="fab fa-whatsapp"></i></div><span id="af-wa-br">+7 938 008 6606</span></a>
         </div>
-        <div class="cgrp">
-          <h3>Для сестёр</h3>
+        <div class="cgrp" style="margin-bottom:16px">
+          <h3 style="text-transform:none;letter-spacing:normal;font-size:14px;margin-bottom:4px">Для сестёр</h3>
           <a class="ci" id="af-wa-si-a" href="https://wa.me/79380086066" target="_blank" rel="noopener"><div class="cico cg"><i class="fab fa-whatsapp"></i></div><span id="af-wa-si">+7 938 008 6066</span></a>
         </div>
-        <div class="cgrp">
-          <h3>Социальные сети</h3>
+        <div class="cgrp" style="margin-bottom:16px">
+          <h3 style="text-transform:none;letter-spacing:normal;font-size:14px">Социальные сети</h3>
           <div class="srow">
             <a class="slink si" href="https://www.instagram.com/alfurqan_ing" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
             <a class="slink sy" href="https://youtube.com/@alfurqan_ing" target="_blank" rel="noopener"><i class="fab fa-youtube"></i> YouTube</a>
@@ -1078,11 +1083,11 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
             <a class="slink stg" href="https://t.me/alfurqan_ing" target="_blank" rel="noopener"><i class="fab fa-telegram"></i> Telegram</a>
           </div>
         </div>
-        <div class="cgrp">
-          <h3>Группы WhatsApp</h3>
+        <div class="cgrp" style="margin-bottom:16px">
+          <h3 style="text-transform:none;letter-spacing:normal;font-size:14px">Группы в WhatsApp</h3>
           <div class="wa-groups">
-            <a class="wag" href="https://chat.whatsapp.com/KKqgKPqsQIhEk1IliyT8i3" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Группа для братьев</a>
-            <a class="wag" href="https://chat.whatsapp.com/BURKC9WMuV6DVMZAWfJNP3" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Группа для сестёр</a>
+            <a class="wag" style="width:160px" href="https://chat.whatsapp.com/KKqgKPqsQIhEk1IliyT8i3" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Для братьев</a>
+            <a class="wag" style="width:160px;background:rgba(122,74,160,0.2);border-color:rgba(122,74,160,0.5);color:#7a4aa0" href="https://chat.whatsapp.com/BURKC9WMuV6DVMZAWfJNP3" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Для сестёр</a>
           </div>
         </div>
       </div>
@@ -1095,7 +1100,7 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
           <div>
             <strong id="af-addr">ул. С.С. Осканова, 72, Назрань</strong><br>
             Республика Ингушетия<br>
-            <span style="font-size:12px;color:rgba(29,42,69,.4)">3 этаж, последняя дверь справа</span>
+            <span style="font-size:12px;color:rgba(29,42,69,.4)">Синее здание, 3 этаж последняя дверь справа</span>
           </div>
         </div>
       </div>
@@ -1109,7 +1114,7 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
     <div class="ft-top">
       <div>
         <img src="assets/logo-white.png" alt="AL FURQAN — Школа изучения Корана" style="height:52px;width:auto;object-fit:contain;display:block;margin-bottom:14px;opacity:.9">
-        <p class="fb-t">Школа тажвида и хифза Корана в Назрани. Очно и онлайн. Для мужчин, женщин и детей от 8 лет. Открыта с апреля 2021 года.</p>
+        <p class="fb-t">Школа изучения Корана в Назрани. Очно и онлайн. Для мужчин, женщин и детей от 8 лет. Открыта с апреля 2021 года.</p>
       </div>
       <div class="fc">
         <h4>Навигация</h4>
@@ -1126,12 +1131,11 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
       <div class="fc">
         <h4>Контакты</h4>
         <div class="flinks">
-          <a href="https://wa.me/79380086606" target="_blank">WhatsApp (братья)</a>
-          <a href="https://wa.me/79380086066" target="_blank">WhatsApp (сёстры)</a>
+          <a href="https://wa.me/79380086606" target="_blank">WhatsApp</a>
           <a href="https://www.instagram.com/alfurqan_ing" target="_blank">Instagram</a>
           <a href="https://youtube.com/@alfurqan_ing" target="_blank">YouTube</a>
           <a href="https://vk.com/alfurqan_ing" target="_blank">ВКонтакте</a>
-          <span id="af-addr-ft">Назрань, ул. Осканова 72</span>
+          <span id="af-addr-ft">Адрес: Назрань, ул. Осканова 72</span>
         </div>
       </div>
     </div>
