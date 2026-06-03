@@ -649,27 +649,31 @@ async function saveConfig(){
   btn.disabled = true;
   setMsg('Сохранение...', 'loading');
 
-  const cfg = {};
-  Object.entries(FIELDS).forEach(([fid, key])=>{
-    const el = document.getElementById(fid);
-    if(el && el.value.trim()) cfg[key] = el.value.trim();
-  });
-  Object.entries(TOGGLES).forEach(([fid, key])=>{
-    const el = document.getElementById(fid);
-    if(el) cfg[key] = el.checked;
-  });
-  cfg.reviews = getReviews();
-  const topicsEl=document.getElementById('f-topics');
-  if(topicsEl&&topicsEl.value.trim()) cfg.topics=topicsEl.value.split('\n').map(t=>t.trim()).filter(Boolean);
-  const incEl=document.getElementById('f-prog-inc');
-  if(incEl&&incEl.value.trim()) cfg.prog_inc=incEl.value.split('\n').map(t=>t.trim()).filter(Boolean);
-
   try {
+    // Загружаем текущий конфиг чтобы не потерять поля
     const getR = await fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE, {
       headers:{ Authorization:'token '+ghToken, Accept:'application/vnd.github.v3+json' }
     });
     const getData = await getR.json();
     const sha = getData.sha;
+    const existing = JSON.parse(decodeURIComponent(escape(atob(getData.content.replace(/\n/g,'')))));
+
+    // Начинаем с текущего конфига, перезаписываем только заполненные поля
+    const cfg = Object.assign({}, existing);
+    Object.entries(FIELDS).forEach(([fid, key])=>{
+      const el = document.getElementById(fid);
+      if(el && el.value.trim()) cfg[key] = el.value.trim();
+    });
+    Object.entries(TOGGLES).forEach(([fid, key])=>{
+      const el = document.getElementById(fid);
+      if(el) cfg[key] = el.checked;
+    });
+    const rv = getReviews();
+    if(rv.length > 0) cfg.reviews = rv;
+    const topicsEl=document.getElementById('f-topics');
+    if(topicsEl&&topicsEl.value.trim()) cfg.topics=topicsEl.value.split('\n').map(t=>t.trim()).filter(Boolean);
+    const incEl=document.getElementById('f-prog-inc');
+    if(incEl&&incEl.value.trim()) cfg.prog_inc=incEl.value.split('\n').map(t=>t.trim()).filter(Boolean);
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(cfg, null, 2))));
     const putR = await fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE, {
       method:'PUT',
