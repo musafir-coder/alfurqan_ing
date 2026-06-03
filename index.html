@@ -1200,7 +1200,7 @@ function afApply(c){
     if(track){
       track.innerHTML=c.reviews.map(r=>{
         const init=((r.author||'?').replace(/^@/,'')[0]||'?').toUpperCase();
-        return '<div class="rvc fi">'
+        return '<div class="rvc v fi">'
           +'<div class="rstars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>'
           +'<p class="rtxt">'+esc(r.text||'')+'</p>'
           +'<div class="rauth"><div class="rav">'+esc(init)+'</div><div><div class="rname">'+esc(r.author||'')+'</div><div class="rmeta">'+esc(r.meta||'')+'</div></div></div>'
