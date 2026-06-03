@@ -509,6 +509,30 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
 @media(max-width:768px){
   .mob-br{display:block}
   .adv-hd-wrap{text-align:left!important}
+
+  /* Hero — сохраняем увеличенный отступ под басмалой */
+  .h-ar{margin-bottom:32px!important}
+
+  /* Program — прописные и размер заголовка */
+  .prog .st{text-transform:none!important;letter-spacing:normal!important;font-size:15px!important;font-weight:800!important}
+
+  /* Pricing — прописные заголовок */
+  #pricing .st{text-transform:none!important;letter-spacing:normal!important}
+
+  /* Contacts h3 — прописные и размер */
+  .cgrp h3{text-transform:none!important;letter-spacing:normal!important;font-size:14px!important}
+
+  /* Teachers role */
+  .trole{text-transform:none!important;letter-spacing:normal!important;font-size:13px!important}
+
+  /* Program includes h4 */
+  .pinc h4{text-transform:none!important;letter-spacing:normal!important;font-size:15px!important}
+
+  /* CTA — кнопка сестёр не растягивается */
+  .cta-row{align-items:center}
+
+  /* WhatsApp группы — одинаковая ширина */
+  .wag{width:160px!important}
 }
 
 /* Very small phones */
@@ -1196,7 +1220,7 @@ function afApply(c){
   if(c.price_discount){const pd=document.getElementById('af-pd');if(pd)pd.textContent='Выгода '+c.price_discount+' ₽';}
   set('af-t1n',c.t1_name); set('af-t1r',c.t1_role); set('af-t1b',c.t1_bio);
   set('af-t2n',c.t2_name); set('af-t2r',c.t2_role); set('af-t2b',c.t2_bio);
-  set('af-addr',c.address); set('af-addr-ft',c.address);
+  set('af-addr',c.address); set('af-addr-ft', c.address ? 'Адрес: '+c.address : null);
   if(c.wa_brothers){
     const ph=c.wa_brothers,fmt='+7 '+ph.slice(1,4)+' '+ph.slice(4,7)+' '+ph.slice(7);
     set('af-wa-br',fmt); attr('af-wa-br-a','href','https://wa.me/'+ph);
