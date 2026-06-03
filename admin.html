@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Админ — Al Furqon</title>
+<title>Админ — AL FURQAN</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;min-height:100vh}
@@ -47,6 +47,12 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
 .field input:focus,.field textarea:focus{border-color:var(--teal)}
 .field .hint{font-size:11px;color:rgba(232,224,208,.3);margin-top:4px}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+
+/* ADV CARDS GRID */
+.adv-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.adv-card{background:#162520;border:1px solid var(--border);border-radius:10px;padding:14px}
+.adv-card-num{font-size:10px;font-weight:700;color:var(--teal);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
 
 /* SAVE BAR */
 .save-bar{position:fixed;bottom:0;left:0;right:0;background:#1d2e2a;border-top:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;z-index:100}
@@ -66,7 +72,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
 .tslider::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.25s}
 .toggle input:checked+.tslider{background:var(--teal)}
 .toggle input:checked+.tslider::before{transform:translateX(20px)}
-@media(max-width:580px){.row2{grid-template-columns:1fr}}
+@media(max-width:580px){.row2{grid-template-columns:1fr}.row3{grid-template-columns:1fr}.adv-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -75,7 +81,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
 <div id="login-screen">
   <div class="login-box">
     <div class="login-logo">◈</div>
-    <div class="login-title">Al Furqon</div>
+    <div class="login-title">AL FURQAN</div>
     <div class="login-sub">Панель управления сайтом</div>
 
     <div class="lf">
@@ -87,7 +93,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
       <input type="password" id="inp-token" placeholder="ghp_xxxxxxxxxxxxx" onkeydown="if(event.key==='Enter')doLogin()">
       <div class="hint">
         Нужен один раз. Создать:
-        <a href="https://github.com/settings/tokens/new?scopes=repo&description=AlFurqon+Admin" target="_blank">github.com → Settings → Tokens → New</a>.
+        <a href="https://github.com/settings/tokens/new?scopes=repo&description=AlFurqan+Admin" target="_blank">github.com → Settings → Tokens → New</a>.
         Выбрать галочку <b>repo</b> → Generate. Скопировать и вставить сюда.
       </div>
     </div>
@@ -100,7 +106,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
 <!-- PANEL -->
 <div id="admin-panel">
   <div class="top-bar">
-    <div class="top-logo">Al Furqon — Панель управления</div>
+    <div class="top-logo">AL FURQAN — Панель управления</div>
     <div class="top-actions">
       <a class="btn-site" href="index.html" target="_blank">↗ Открыть сайт</a>
       <button class="btn-out" onclick="doLogout()">Выйти</button>
@@ -109,6 +115,68 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
 
   <div class="main">
 
+    <!-- ГЕРОЙ -->
+    <div class="card">
+      <div class="card-title">Главная секция (Герой)</div>
+      <div class="field">
+        <label>Заголовок страницы</label>
+        <textarea id="f-hero-t" rows="3" placeholder="Научись читать&#10;Благородный Коран&#10;вместе с нами"></textarea>
+        <div class="hint">Переносы строк сохраняются. Каждая строка — новая строка на сайте.</div>
+      </div>
+      <div class="field">
+        <label>Подзаголовок</label>
+        <textarea id="f-hero-s" rows="2" placeholder="Школа тажвида AL FURQAN в Назрани.&#10;Очно и онлайн · С 8 лет · С 2021 года"></textarea>
+        <div class="hint">AL FURQAN будет выделен жирным автоматически.</div>
+      </div>
+      <div class="row3">
+        <div class="field"><label>Статистика 1 (опыт)</label><input type="text" id="f-stat-1" placeholder="5+"></div>
+        <div class="field"><label>Статистика 2 (подписчики)</label><input type="text" id="f-stat-2" placeholder="11K+"></div>
+        <div class="field"><label>Статистика 3 (год)</label><input type="text" id="f-stat-3" placeholder="2021"></div>
+      </div>
+    </div>
+
+    <!-- ПРЕИМУЩЕСТВА -->
+    <div class="card">
+      <div class="card-title">Преимущества</div>
+      <div class="field">
+        <label>Заголовок секции</label>
+        <input type="text" id="f-adv-title" placeholder="По милости Аллаха, для вашего удобного обучения у нас есть:">
+      </div>
+      <div class="adv-grid">
+        <div class="adv-card">
+          <div class="adv-card-num">Карточка 1</div>
+          <div class="field"><label>Заголовок</label><input type="text" id="f-adv1-t" placeholder="5+ лет опыта"></div>
+          <div class="field"><label>Описание</label><textarea id="f-adv1-d" rows="3"></textarea></div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-card-num">Карточка 2</div>
+          <div class="field"><label>Заголовок</label><input type="text" id="f-adv2-t" placeholder="Очно и онлайн"></div>
+          <div class="field"><label>Описание</label><textarea id="f-adv2-d" rows="3"></textarea></div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-card-num">Карточка 3</div>
+          <div class="field"><label>Заголовок</label><input type="text" id="f-adv3-t" placeholder="Видеозаписи уроков"></div>
+          <div class="field"><label>Описание</label><textarea id="f-adv3-d" rows="3"></textarea></div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-card-num">Карточка 4</div>
+          <div class="field"><label>Заголовок</label><input type="text" id="f-adv4-t" placeholder="Для всех возрастов"></div>
+          <div class="field"><label>Описание</label><textarea id="f-adv4-d" rows="3"></textarea></div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-card-num">Карточка 5</div>
+          <div class="field"><label>Заголовок</label><input type="text" id="f-adv5-t" placeholder="Собственная методика"></div>
+          <div class="field"><label>Описание</label><textarea id="f-adv5-d" rows="3"></textarea></div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-card-num">Карточка 6</div>
+          <div class="field"><label>Заголовок</label><input type="text" id="f-adv6-t" placeholder="Ежемесячные конкурсы"></div>
+          <div class="field"><label>Описание</label><textarea id="f-adv6-d" rows="3"></textarea></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ЦЕНЫ -->
     <div class="card">
       <div class="card-title">Цены</div>
       <div class="row2">
@@ -133,6 +201,21 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
       </div>
     </div>
 
+    <!-- CTA -->
+    <div class="card">
+      <div class="card-title">Секция призыва к действию (CTA)</div>
+      <div class="field">
+        <label>Заголовок</label>
+        <textarea id="f-cta-t" rows="3" placeholder="Начни свой путь&#10;к Благородному Корану&#10;прямо сейчас"></textarea>
+        <div class="hint">Переносы строк сохраняются.</div>
+      </div>
+      <div class="field">
+        <label>Подзаголовок</label>
+        <textarea id="f-cta-s" rows="3"></textarea>
+      </div>
+    </div>
+
+    <!-- КОНТАКТЫ -->
     <div class="card">
       <div class="card-title">Контакты</div>
       <div class="row2">
@@ -159,6 +242,46 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
       </div>
     </div>
 
+    <!-- СОЦИАЛЬНЫЕ СЕТИ -->
+    <div class="card">
+      <div class="card-title">Социальные сети</div>
+      <div class="row2">
+        <div class="field">
+          <label>Instagram (username)</label>
+          <input type="text" id="f-soc-ig" placeholder="alfurqan_ing">
+          <div class="hint">Без @: alfurqan_ing</div>
+        </div>
+        <div class="field">
+          <label>YouTube (handle)</label>
+          <input type="text" id="f-soc-yt" placeholder="alfurqan_ing">
+          <div class="hint">Без @: alfurqan_ing</div>
+        </div>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label>ВКонтакте (username)</label>
+          <input type="text" id="f-soc-vk" placeholder="alfurqan_ing">
+          <div class="hint">Без vk.com/: alfurqan_ing</div>
+        </div>
+        <div class="field">
+          <label>Telegram-канал</label>
+          <input type="text" id="f-soc-tg" placeholder="alfurqan_ing">
+          <div class="hint">Без @: alfurqan_ing</div>
+        </div>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label>WhatsApp группа — братья (ссылка)</label>
+          <input type="text" id="f-wag-br" placeholder="https://chat.whatsapp.com/...">
+        </div>
+        <div class="field">
+          <label>WhatsApp группа — сёстры (ссылка)</label>
+          <input type="text" id="f-wag-si" placeholder="https://chat.whatsapp.com/...">
+        </div>
+      </div>
+    </div>
+
+    <!-- АДРЕС -->
     <div class="card">
       <div class="card-title">Адрес</div>
       <div class="field">
@@ -167,6 +290,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
       </div>
     </div>
 
+    <!-- РАСПИСАНИЕ БРАТЬЯ -->
     <div class="card">
       <div class="card-title">График занятий — братья</div>
       <div class="row2">
@@ -179,6 +303,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
       </div>
     </div>
 
+    <!-- РАСПИСАНИЕ СЁСТРЫ -->
     <div class="card">
       <div class="card-title">График занятий — сёстры и дети</div>
       <div class="field"><label>Дни занятий</label><input type="text" id="f-si-d1" placeholder="Вт / Пт"></div>
@@ -188,6 +313,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
       </div>
     </div>
 
+    <!-- ПРЕПОДАВАТЕЛЬ 1 -->
     <div class="card">
       <div class="card-title">Преподаватель 1 — братья</div>
       <div class="field toggle-row">
@@ -199,6 +325,7 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
       <div class="field"><label>Биография</label><textarea id="f-t1b" rows="3"></textarea></div>
     </div>
 
+    <!-- ПРЕПОДАВАТЕЛЬ 2 -->
     <div class="card">
       <div class="card-title">Преподаватель 2 — сёстры и дети</div>
       <div class="field toggle-row">
@@ -224,11 +351,31 @@ const REPO = 'musafir-coder/al-furqon';
 const FILE = 'config.json';
 
 const FIELDS = {
+  // Hero
+  'f-hero-t':'hero_title','f-hero-s':'hero_sub',
+  'f-stat-1':'stat_years','f-stat-2':'stat_subs','f-stat-3':'stat_founded',
+  // Advantages
+  'f-adv-title':'adv_title',
+  'f-adv1-t':'adv1_t','f-adv1-d':'adv1_d',
+  'f-adv2-t':'adv2_t','f-adv2-d':'adv2_d',
+  'f-adv3-t':'adv3_t','f-adv3-d':'adv3_d',
+  'f-adv4-t':'adv4_t','f-adv4-d':'adv4_d',
+  'f-adv5-t':'adv5_t','f-adv5-d':'adv5_d',
+  'f-adv6-t':'adv6_t','f-adv6-d':'adv6_d',
+  // Prices
   'f-pm':'price_monthly','f-pc':'price_course','f-pco':'price_course_old','f-pd':'price_discount',
+  // CTA
+  'f-cta-t':'cta_title','f-cta-s':'cta_sub',
+  // Contacts
   'f-wa-br':'wa_brothers','f-wa-si':'wa_sisters','f-tg-br':'tg_brothers','f-tg-si':'tg_sisters',
+  // Social
+  'f-soc-ig':'social_ig','f-soc-yt':'social_yt','f-soc-vk':'social_vk','f-soc-tg':'social_tg',
+  'f-wag-br':'wa_group_br','f-wag-si':'wa_group_si',
+  // Address & schedule
   'f-addr':'address',
   'f-br-d1':'sch_br_d1','f-br-d2':'sch_br_d2','f-br-t1':'sch_br_t1','f-br-t2':'sch_br_t2',
   'f-si-d1':'sch_si_d1','f-si-t1':'sch_si_t1','f-si-t2':'sch_si_t2',
+  // Teachers
   'f-t1n':'t1_name','f-t1r':'t1_role','f-t1b':'t1_bio',
   'f-t2n':'t2_name','f-t2r':'t2_role','f-t2b':'t2_bio'
 };
@@ -304,17 +451,12 @@ async function saveConfig(){
   });
 
   try {
-    // Получить текущий SHA файла
     const getR = await fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE, {
       headers:{ Authorization:'token '+ghToken, Accept:'application/vnd.github.v3+json' }
     });
     const getData = await getR.json();
     const sha = getData.sha;
-
-    // Закодировать новый контент
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(cfg, null, 2))));
-
-    // Обновить файл
     const putR = await fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE, {
       method:'PUT',
       headers:{
@@ -350,8 +492,8 @@ if(savedToken) document.getElementById('inp-token').value = savedToken;
 [...Object.keys(FIELDS), ...Object.keys(TOGGLES)].forEach(fid=>{
   const el = document.getElementById(fid);
   if(el) el.addEventListener('change',()=>setMsg('Есть несохранённые изменения'));
-  if(el && el.tagName!=='INPUT'||el?.type==='text'||el?.tagName==='TEXTAREA')
-    el?.addEventListener('input',()=>setMsg('Есть несохранённые изменения'));
+  if(el && (el.tagName==='TEXTAREA' || el.type==='text'))
+    el.addEventListener('input',()=>setMsg('Есть несохранённые изменения'));
 });
 </script>
 </body>
