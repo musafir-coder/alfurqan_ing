@@ -54,6 +54,18 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
 .adv-card{background:#162520;border:1px solid var(--border);border-radius:10px;padding:14px}
 .adv-card-num{font-size:10px;font-weight:700;color:var(--teal);letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase}
 
+/* SECTION DIVIDER */
+.section-sub{font-size:11px;font-weight:700;color:rgba(232,224,208,.4);letter-spacing:.08em;text-transform:uppercase;margin:16px 0 12px;padding-top:14px;border-top:1px solid var(--border)}
+
+/* REVIEWS */
+.review-item{background:#162520;border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px;position:relative}
+.review-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.review-num{font-size:11px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.1em}
+.btn-del-rv{padding:4px 10px;background:rgba(224,112,112,.15);border:1px solid rgba(224,112,112,.3);color:#e07070;border-radius:6px;font-size:12px;cursor:pointer}
+.btn-del-rv:hover{background:rgba(224,112,112,.25)}
+.btn-add-rv{width:100%;padding:10px;background:transparent;border:1.5px dashed var(--border);border-radius:8px;color:var(--teal);font-size:13px;font-weight:600;cursor:pointer;margin-top:4px;transition:background .2s}
+.btn-add-rv:hover{background:rgba(74,179,147,.08)}
+
 /* SAVE BAR */
 .save-bar{position:fixed;bottom:0;left:0;right:0;background:#1d2e2a;border-top:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;z-index:100}
 .save-msg{font-size:13px;color:rgba(232,224,208,.45)}
@@ -114,6 +126,102 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
   </div>
 
   <div class="main">
+
+    <!-- КНОПКА ЗАПИСАТЬСЯ -->
+    <div class="card">
+      <div class="card-title">Кнопка «Записаться»</div>
+      <div class="field">
+        <label>Текст кнопки</label>
+        <input type="text" id="f-btn-text" placeholder="Записаться на курс">
+      </div>
+      <div class="field">
+        <label>Текст WhatsApp-сообщения</label>
+        <textarea id="f-btn-msg" rows="3" placeholder="Ассалáьму Iалаьйкум! Я пишу вам через ваш сайт..."></textarea>
+        <div class="hint">Это сообщение отправится при нажатии кнопки</div>
+      </div>
+    </div>
+
+    <!-- О ШКОЛЕ -->
+    <div class="card">
+      <div class="card-title">О школе</div>
+      <div class="field">
+        <label>Параграф 1</label>
+        <textarea id="f-about-p1" rows="3"></textarea>
+      </div>
+      <div class="field">
+        <label>Параграф 2</label>
+        <textarea id="f-about-p2" rows="3"></textarea>
+      </div>
+      <div class="section-sub">Раскрываемая часть (скрыта до нажатия «Читать далее»)</div>
+      <div class="field">
+        <label>Параграф 3</label>
+        <textarea id="f-about-fp1" rows="3"></textarea>
+      </div>
+      <div class="field">
+        <label>Параграф 4</label>
+        <textarea id="f-about-fp2" rows="3"></textarea>
+      </div>
+      <div class="field">
+        <label>Цитата</label>
+        <textarea id="f-about-quote" rows="4" placeholder="«Текст цитаты в кавычках...»"></textarea>
+        <div class="hint">Текст в кавычках внутри рамки</div>
+      </div>
+      <div class="field">
+        <label>Подпись к цитате</label>
+        <input type="text" id="f-about-cite" placeholder="— Адам Умаров, основатель AL FURQAN">
+      </div>
+    </div>
+
+    <!-- УЧЕБНАЯ ПРОГРАММА -->
+    <div class="card">
+      <div class="card-title">Учебная программа</div>
+      <div class="field">
+        <label>Заголовок курса</label>
+        <input type="text" id="f-prog-title" placeholder="Базовый — Тажвид с нуля">
+      </div>
+      <div class="field">
+        <label>Описание</label>
+        <textarea id="f-prog-desc" rows="2"></textarea>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Длительность</label><input type="text" id="f-prog-dur" placeholder="5 месяцев"></div>
+        <div class="field"><label>Частота</label><input type="text" id="f-prog-freq" placeholder="2 раза в неделю"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Время урока</label><input type="text" id="f-prog-lesson" placeholder="~1.5 часа урок"></div>
+        <div class="field"><label>Возраст</label><input type="text" id="f-prog-age" placeholder="От 8 лет"></div>
+      </div>
+      <div class="field">
+        <label>Что входит в программу</label>
+        <textarea id="f-prog-inc" rows="6" placeholder="Видеозаписи уроков (ингушский + рус)&#10;Прописи для арабских букв&#10;Аудиозаписи к урокам&#10;WhatsApp-группа класса&#10;Обратная связь с родителями&#10;Поддержка в WhatsApp"></textarea>
+        <div class="hint">Каждая строка — один пункт списка</div>
+      </div>
+    </div>
+
+    <!-- ТЕМЫ КУРСА -->
+    <div class="card">
+      <div class="card-title">Темы Базового курса</div>
+      <div class="row2">
+        <div class="field">
+          <label>Значок с темами</label>
+          <input type="text" id="f-topics-badge" placeholder="25 тем + экзамен">
+        </div>
+        <div></div>
+      </div>
+      <div class="field">
+        <label>Список тем</label>
+        <textarea id="f-topics" rows="10" placeholder="Краткое знакомство с Кораном&#10;Арабский алфавит&#10;..."></textarea>
+        <div class="hint">Каждая строка — одна тема. Нумерация проставляется автоматически.</div>
+      </div>
+      <div class="field">
+        <label>Заголовок «после курса»</label>
+        <input type="text" id="f-after-title" placeholder="После Базового курса">
+      </div>
+      <div class="field">
+        <label>Текст «после курса»</label>
+        <textarea id="f-after-text" rows="2"></textarea>
+      </div>
+    </div>
 
     <!-- ГЕРОЙ -->
     <div class="card">
@@ -323,6 +431,15 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
       <div class="field"><label>Имя</label><input type="text" id="f-t1n" placeholder="Умаров Адам Магамедович"></div>
       <div class="field"><label>Должность</label><input type="text" id="f-t1r" placeholder="Основатель · Преподаватель (братья)"></div>
       <div class="field"><label>Биография</label><textarea id="f-t1b" rows="3"></textarea></div>
+      <div class="section-sub">Теги</div>
+      <div class="row2">
+        <div class="field"><label>Тег 1</label><input type="text" id="f-t1-tag1" placeholder="5+ лет опыта"></div>
+        <div class="field"><label>Тег 2</label><input type="text" id="f-t1-tag2" placeholder="Обучался у хафизов Корана"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Тег 3</label><input type="text" id="f-t1-tag3" placeholder="Основатель школы"></div>
+        <div class="field"><label>Тег 4</label><input type="text" id="f-t1-tag4" placeholder="Дети и взрослые"></div>
+      </div>
     </div>
 
     <!-- ПРЕПОДАВАТЕЛЬ 2 -->
@@ -335,6 +452,31 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
       <div class="field"><label>Имя</label><input type="text" id="f-t2n" placeholder="Чибиева Заира"></div>
       <div class="field"><label>Должность</label><input type="text" id="f-t2r" placeholder="Преподаватель (сёстры и дети)"></div>
       <div class="field"><label>Биография</label><textarea id="f-t2b" rows="3"></textarea></div>
+      <div class="section-sub">Теги</div>
+      <div class="row2">
+        <div class="field"><label>Тег 1</label><input type="text" id="f-t2-tag1" placeholder="Тажвид с 2016"></div>
+        <div class="field"><label>Тег 2</label><input type="text" id="f-t2-tag2" placeholder="Педагог с 2015"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Тег 3</label><input type="text" id="f-t2-tag3" placeholder="Опыт с детьми"></div>
+        <div class="field"><label>Тег 4</label><input type="text" id="f-t2-tag4" placeholder="В школе с 2024"></div>
+      </div>
+    </div>
+
+    <!-- ОТЗЫВЫ УЧЕНИКОВ -->
+    <div class="card">
+      <div class="card-title">Отзывы учеников</div>
+      <div id="reviews-list"></div>
+      <button class="btn-add-rv" onclick="addReview()">+ Добавить отзыв</button>
+    </div>
+
+    <!-- ПОДВАЛ -->
+    <div class="card">
+      <div class="card-title">Подвал (Footer)</div>
+      <div class="field">
+        <label>Описание школы</label>
+        <textarea id="f-footer-desc" rows="2" placeholder="Школа изучения Корана в Назрани. Очно и онлайн. Для мужчин, женщин и детей от 8 лет. Открыта с апреля 2021 года."></textarea>
+      </div>
     </div>
 
   </div>
@@ -351,6 +493,17 @@ const REPO = 'musafir-coder/al-furqon';
 const FILE = 'config.json';
 
 const FIELDS = {
+  // Button
+  'f-btn-text':'btn_text','f-btn-msg':'btn_msg',
+  // About
+  'f-about-p1':'about_p1','f-about-p2':'about_p2',
+  'f-about-fp1':'about_full_p1','f-about-fp2':'about_full_p2',
+  'f-about-quote':'about_quote','f-about-cite':'about_cite',
+  // Program
+  'f-prog-title':'prog_title','f-prog-desc':'prog_desc',
+  'f-prog-dur':'prog_dur','f-prog-freq':'prog_freq','f-prog-lesson':'prog_lesson','f-prog-age':'prog_age',
+  'f-after-title':'prog_after_title','f-after-text':'prog_after_text',
+  'f-topics-badge':'topics_badge',
   // Hero
   'f-hero-t':'hero_title','f-hero-s':'hero_sub',
   'f-stat-1':'stat_years','f-stat-2':'stat_subs','f-stat-3':'stat_founded',
@@ -377,7 +530,11 @@ const FIELDS = {
   'f-si-d1':'sch_si_d1','f-si-t1':'sch_si_t1','f-si-t2':'sch_si_t2',
   // Teachers
   'f-t1n':'t1_name','f-t1r':'t1_role','f-t1b':'t1_bio',
-  'f-t2n':'t2_name','f-t2r':'t2_role','f-t2b':'t2_bio'
+  'f-t1-tag1':'t1_tag1','f-t1-tag2':'t1_tag2','f-t1-tag3':'t1_tag3','f-t1-tag4':'t1_tag4',
+  'f-t2n':'t2_name','f-t2r':'t2_role','f-t2b':'t2_bio',
+  'f-t2-tag1':'t2_tag1','f-t2-tag2':'t2_tag2','f-t2-tag3':'t2_tag3','f-t2-tag4':'t2_tag4',
+  // Footer
+  'f-footer-desc':'footer_desc'
 };
 const TOGGLES = {'f-t1v':'t1_visible','f-t2v':'t2_visible'};
 
@@ -387,6 +544,53 @@ function setMsg(text, type=''){
   const el = document.getElementById('save-msg');
   el.textContent = text;
   el.className = 'save-msg' + (type ? ' '+type : '');
+}
+
+function escVal(s){return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function makeReviewItem(r, idx){
+  const div=document.createElement('div');
+  div.className='review-item';
+  div.innerHTML=
+    '<div class="review-header"><span class="review-num">Отзыв '+(idx+1)+'</span>'
+    +'<button class="btn-del-rv" onclick="removeReview(this)">Удалить</button></div>'
+    +'<div class="field"><label>Текст отзыва</label><textarea class="rv-text" rows="3">'+escVal(r.text||'')+'</textarea></div>'
+    +'<div class="row2">'
+    +'<div class="field"><label>Автор</label><input class="rv-author" type="text" value="'+escVal(r.author||'')+'" placeholder="@username или Имя Фамилия"></div>'
+    +'<div class="field"><label>Источник · Год</label><input class="rv-meta" type="text" value="'+escVal(r.meta||'')+'" placeholder="Instagram · 2024"></div>'
+    +'</div>';
+  div.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',()=>setMsg('Есть несохранённые изменения')));
+  return div;
+}
+
+function addReview(){
+  const list=document.getElementById('reviews-list');
+  list.appendChild(makeReviewItem({},list.children.length));
+  setMsg('Есть несохранённые изменения');
+}
+
+function removeReview(btn){
+  btn.closest('.review-item').remove();
+  renumberReviews();
+  setMsg('Есть несохранённые изменения');
+}
+
+function renumberReviews(){
+  document.querySelectorAll('#reviews-list .review-num').forEach((el,i)=>el.textContent='Отзыв '+(i+1));
+}
+
+function getReviews(){
+  return Array.from(document.querySelectorAll('#reviews-list .review-item')).map(item=>({
+    text:item.querySelector('.rv-text').value.trim(),
+    author:item.querySelector('.rv-author').value.trim(),
+    meta:item.querySelector('.rv-meta').value.trim()
+  })).filter(r=>r.text);
+}
+
+function loadReviews(reviews){
+  const list=document.getElementById('reviews-list');
+  list.innerHTML='';
+  (reviews||[]).forEach((r,i)=>list.appendChild(makeReviewItem(r,i)));
 }
 
 function doLogin(){
@@ -428,6 +632,11 @@ async function loadConfig(){
       const el = document.getElementById(fid);
       if(el) el.checked = cfg[key] !== false;
     });
+    loadReviews(cfg.reviews);
+    const topicsEl=document.getElementById('f-topics');
+    if(topicsEl&&cfg.topics) topicsEl.value=cfg.topics.join('\n');
+    const incEl=document.getElementById('f-prog-inc');
+    if(incEl&&cfg.prog_inc) incEl.value=cfg.prog_inc.join('\n');
     setMsg('Данные загружены', 'ok');
     setTimeout(()=>setMsg('Все изменения сохранены', 'ok'), 2000);
   } catch(e){
@@ -449,6 +658,11 @@ async function saveConfig(){
     const el = document.getElementById(fid);
     if(el) cfg[key] = el.checked;
   });
+  cfg.reviews = getReviews();
+  const topicsEl=document.getElementById('f-topics');
+  if(topicsEl&&topicsEl.value.trim()) cfg.topics=topicsEl.value.split('\n').map(t=>t.trim()).filter(Boolean);
+  const incEl=document.getElementById('f-prog-inc');
+  if(incEl&&incEl.value.trim()) cfg.prog_inc=incEl.value.split('\n').map(t=>t.trim()).filter(Boolean);
 
   try {
     const getR = await fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE, {
@@ -494,6 +708,14 @@ if(savedToken) document.getElementById('inp-token').value = savedToken;
   if(el) el.addEventListener('change',()=>setMsg('Есть несохранённые изменения'));
   if(el && (el.tagName==='TEXTAREA' || el.type==='text'))
     el.addEventListener('input',()=>setMsg('Есть несохранённые изменения'));
+});
+// Also watch dynamic textareas that are loaded after (topics, prog_inc)
+['f-topics','f-prog-inc'].forEach(fid=>{
+  const el=document.getElementById(fid);
+  if(el){
+    el.addEventListener('change',()=>setMsg('Есть несохранённые изменения'));
+    el.addEventListener('input',()=>setMsg('Есть несохранённые изменения'));
+  }
 });
 </script>
 </body>
