@@ -1300,6 +1300,8 @@ function initCarousel(){
   if(!outerOld)return;
   var outer=outerOld.cloneNode(true);
   outerOld.parentNode.replaceChild(outer,outerOld);
+  // После клонирования карточки теряют IntersectionObserver — делаем их видимыми сразу
+  outer.querySelectorAll('.fi').forEach(function(el){el.classList.add('v');});
 
   var track=outer.querySelector('.rv-track');
   var cards=Array.from(track.querySelectorAll('.rvc'));
