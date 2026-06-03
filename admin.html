@@ -419,7 +419,7 @@ async function loadConfig(){
       headers:{ Authorization:'token '+ghToken, Accept:'application/vnd.github.v3+json' }
     });
     const data = await r.json();
-    const cfg = JSON.parse(atob(data.content.replace(/\n/g,'')));
+    const cfg = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g,'')))));
     Object.entries(FIELDS).forEach(([fid, key])=>{
       const el = document.getElementById(fid);
       if(el) el.value = cfg[key] || '';
