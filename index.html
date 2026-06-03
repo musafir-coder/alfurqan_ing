@@ -1208,9 +1208,10 @@ function afApply(c){
       }).join('');
     }
   }
-  initCarousel();
-  // re-observe .fi cards after carousel clones the outer container
-  document.querySelectorAll('.rv-track .fi').forEach(function(el){obs.observe(el);});
+  // requestAnimationFrame чтобы браузер успел рассчитать layout перед инициализацией карусели
+  requestAnimationFrame(function(){
+    initCarousel();
+  });
 }
 // Fit subtitle width to match AL FURQAN title
 (function(){
