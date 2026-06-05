@@ -421,46 +421,11 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
       </div>
     </div>
 
-    <!-- ПРЕПОДАВАТЕЛЬ 1 -->
+    <!-- ПРЕПОДАВАТЕЛИ -->
     <div class="card">
-      <div class="card-title">Преподаватель 1 — братья</div>
-      <div class="field toggle-row">
-        <label>Показывать на сайте</label>
-        <label class="toggle"><input type="checkbox" id="f-t1v" checked><span class="tslider"></span></label>
-      </div>
-      <div class="field"><label>Имя</label><input type="text" id="f-t1n" placeholder="Умаров Адам Магамедович"></div>
-      <div class="field"><label>Должность</label><input type="text" id="f-t1r" placeholder="Основатель · Преподаватель (братья)"></div>
-      <div class="field"><label>Биография</label><textarea id="f-t1b" rows="3"></textarea></div>
-      <div class="section-sub">Теги</div>
-      <div class="row2">
-        <div class="field"><label>Тег 1</label><input type="text" id="f-t1-tag1" placeholder="5+ лет опыта"></div>
-        <div class="field"><label>Тег 2</label><input type="text" id="f-t1-tag2" placeholder="Обучался у хафизов Корана"></div>
-      </div>
-      <div class="row2">
-        <div class="field"><label>Тег 3</label><input type="text" id="f-t1-tag3" placeholder="Основатель школы"></div>
-        <div class="field"><label>Тег 4</label><input type="text" id="f-t1-tag4" placeholder="Дети и взрослые"></div>
-      </div>
-    </div>
-
-    <!-- ПРЕПОДАВАТЕЛЬ 2 -->
-    <div class="card">
-      <div class="card-title">Преподаватель 2 — сёстры и дети</div>
-      <div class="field toggle-row">
-        <label>Показывать на сайте</label>
-        <label class="toggle"><input type="checkbox" id="f-t2v" checked><span class="tslider"></span></label>
-      </div>
-      <div class="field"><label>Имя</label><input type="text" id="f-t2n" placeholder="Чибиева Заира"></div>
-      <div class="field"><label>Должность</label><input type="text" id="f-t2r" placeholder="Преподаватель (сёстры и дети)"></div>
-      <div class="field"><label>Биография</label><textarea id="f-t2b" rows="3"></textarea></div>
-      <div class="section-sub">Теги</div>
-      <div class="row2">
-        <div class="field"><label>Тег 1</label><input type="text" id="f-t2-tag1" placeholder="Тажвид с 2016"></div>
-        <div class="field"><label>Тег 2</label><input type="text" id="f-t2-tag2" placeholder="Педагог с 2015"></div>
-      </div>
-      <div class="row2">
-        <div class="field"><label>Тег 3</label><input type="text" id="f-t2-tag3" placeholder="Опыт с детьми"></div>
-        <div class="field"><label>Тег 4</label><input type="text" id="f-t2-tag4" placeholder="В школе с 2024"></div>
-      </div>
+      <div class="card-title">Преподаватели</div>
+      <div id="teachers-list"></div>
+      <button class="btn-add-rv" onclick="addTeacher()">+ Добавить преподавателя</button>
     </div>
 
     <!-- ОТЗЫВЫ УЧЕНИКОВ -->
@@ -528,15 +493,10 @@ const FIELDS = {
   'f-addr':'address',
   'f-br-d1':'sch_br_d1','f-br-d2':'sch_br_d2','f-br-t1':'sch_br_t1','f-br-t2':'sch_br_t2',
   'f-si-d1':'sch_si_d1','f-si-t1':'sch_si_t1','f-si-t2':'sch_si_t2',
-  // Teachers
-  'f-t1n':'t1_name','f-t1r':'t1_role','f-t1b':'t1_bio',
-  'f-t1-tag1':'t1_tag1','f-t1-tag2':'t1_tag2','f-t1-tag3':'t1_tag3','f-t1-tag4':'t1_tag4',
-  'f-t2n':'t2_name','f-t2r':'t2_role','f-t2b':'t2_bio',
-  'f-t2-tag1':'t2_tag1','f-t2-tag2':'t2_tag2','f-t2-tag3':'t2_tag3','f-t2-tag4':'t2_tag4',
   // Footer
   'f-footer-desc':'footer_desc'
 };
-const TOGGLES = {'f-t1v':'t1_visible','f-t2v':'t2_visible'};
+const TOGGLES = {};
 
 let ghToken = '';
 
@@ -593,6 +553,65 @@ function loadReviews(reviews){
   (reviews||[]).forEach((r,i)=>list.appendChild(makeReviewItem(r,i)));
 }
 
+// ---- TEACHERS ----
+function makeTeacherItem(t, idx){
+  const div=document.createElement('div');
+  div.className='review-item';
+  const tagsVal=(t.tags||[]).join('\n');
+  div.innerHTML=
+    '<div class="review-header">'
+    +'<span class="review-num">Преподаватель '+(idx+1)+'</span>'
+    +'<button class="btn-del-rv" onclick="removeTeacher(this)">Удалить</button>'
+    +'</div>'
+    +'<div class="toggle-row" style="margin-bottom:14px">'
+    +'<label style="font-size:13px;font-weight:500">Показывать на сайте</label>'
+    +'<label class="toggle"><input type="checkbox" class="t-visible"'+(t.visible!==false?' checked':'')+'><span class="tslider"></span></label>'
+    +'</div>'
+    +'<div class="row2">'
+    +'<div class="field"><label>Пол (аватар)</label>'
+    +'<select class="t-gender" style="width:100%;padding:10px 13px;background:#0f1e1a;border:1.5px solid var(--border);border-radius:8px;color:#fff;font-size:14px;outline:none;font-family:inherit">'
+    +'<option value="male"'+(t.gender!=='female'?' selected':'')+'>Мужской (братья)</option>'
+    +'<option value="female"'+(t.gender==='female'?' selected':'')+'>Женский (сёстры)</option>'
+    +'</select></div>'
+    +'<div class="field"><label>Имя</label><input class="t-name" type="text" value="'+escVal(t.name||'')+'" placeholder="Имя Фамилия Отчество"></div>'
+    +'</div>'
+    +'<div class="field"><label>Должность</label><input class="t-role" type="text" value="'+escVal(t.role||'')+'" placeholder="Основатель · Преподаватель"></div>'
+    +'<div class="field"><label>Биография</label><textarea class="t-bio" rows="3">'+escVal(t.bio||'')+'</textarea></div>'
+    +'<div class="field"><label>Теги</label><textarea class="t-tags" rows="4" placeholder="Один тег на строку&#10;Например: 5+ лет опыта">'+escVal(tagsVal)+'</textarea><div class="hint">Каждая строка — один тег (до 4 штук)</div></div>';
+  div.querySelectorAll('input,textarea,select').forEach(el=>el.addEventListener('input',()=>setMsg('Есть несохранённые изменения')));
+  div.querySelector('.t-visible').addEventListener('change',()=>setMsg('Есть несохранённые изменения'));
+  return div;
+}
+
+function addTeacher(){
+  const list=document.getElementById('teachers-list');
+  list.appendChild(makeTeacherItem({gender:'male'},list.children.length));
+  setMsg('Есть несохранённые изменения');
+}
+
+function removeTeacher(btn){
+  btn.closest('.review-item').remove();
+  document.querySelectorAll('#teachers-list .review-num').forEach((el,i)=>el.textContent='Преподаватель '+(i+1));
+  setMsg('Есть несохранённые изменения');
+}
+
+function getTeachers(){
+  return Array.from(document.querySelectorAll('#teachers-list .review-item')).map(item=>({
+    visible:item.querySelector('.t-visible').checked,
+    gender:item.querySelector('.t-gender').value,
+    name:item.querySelector('.t-name').value.trim(),
+    role:item.querySelector('.t-role').value.trim(),
+    bio:item.querySelector('.t-bio').value.trim(),
+    tags:item.querySelector('.t-tags').value.split('\n').map(t=>t.trim()).filter(Boolean)
+  })).filter(t=>t.name);
+}
+
+function loadTeachers(teachers){
+  const list=document.getElementById('teachers-list');
+  list.innerHTML='';
+  (teachers||[]).forEach((t,i)=>list.appendChild(makeTeacherItem(t,i)));
+}
+
 function doLogin(){
   const pass = document.getElementById('inp-pass').value;
   const token = document.getElementById('inp-token').value.trim();
@@ -633,6 +652,7 @@ async function loadConfig(){
       if(el) el.checked = cfg[key] !== false;
     });
     loadReviews(cfg.reviews);
+    loadTeachers(cfg.teachers);
     const topicsEl=document.getElementById('f-topics');
     if(topicsEl&&cfg.topics) topicsEl.value=cfg.topics.join('\n');
     const incEl=document.getElementById('f-prog-inc');
@@ -670,6 +690,8 @@ async function saveConfig(){
     });
     const rv = getReviews();
     if(rv.length > 0) cfg.reviews = rv;
+    const tv = getTeachers();
+    if(tv.length > 0) cfg.teachers = tv;
     const topicsEl=document.getElementById('f-topics');
     if(topicsEl&&topicsEl.value.trim()) cfg.topics=topicsEl.value.split('\n').map(t=>t.trim()).filter(Boolean);
     const incEl=document.getElementById('f-prog-inc');

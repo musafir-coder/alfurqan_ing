@@ -882,7 +882,7 @@ footer{background:#080e0d;padding:56px 5% 36px;color:rgba(255,255,255,.45)}
       <span class="slbl">Преподаватели</span>
       <h2 class="st">Те, кто передаёт знание</h2>
     </div>
-    <div class="tc-g">
+    <div class="tc-g" id="af-teachers-grid">
       <div class="tcard fi" id="af-tcard1">
         <div class="tav">
           <!-- мужской силуэт от головы до пояса — единый путь, естественный переход -->
@@ -1206,9 +1206,26 @@ function afApply(c){
   set('af-pm',c.price_monthly); set('af-pc',c.price_course);
   set('af-pco',c.price_course_old);
   if(c.price_discount){const pd=document.getElementById('af-pd');if(pd)pd.textContent='Выгода '+c.price_discount+' ₽';}
-  // Teachers
-  set('af-t1n',c.t1_name); set('af-t1r',c.t1_role); set('af-t1b',c.t1_bio);
-  set('af-t2n',c.t2_name); set('af-t2r',c.t2_role); set('af-t2b',c.t2_bio);
+  // Teachers (dynamic array)
+  if(c.teachers&&c.teachers.length){
+    var SVG_M='<svg class="tsil" viewBox="0 0 90 100" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(255,255,255,.42)" d="M45,5 C65,5 75,18 75,31 C75,43 66,51 56,54 C65,57 78,67 82,84 L85,100 L5,100 L8,84 C12,67 25,57 34,54 C24,51 15,43 15,31 C15,18 25,5 45,5 Z"/></svg>';
+    var SVG_F='<svg class="tsil" viewBox="0 0 90 100" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" fill="rgba(255,255,255,.38)" d="M45,5 C24,5 19,19 19,32 C19,45 27,55 37,59 C25,63 11,73 9,93 L9,100 L81,100 L81,93 C79,73 65,63 53,59 C63,55 71,45 71,32 C71,19 66,5 45,5 Z M45,21 C37,21 33,26 33,32 C33,38 37,43 45,43 C53,43 57,38 57,32 C57,26 53,21 45,21 Z"/></svg>';
+    var grid=document.getElementById('af-teachers-grid');
+    if(grid){
+      grid.innerHTML=c.teachers.filter(function(t){return t.visible!==false;}).map(function(t){
+        var fem=t.gender==='female';
+        var tags=(t.tags||[]).map(function(tg){return '<span class="ttag">'+esc(tg)+'</span>';}).join('');
+        return '<div class="tcard fi v">'
+          +'<div class="tav'+(fem?' sis':'')+'">'+( fem?SVG_F:SVG_M)+'</div>'
+          +'<div class="tbody">'
+          +'<h3 class="tname">'+esc(t.name||'')+'</h3>'
+          +'<div class="trole" style="text-transform:none;letter-spacing:normal;font-size:13px">'+esc(t.role||'')+'</div>'
+          +'<p class="tbio">'+esc(t.bio||'')+'</p>'
+          +'<div class="ttags">'+tags+'</div>'
+          +'</div></div>';
+      }).join('');
+    }
+  }
   // Address
   set('af-addr',c.address); set('af-addr-ft', c.address ? 'Адрес: '+c.address : null);
   // WhatsApp contacts
@@ -1232,11 +1249,6 @@ function afApply(c){
   set('af-br-t1',c.sch_br_t1); set('af-br-t2',c.sch_br_t2);
   set('af-si-d1',c.sch_si_d1);
   set('af-si-t1',c.sch_si_t1); set('af-si-t2',c.sch_si_t2);
-  // Teacher card visibility
-  const tc1=document.getElementById('af-tcard1');
-  const tc2=document.getElementById('af-tcard2');
-  if(tc1) tc1.style.display = c.t1_visible===false ? 'none' : '';
-  if(tc2) tc2.style.display = c.t2_visible===false ? 'none' : '';
   // About
   set('af-about-p1',c.about_p1); set('af-about-p2',c.about_p2);
   set('af-about-fp1',c.about_full_p1); set('af-about-fp2',c.about_full_p2);
