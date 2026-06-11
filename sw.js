@@ -1,8 +1,8 @@
 const CACHE = 'alfurqon-v9';
 const ASSETS = [
-  '/al-furqon/assets/logo-symbol.png',
-  '/al-furqon/assets/icon-192.png',
-  '/al-furqon/assets/icon-512.png'
+  '/alfurqan_ing/assets/logo-symbol.png',
+  '/alfurqan_ing/assets/icon-192.png',
+  '/alfurqan_ing/assets/icon-512.png'
 ];
 
 self.addEventListener('install', e => {
