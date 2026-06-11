@@ -147,6 +147,20 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
       </div>
     </div>
 
+    <!-- ПЛАВАЮЩАЯ КНОПКА WHATSAPP -->
+    <div class="card">
+      <div class="card-title">Плавающая кнопка WhatsApp (круглая)</div>
+      <div class="field">
+        <label>Номер WhatsApp</label>
+        <input type="text" id="f-waf-phone" placeholder="79380086606">
+        <div class="hint">Только цифры без плюса: 79380086606</div>
+      </div>
+      <div class="field">
+        <label>Текст сообщения (отправится при нажатии)</label>
+        <textarea id="f-waf-msg" rows="2" placeholder="Ассалямуалейкум! Хочу записаться на пробный урок"></textarea>
+      </div>
+    </div>
+
     <!-- О ШКОЛЕ -->
     <div class="card">
       <div class="card-title">О школе</div>
@@ -466,6 +480,8 @@ const FILE = 'config.json';
 const FIELDS = {
   // Button
   'f-btn-text':'btn_text','f-btn-msg':'btn_msg','f-btn-phone':'btn_phone',
+  // Floating WA
+  'f-waf-phone':'wa_float_phone','f-waf-msg':'wa_float_msg',
   // About
   'f-about-p1':'about_p1','f-about-p2':'about_p2',
   'f-about-fp1':'about_full_p1','f-about-fp2':'about_full_p2',
