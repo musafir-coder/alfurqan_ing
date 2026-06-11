@@ -1278,7 +1278,8 @@ function afApply(c){
   set('af-footer-desc',c.footer_desc);
   // Hero button
   set('af-btn-text',c.btn_text);
-  if(c.btn_msg&&c.wa_brothers){attr('af-btn-signup','href','https://wa.me/'+c.wa_brothers+'?text='+encodeURIComponent(c.btn_msg));}
+  var btnPhone=c.btn_phone||c.wa_brothers;
+  if(c.btn_msg&&btnPhone){attr('af-btn-signup','href','https://wa.me/'+btnPhone+'?text='+encodeURIComponent(c.btn_msg));}
 }
 // Fit subtitle width to match AL FURQAN title
 (function(){

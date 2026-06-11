@@ -130,14 +130,20 @@ body{font-family:'Segoe UI',Arial,sans-serif;background:#0f1e1a;color:#e8e0d0;mi
     <!-- КНОПКА ЗАПИСАТЬСЯ -->
     <div class="card">
       <div class="card-title">Кнопка «Записаться»</div>
-      <div class="field">
-        <label>Текст кнопки</label>
-        <input type="text" id="f-btn-text" placeholder="Записаться на курс">
+      <div class="row2">
+        <div class="field">
+          <label>Текст кнопки</label>
+          <input type="text" id="f-btn-text" placeholder="Записаться на курс">
+        </div>
+        <div class="field">
+          <label>Номер WhatsApp кнопки</label>
+          <input type="text" id="f-btn-phone" placeholder="79380086606">
+          <div class="hint">Только цифры без плюса: 79380086606</div>
+        </div>
       </div>
       <div class="field">
-        <label>Текст WhatsApp-сообщения</label>
+        <label>Текст WhatsApp-сообщения (отправится при нажатии)</label>
         <textarea id="f-btn-msg" rows="3" placeholder="Ассалáьму Iалаьйкум! Я пишу вам через ваш сайт..."></textarea>
-        <div class="hint">Это сообщение отправится при нажатии кнопки</div>
       </div>
     </div>
 
@@ -459,7 +465,7 @@ const FILE = 'config.json';
 
 const FIELDS = {
   // Button
-  'f-btn-text':'btn_text','f-btn-msg':'btn_msg',
+  'f-btn-text':'btn_text','f-btn-msg':'btn_msg','f-btn-phone':'btn_phone',
   // About
   'f-about-p1':'about_p1','f-about-p2':'about_p2',
   'f-about-fp1':'about_full_p1','f-about-fp2':'about_full_p2',
